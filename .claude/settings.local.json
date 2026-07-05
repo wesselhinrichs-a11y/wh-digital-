@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__9419f02d-4694-4678-ba75-06805ae39674__get_game_creation_instructions"
+    ]
+  }
+}
