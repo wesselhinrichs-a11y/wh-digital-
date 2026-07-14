@@ -4,7 +4,8 @@ document.getElementById("year").textContent = new Date().getFullYear();
 // Zachte fade-in van secties bij het scrollen.
 // De 'reveal'-klasse wordt alleen via JavaScript toegevoegd, zodat alles
 // gewoon zichtbaar blijft als JavaScript uitstaat.
-const revealSections = [...document.querySelectorAll("main section:not(#hero)")];
+// De werkwijze-sectie doet niet mee: die animeert per blok (zie onderaan).
+const revealSections = [...document.querySelectorAll("main section:not(#hero):not(#werkwijze)")];
 revealSections.forEach((section) => section.classList.add("reveal"));
 
 function revealOnScroll() {
@@ -20,6 +21,23 @@ function revealOnScroll() {
 
 window.addEventListener("scroll", revealOnScroll, { passive: true });
 revealOnScroll(); // ook direct bij het laden checken wat al in beeld is
+
+// Werkwijze-blokken: fade-in + slide-up per blok via IntersectionObserver.
+// De animatieklasse wordt hier pas gezet, zodat de blokken zonder
+// JavaScript gewoon zichtbaar zijn.
+const stapBlokken = [...document.querySelectorAll(".stap-blok")];
+stapBlokken.forEach((blok) => blok.classList.add("stap-animatie"));
+
+const stapObserver = new IntersectionObserver((entries) => {
+  for (const entry of entries) {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("zichtbaar");
+      stapObserver.unobserve(entry.target); // eenmalig animeren is genoeg
+    }
+  }
+}, { rootMargin: "0px 0px -80px 0px" });
+
+stapBlokken.forEach((blok) => stapObserver.observe(blok));
 
 // ---------------------------------------------------------------
 // Chatbot-demo: Kapsalon Demo

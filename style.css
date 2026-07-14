@@ -258,7 +258,6 @@ a {
 
 /* Kaarten delen dezelfde basis */
 .service-card,
-.step-card,
 .price-card {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -267,13 +266,11 @@ a {
 }
 
 .service-card h3,
-.step-card h3,
 .price-card h3 {
   margin-bottom: var(--space-2);
 }
 
-.service-card p,
-.step-card p {
+.service-card p {
   color: var(--text-muted);
 }
 
@@ -319,25 +316,424 @@ a {
 }
 
 /* -------------------------------------------------- */
-/* Werkwijze                                           */
+/* Concept work                                        */
 /* -------------------------------------------------- */
-.steps-grid {
+.werk-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: var(--space-3);
 }
 
-.step-number {
-  width: 40px;
-  height: 40px;
+/* Kaarten draaien subtiel recht zodra de sectie in beeld schuift */
+.reveal .werk-card {
+  opacity: 0;
+  transform: translateY(24px) rotate(1.5deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.reveal .werk-card:nth-child(2) {
+  transform: translateY(24px) rotate(-1.5deg);
+  transition-delay: 0.1s;
+}
+
+.reveal.visible .werk-card,
+.reveal.visible .werk-card:nth-child(2) {
+  opacity: 1;
+  transform: none;
+}
+
+/* Browser-mockup: balk met stoplicht-bolletjes en adresbalk */
+.mockup {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.mockup-bar {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px var(--space-2);
+  background: var(--bg-soft);
+  border-bottom: 1px solid var(--border);
+}
+
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.mockup-url {
+  flex: 1;
+  margin-left: var(--space-1);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 2px var(--space-2);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+/* Het venster: bij hover scrolt de minisite er langzaam doorheen */
+.mockup-viewport {
+  height: 300px;
+  overflow: hidden;
+}
+
+.mini-site {
+  transition: transform 5s ease;
+}
+
+.werk-card:hover .mini-site {
+  transform: translateY(calc(-100% + 300px));
+}
+
+.werk-caption {
+  margin-top: var(--space-2);
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.werk-caption strong {
+  color: var(--text);
+}
+
+.werk .cta-row {
+  margin-top: var(--space-2);
+}
+
+/* Opbouw van de minisites (bewust kleine tekst: het is een
+   schaalmodel van een website, geen leestekst — daarom ook
+   aria-hidden in de HTML) */
+.mini-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+}
+
+.mini-logo {
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.mini-links {
+  display: flex;
+  gap: 10px;
+  font-size: 10px;
+  opacity: 0.75;
+}
+
+/* Split-hero: tekst links, beeldvlak rechts */
+.mini-hero {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 24px 16px;
+}
+
+.mini-hero-tekst {
+  flex: 1;
+}
+
+.mini-kicker {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mini-title {
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 12px;
+}
+
+.mini-btn {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 999px;
+}
+
+/* "Foto": een gelaagde gradient als beeldvlak — geen echte afbeelding,
+   maar het geeft de mockup de vorm van een echte site */
+.mini-foto {
+  width: 88px;
+  height: 116px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.mini-reviews {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: var(--accent-tint);
-  color: var(--accent);
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.mini-reviews span {
+  font-weight: 400;
+  opacity: 0.75;
+}
+
+.mini-usps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding: 0 16px 14px;
+}
+
+.mini-usps span {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 999px;
+}
+
+.mini-blok {
+  padding: 18px 16px;
+}
+
+.mini-h {
+  font-size: 11px;
   font-weight: 700;
-  margin-bottom: var(--space-3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.mini-rij {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.mini-rij:last-child {
+  border-bottom: none;
+}
+
+.mini-team {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 16px 18px;
+  font-size: 10px;
+}
+
+.mini-avatars {
+  display: flex;
+}
+
+.mini-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+}
+
+.mini-avatar + .mini-avatar {
+  margin-left: -7px;
+}
+
+.mini-band {
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+.mini-footer {
+  padding: 12px 16px;
+  text-align: center;
+  font-size: 9px;
+  opacity: 0.7;
+}
+
+/* Palet 1: Salon Mila — warm, met serif-koppen */
+.mini-salon {
+  background: #faf5ef;
+  color: #3c2e26;
+}
+
+.mini-salon .mini-logo,
+.mini-salon .mini-title {
+  font-family: Georgia, "Times New Roman", serif;
+  font-weight: 500;
+}
+
+.mini-salon .mini-kicker {
+  color: #b0603f;
+}
+
+.mini-salon .mini-btn {
+  background: #3c2e26;
+  color: #faf5ef;
+}
+
+.mini-salon .mini-foto {
+  background:
+    radial-gradient(50px 70px at 70% 18%, rgba(255, 255, 255, 0.45), transparent 60%),
+    linear-gradient(165deg, #e4b79e 0%, #b0603f 70%, #8a4630 100%);
+}
+
+.mini-salon .mini-reviews {
+  color: #b0603f;
+  border-top: 1px solid rgba(60, 46, 38, 0.1);
+  border-bottom: 1px solid rgba(60, 46, 38, 0.1);
+}
+
+.mini-salon .mini-avatar.a1 { background: linear-gradient(140deg, #d9a184, #a35a3b); }
+.mini-salon .mini-avatar.a2 { background: linear-gradient(140deg, #c9b39b, #7d6a55); }
+.mini-salon .mini-avatar.a3 { background: linear-gradient(140deg, #e0c1ae, #b07a5e); }
+
+.mini-salon .mini-band {
+  background: #3c2e26;
+  color: #faf5ef;
+}
+
+/* Palet 2: Fysio Vitaal — fris en zakelijk */
+.mini-fysio {
+  background: #f6fbfa;
+  color: #193c34;
+}
+
+.mini-fysio .mini-kicker {
+  color: #178f72;
+}
+
+.mini-fysio .mini-btn {
+  background: #178f72;
+  color: #fff;
+}
+
+.mini-fysio .mini-foto {
+  background:
+    radial-gradient(50px 70px at 30% 20%, rgba(255, 255, 255, 0.5), transparent 60%),
+    linear-gradient(200deg, #8fd8c4 0%, #178f72 75%);
+}
+
+.mini-fysio .mini-usps span {
+  background: #e2f3ee;
+  color: #14735c;
+}
+
+.mini-fysio .mini-rij span:last-child {
+  color: #178f72;
+  font-weight: 700;
+}
+
+.mini-fysio .mini-reviews {
+  color: #178f72;
+  border-top: 1px solid rgba(25, 60, 52, 0.08);
+}
+
+.mini-fysio .mini-band {
+  background: #178f72;
+  color: #fff;
+}
+
+
+/* -------------------------------------------------- */
+/* Werkwijze: editorial blokken zonder sectiekop       */
+/* -------------------------------------------------- */
+.stap-blok {
+  display: grid;
+  grid-template-columns: 58% 1fr;
+  gap: var(--space-5);
+  padding: var(--space-6) 0;
+  border-top: 1px solid var(--border);
+}
+
+.stap-blok:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+/* Visueel vlak met "Stap" en een ingetogen nummer */
+.stap-visueel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-1);
+  min-height: 200px;
+  background: var(--bg-soft);
+  border-radius: var(--radius-small);
+}
+
+.stap-woord {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.stap-nummer {
+  font-size: clamp(40px, 5vw, 56px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--text-muted);
+}
+
+.stap-inhoud {
+  display: flex;
+  flex-direction: column;
+}
+
+.stap-titel {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: var(--space-2);
+}
+
+.stap-inhoud > p:not(.stap-label) {
+  color: var(--text-muted);
+  max-width: 40ch;
+}
+
+.stap-label {
+  margin-top: auto;
+  padding-top: var(--space-3);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+
+/* Scroll-animatie: de klassen worden door script.js gezet, zodat
+   alles gewoon zichtbaar blijft als JavaScript uitstaat */
+.stap-animatie .stap-visueel,
+.stap-animatie .stap-inhoud {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Stagger: de tekst volgt net na het visuele vlak */
+.stap-animatie .stap-inhoud {
+  transition-delay: 0.12s;
+}
+
+.stap-animatie.zichtbaar .stap-visueel,
+.stap-animatie.zichtbaar .stap-inhoud {
+  opacity: 1;
+  transform: none;
 }
 
 /* -------------------------------------------------- */
@@ -362,14 +758,12 @@ a {
 }
 
 .price-card,
-.step-card,
 .faq-item {
   transition: border-color 0.2s ease;
 }
 
 /* Subtiele rand-oplichting bij hover; de uitgelichte kaart houdt zijn accentrand */
 .price-card:not(.featured):hover,
-.step-card:hover,
 .faq-item:hover {
   border-color: #39404f;
 }
@@ -867,6 +1261,23 @@ a {
   .chat-typing span {
     animation: none;
   }
+
+  .reveal .werk-card {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .werk-card:hover .mini-site {
+    transform: none;
+  }
+
+  .stap-animatie .stap-visueel,
+  .stap-animatie .stap-inhoud {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
 
 /* -------------------------------------------------- */
@@ -899,9 +1310,19 @@ a {
   }
 
   .service-card,
-  .step-card,
   .price-card {
     padding: var(--space-3);
+  }
+
+  /* Werkwijze-blokken stapelen: nummer boven, tekst onder */
+  .stap-blok {
+    grid-template-columns: 1fr;
+    gap: var(--space-3);
+    padding: var(--space-5) 0;
+  }
+
+  .stap-visueel {
+    min-height: 140px;
   }
 
   .section-intro {
