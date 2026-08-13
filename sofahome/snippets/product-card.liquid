@@ -1,0 +1,36 @@
+{%- comment -%}
+  Productkaart voor grids.
+  Gebruik: {% render 'product-card', product: product, show_vendor: true %}
+{%- endcomment -%}
+
+<a class="card" href="{{ product.url }}">
+  <div class="card__media">
+    {%- if product.featured_media -%}
+      {{
+        product.featured_media
+        | image_url: width: 800
+        | image_tag:
+          widths: '300, 500, 700, 900',
+          sizes: '(min-width: 990px) 25vw, (min-width: 750px) 33vw, 50vw',
+          loading: 'lazy',
+          alt: product.featured_media.alt | default: product.title | escape
+      }}
+    {%- else -%}
+      <div class="placeholder-tile"></div>
+    {%- endif -%}
+
+    {%- if product.available == false -%}
+      <span class="card__badge">{{ 'products.product.sold_out' | t }}</span>
+    {%- elsif product.compare_at_price > product.price -%}
+      <span class="card__badge">{{ 'products.product.on_sale' | t }}</span>
+    {%- endif -%}
+  </div>
+
+  <div>
+    {%- if show_vendor and product.vendor != blank -%}
+      <div class="card__vendor">{{ product.vendor }}</div>
+    {%- endif -%}
+    <h3 class="card__title">{{ product.title }}</h3>
+    {% render 'price', product: product %}
+  </div>
+</a>

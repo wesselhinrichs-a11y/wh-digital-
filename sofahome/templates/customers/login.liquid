@@ -1,0 +1,42 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:28rem">
+    <h1>Inloggen</h1>
+
+    {%- form 'customer_login' -%}
+      {%- if form.errors -%}
+        <p class="form-message">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
+      <div style="margin-bottom:1rem">
+        <label for="CustomerEmail">E-mailadres</label>
+        <input class="field" id="CustomerEmail" type="email" name="customer[email]" autocomplete="email" required>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="CustomerPassword">Wachtwoord</label>
+        <input class="field" id="CustomerPassword" type="password" name="customer[password]" autocomplete="current-password" required>
+        <p class="form-note" style="margin-top:0.5rem">
+          <a href="#recover">Wachtwoord vergeten?</a>
+        </p>
+      </div>
+
+      <button class="button button--full" type="submit">Inloggen</button>
+    {%- endform -%}
+
+    <p class="form-note" style="margin-top:1.5rem">
+      Nog geen account? <a href="{{ routes.account_register_url }}">Maak er een aan</a>.
+    </p>
+
+    <div id="recover" style="margin-top:2.5rem; border-top:1px solid var(--color-border); padding-top:1.5rem">
+      <h2 style="font-size:1.25rem">Wachtwoord vergeten</h2>
+      {%- form 'recover_customer_password' -%}
+        {%- if form.posted_successfully? -%}
+          <p class="form-message">We hebben je een e-mail gestuurd met een herstellink.</p>
+        {%- endif -%}
+        <label for="RecoverEmail">E-mailadres</label>
+        <input class="field" id="RecoverEmail" type="email" name="email" autocomplete="email" required>
+        <button class="button button--secondary button--full" type="submit" style="margin-top:0.75rem">Stuur herstellink</button>
+      {%- endform -%}
+    </div>
+  </div>
+</div>

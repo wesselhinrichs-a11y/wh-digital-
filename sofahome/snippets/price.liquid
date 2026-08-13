@@ -1,0 +1,34 @@
+{%- comment -%}
+  Toont de prijs van een product of variant.
+  Gebruik: {% render 'price', product: product %} of {% render 'price', variant: variant %}
+{%- endcomment -%}
+
+{%- liquid
+  if variant
+    assign price = variant.price
+    assign compare_at = variant.compare_at_price
+    assign varies = false
+  else
+    assign price = product.price
+    assign compare_at = product.compare_at_price_max
+    assign varies = product.price_varies
+  endif
+
+  assign on_sale = false
+  if compare_at > price
+    assign on_sale = true
+  endif
+-%}
+
+<div class="price {% if on_sale %}price--on-sale{% endif %}">
+  <span class="price__regular">
+    {%- if varies -%}
+      {{ 'products.product.from_price_html' | t: price: price | money }}
+    {%- else -%}
+      {{ price | money }}
+    {%- endif -%}
+  </span>
+  {%- if on_sale -%}
+    <s class="price__compare">{{ compare_at | money }}</s>
+  {%- endif -%}
+</div>

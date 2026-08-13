@@ -1,0 +1,57 @@
+<section class="section">
+  <div class="page-width">
+    <div class="split {% if section.settings.reverse %}split--reverse{% endif %}">
+      <div class="split__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag:
+              widths: '500, 800, 1100, 1400',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: section.settings.image.alt | default: section.settings.heading | escape
+          }}
+        {%- else -%}
+          <div class="placeholder-tile"></div>
+        {%- endif -%}
+      </div>
+
+      <div class="split__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+        <h2>{{ section.settings.heading }}</h2>
+        <div class="rte">{{ section.settings.text }}</div>
+        {%- if section.settings.button_label != blank -%}
+          <p style="margin-top:1.5rem">
+            <a class="button button--secondary" href="{{ section.settings.button_link }}">
+              {{ section.settings.button_label }}
+            </a>
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Afbeelding met tekst",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Afbeelding" },
+    { "type": "checkbox", "id": "reverse", "label": "Afbeelding rechts", "default": false },
+    { "type": "text", "id": "eyebrow", "label": "Bovenkopje", "default": "Ons atelier" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Zeventig uur werk per bank" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst",
+      "default": "<p>Elk frame wordt met de hand van massief beukenhout gemaakt en met pen-en-gatverbindingen in elkaar gezet — geen schroeven, geen nietjes. De vering wordt met de hand geknoopt, de vulling in lagen opgebouwd. Dat kost tijd. Daarom zit je er ook over vijftien jaar nog goed op.</p>"
+    },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Lees ons verhaal" },
+    { "type": "url", "id": "button_link", "label": "Knoplink" }
+  ],
+  "presets": [{ "name": "Afbeelding met tekst" }]
+}
+{% endschema %}

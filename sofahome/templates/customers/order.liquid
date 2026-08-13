@@ -1,0 +1,57 @@
+<div class="section">
+  <div class="page-width">
+    <h1>Bestelling {{ order.name }}</h1>
+    <p class="form-note">
+      Geplaatst op {{ order.created_at | date: '%-d %B %Y' }} — {{ order.financial_status_label }}, {{ order.fulfillment_status_label }}
+    </p>
+
+    <div class="cart__layout" style="margin-top:2rem">
+      <div>
+        {%- for line_item in order.line_items -%}
+          <div class="cart-item">
+            <div class="cart-item__image">
+              {%- if line_item.image -%}
+                <img src="{{ line_item.image | image_url: width: 200 }}" alt="{{ line_item.title | escape }}" loading="lazy" width="200" height="200">
+              {%- else -%}
+                <div class="placeholder-tile"></div>
+              {%- endif -%}
+            </div>
+            <div>
+              <div class="cart-item__title">{{ line_item.title }}</div>
+              <div class="cart-item__variant">Aantal: {{ line_item.quantity }}</div>
+            </div>
+            <div><strong>{{ line_item.final_line_price | money }}</strong></div>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <aside class="cart-summary">
+        <div class="cart-summary__row">
+          <span>Subtotaal</span><span>{{ order.subtotal_price | money }}</span>
+        </div>
+        {%- for shipping_method in order.shipping_methods -%}
+          <div class="cart-summary__row">
+            <span>{{ shipping_method.title }}</span><span>{{ shipping_method.price | money }}</span>
+          </div>
+        {%- endfor -%}
+        {%- for tax_line in order.tax_lines -%}
+          <div class="cart-summary__row">
+            <span>Btw ({{ tax_line.rate_percentage }}%)</span><span>{{ tax_line.price | money }}</span>
+          </div>
+        {%- endfor -%}
+        <div class="cart-summary__row">
+          <span>Totaal</span><span class="cart-summary__total">{{ order.total_price | money }}</span>
+        </div>
+
+        <div class="form-note" style="margin-top:1.5rem">
+          <strong>Verzendadres</strong><br>
+          {{ order.shipping_address | format_address }}
+        </div>
+      </aside>
+    </div>
+
+    <p style="margin-top:2rem">
+      <a class="link-arrow" href="{{ routes.account_url }}">&larr; Terug naar mijn account</a>
+    </p>
+  </div>
+</div>

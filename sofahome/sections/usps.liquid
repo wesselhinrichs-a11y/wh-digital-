@@ -1,0 +1,93 @@
+<section class="section section--tight">
+  <div class="page-width">
+    <div class="grid grid--{{ section.blocks.size | at_most: 4 }}">
+      {%- for block in section.blocks -%}
+        <div class="usp" {{ block.shopify_attributes }}>
+          <div class="usp__icon">{% render 'icon', icon: block.settings.icon %}</div>
+          <h3 class="usp__title">{{ block.settings.title }}</h3>
+          <p class="usp__text">{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Waarom Sofahome",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "Voordeel",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icoon",
+          "options": [
+            { "value": "truck", "label": "Bezorging" },
+            { "value": "leaf", "label": "Duurzaam" },
+            { "value": "shield", "label": "Garantie" },
+            { "value": "ruler", "label": "Maatwerk" },
+            { "value": "swatch", "label": "Stalen" },
+            { "value": "star", "label": "Ster" }
+          ],
+          "default": "truck"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Titel",
+          "default": "Gratis bezorgd en geplaatst"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Tekst",
+          "default": "Onze bezorgers zetten je bank op zijn plek en nemen het verpakkingsmateriaal weer mee."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Waarom Sofahome",
+      "blocks": [
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "truck",
+            "title": "Gratis bezorgd en geplaatst",
+            "text": "Onze bezorgers zetten je bank op zijn plek en nemen het verpakkingsmateriaal weer mee."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "swatch",
+            "title": "Eerst stalen thuis",
+            "text": "Kies vijf stoffen uit en voel thuis hoe ze in jouw licht vallen. Gratis."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "shield",
+            "title": "Tien jaar garantie",
+            "text": "Op frame en vering. Onderdelen blijven leverbaar, ook over tien jaar."
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "leaf",
+            "title": "Gemaakt in Europa",
+            "text": "FSC-hout, natuurlijke vullingen en ateliers waar we zelf komen."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

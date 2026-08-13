@@ -1,0 +1,73 @@
+<div class="collection-hero">
+  <div class="page-width">
+    <p class="eyebrow">{{ 'collections.general.items_with_count' | t: count: collection.products_count }}</p>
+    <h1>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}
+      <div class="rte lede">{{ collection.description }}</div>
+    {%- endif -%}
+  </div>
+</div>
+
+<div class="page-width">
+  {%- paginate collection.products by section.settings.products_per_page -%}
+    <div class="collection-toolbar">
+      <div class="collection-toolbar__count">
+        {{ 'collections.general.items_with_count' | t: count: collection.products_count }}
+      </div>
+
+      {%- if section.settings.show_sorting -%}
+        {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
+        <div>
+          <label class="visually-hidden" for="SortBy">{{ 'collections.general.sort_by' | t }}</label>
+          <select class="field" id="SortBy" data-sort-select>
+            {%- for option in collection.sort_options -%}
+              <option value="{{ option.value }}" {% if option.value == sort_by %}selected{% endif %}>
+                {{ option.name }}
+              </option>
+            {%- endfor -%}
+          </select>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for product in collection.products -%}
+        {% render 'product-card', product: product, show_vendor: section.settings.show_vendor %}
+      {%- else -%}
+        <p>{{ 'collections.general.no_matches' | t }}</p>
+      {%- endfor -%}
+    </div>
+
+    {% render 'pagination', paginate: paginate %}
+  {%- endpaginate -%}
+</div>
+
+{% schema %}
+{
+  "name": "Collectie",
+  "settings": [
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 8,
+      "max": 48,
+      "step": 4,
+      "label": "Producten per pagina",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Kolommen",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    { "type": "checkbox", "id": "show_sorting", "label": "Sorteermenu tonen", "default": true },
+    { "type": "checkbox", "id": "show_vendor", "label": "Merk tonen", "default": false }
+  ]
+}
+{% endschema %}

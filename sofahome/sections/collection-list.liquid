@@ -1,0 +1,96 @@
+<section class="section">
+  <div class="page-width">
+    <div class="section-head">
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="grid grid--{{ section.settings.columns }}">
+      {%- for block in section.blocks -%}
+        {%- assign collection = block.settings.collection -%}
+        <a class="card" href="{{ collection.url | default: '#' }}" {{ block.shopify_attributes }}>
+          <div class="card__media">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '300, 500, 700, 900',
+                  sizes: '(min-width: 750px) 33vw, 50vw',
+                  loading: 'lazy',
+                  alt: collection.title | escape
+              }}
+            {%- elsif collection.featured_image -%}
+              {{
+                collection.featured_image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '300, 500, 700, 900',
+                  sizes: '(min-width: 750px) 33vw, 50vw',
+                  loading: 'lazy',
+                  alt: collection.title | escape
+              }}
+            {%- else -%}
+              <div class="placeholder-tile"></div>
+            {%- endif -%}
+          </div>
+          <div>
+            {%- if collection != blank -%}
+              <h3 class="card__title">{{ collection.title }}</h3>
+              <div class="card__vendor">
+                {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+              </div>
+            {%- else -%}
+              <h3 class="card__title">{{ 'onboarding.collection_title' | t }}</h3>
+            {%- endif -%}
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collecties",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Shop per categorie" },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Kolommen",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collectie",
+      "settings": [
+        { "type": "collection", "id": "collection", "label": "Collectie" },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Afbeelding",
+          "info": "Laat leeg om de collectiefoto te gebruiken."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collecties",
+      "blocks": [
+        { "type": "collection" },
+        { "type": "collection" },
+        { "type": "collection" }
+      ]
+    }
+  ]
+}
+{% endschema %}

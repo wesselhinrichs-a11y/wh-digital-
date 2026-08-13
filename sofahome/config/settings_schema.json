@@ -1,0 +1,148 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "Sofahome",
+    "theme_version": "1.0.0",
+    "theme_author": "WH Digital",
+    "theme_documentation_url": "https://shopify.dev/docs/themes",
+    "theme_support_url": "https://shopify.dev/docs/themes"
+  },
+  {
+    "name": "Kleuren",
+    "settings": [
+      {
+        "type": "color",
+        "id": "color_background",
+        "label": "Achtergrond",
+        "default": "#faf7f2"
+      },
+      {
+        "type": "color",
+        "id": "color_surface",
+        "label": "Kaarten en vlakken",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_text",
+        "label": "Tekst",
+        "default": "#1c1917"
+      },
+      {
+        "type": "color",
+        "id": "color_accent",
+        "label": "Accent (knoppen)",
+        "default": "#a8593c"
+      },
+      {
+        "type": "color",
+        "id": "color_accent_text",
+        "label": "Tekst op accent",
+        "default": "#ffffff"
+      },
+      {
+        "type": "color",
+        "id": "color_sale",
+        "label": "Aanbiedingsprijs",
+        "default": "#9b2c2c"
+      }
+    ]
+  },
+  {
+    "name": "Typografie",
+    "settings": [
+      {
+        "type": "font_picker",
+        "id": "type_heading_font",
+        "label": "Koppen",
+        "default": "playfair_display_n4"
+      },
+      {
+        "type": "font_picker",
+        "id": "type_body_font",
+        "label": "Bodytekst",
+        "default": "assistant_n4"
+      }
+    ]
+  },
+  {
+    "name": "Layout",
+    "settings": [
+      {
+        "type": "range",
+        "id": "page_width",
+        "min": 1000,
+        "max": 1600,
+        "step": 20,
+        "unit": "px",
+        "label": "Maximale paginabreedte",
+        "default": 1280
+      },
+      {
+        "type": "range",
+        "id": "corner_radius",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "unit": "px",
+        "label": "Ronding van hoeken",
+        "default": 4
+      }
+    ]
+  },
+  {
+    "name": "Merk",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "favicon",
+        "label": "Favicon",
+        "info": "32 x 32 px aanbevolen"
+      },
+      {
+        "type": "image_picker",
+        "id": "social_share_image",
+        "label": "Deelafbeelding",
+        "info": "Wordt getoond wanneer een link naar je winkel gedeeld wordt. 1200 x 630 px."
+      }
+    ]
+  },
+  {
+    "name": "Winkelwagen",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_cart_note",
+        "label": "Opmerkingenveld tonen in winkelwagen",
+        "default": true
+      },
+      {
+        "type": "richtext",
+        "id": "cart_terms",
+        "label": "Tekst onder de afrekenknop",
+        "default": "<p>Verzendkosten en kortingen worden bij het afrekenen berekend.</p>"
+      }
+    ]
+  },
+  {
+    "name": "Sociale media",
+    "settings": [
+      {
+        "type": "text",
+        "id": "social_instagram_link",
+        "label": "Instagram",
+        "info": "https://instagram.com/shopify"
+      },
+      {
+        "type": "text",
+        "id": "social_facebook_link",
+        "label": "Facebook"
+      },
+      {
+        "type": "text",
+        "id": "social_pinterest_link",
+        "label": "Pinterest"
+      }
+    ]
+  }
+]

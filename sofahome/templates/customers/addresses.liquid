@@ -1,0 +1,75 @@
+<div class="section">
+  <div class="page-width page-width--narrow">
+    <h1>Adressen</h1>
+
+    {%- paginate customer.addresses by 6 -%}
+      {%- for address in customer.addresses -%}
+        <div class="cart-item" style="grid-template-columns:minmax(0,1fr) auto">
+          <div>
+            <div class="form-note">{{ address | format_address }}</div>
+            {%- if address == customer.default_address -%}
+              <div class="cart-item__variant">Standaardadres</div>
+            {%- endif -%}
+          </div>
+          <div>
+            {%- form 'customer_address', address -%}
+              <input type="hidden" name="_method" value="delete">
+              <button class="cart-item__remove" type="submit">Verwijderen</button>
+            {%- endform -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {% render 'pagination', paginate: paginate %}
+    {%- endpaginate -%}
+
+    <h2 style="font-size:1.35rem; margin-top:2.5rem">Nieuw adres</h2>
+
+    {%- form 'customer_address', customer.new_address -%}
+      <div class="grid grid--2" style="margin-bottom:1rem">
+        <div>
+          <label for="AddressFirstName">Voornaam</label>
+          <input class="field" id="AddressFirstName" type="text" name="address[first_name]" autocomplete="given-name">
+        </div>
+        <div>
+          <label for="AddressLastName">Achternaam</label>
+          <input class="field" id="AddressLastName" type="text" name="address[last_name]" autocomplete="family-name">
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label for="AddressStreet">Straat en huisnummer</label>
+        <input class="field" id="AddressStreet" type="text" name="address[address1]" autocomplete="address-line1">
+      </div>
+
+      <div class="grid grid--2" style="margin-bottom:1rem">
+        <div>
+          <label for="AddressZip">Postcode</label>
+          <input class="field" id="AddressZip" type="text" name="address[zip]" autocomplete="postal-code">
+        </div>
+        <div>
+          <label for="AddressCity">Plaats</label>
+          <input class="field" id="AddressCity" type="text" name="address[city]" autocomplete="address-level2">
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label for="AddressCountry">Land</label>
+        <select class="field" id="AddressCountry" name="address[country]" autocomplete="country">
+          {{ country_option_tags }}
+        </select>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="AddressPhone">Telefoonnummer</label>
+        <input class="field" id="AddressPhone" type="tel" name="address[phone]" autocomplete="tel">
+      </div>
+
+      <button class="button" type="submit">Adres opslaan</button>
+    {%- endform -%}
+
+    <p style="margin-top:2rem">
+      <a class="link-arrow" href="{{ routes.account_url }}">&larr; Terug naar mijn account</a>
+    </p>
+  </div>
+</div>

@@ -1,0 +1,52 @@
+<div class="section">
+  <div class="page-width page-width--narrow">
+    <h1>{{ page.title }}</h1>
+    <div class="rte" style="margin-bottom:2rem">{{ page.content }}</div>
+
+    {%- form 'contact', id: 'ContactForm' -%}
+      {%- if form.posted_successfully? -%}
+        <p class="form-message">{{ section.settings.success_text }}</p>
+      {%- elsif form.errors -%}
+        <p class="form-message">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
+      <div class="grid grid--2" style="margin-bottom:1rem">
+        <div>
+          <label for="ContactName">Naam</label>
+          <input class="field" id="ContactName" type="text" name="contact[name]" autocomplete="name" required>
+        </div>
+        <div>
+          <label for="ContactEmail">E-mailadres</label>
+          <input class="field" id="ContactEmail" type="email" name="contact[email]" autocomplete="email" required>
+        </div>
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label for="ContactPhone">Telefoonnummer <span class="form-note">(optioneel)</span></label>
+        <input class="field" id="ContactPhone" type="tel" name="contact[phone]" autocomplete="tel">
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="ContactBody">Bericht</label>
+        <textarea class="field" id="ContactBody" name="contact[body]" rows="6" required></textarea>
+      </div>
+
+      <button class="button" type="submit">{{ section.settings.button_label }}</button>
+    {%- endform -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Contactformulier",
+  "settings": [
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Versturen" },
+    {
+      "type": "text",
+      "id": "success_text",
+      "label": "Bevestiging",
+      "default": "Bedankt, je bericht is verstuurd. We reageren binnen één werkdag."
+    }
+  ]
+}
+{% endschema %}

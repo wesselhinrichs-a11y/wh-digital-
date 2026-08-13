@@ -1,0 +1,179 @@
+{%- assign current_variant = product.selected_or_first_available_variant -%}
+
+<div class="page-width">
+  <div class="product">
+    <div class="product__gallery" data-gallery>
+      <div class="product__media">
+        {%- if product.featured_media -%}
+          <img
+            src="{{ product.featured_media | image_url: width: 1400 }}"
+            alt="{{ product.featured_media.alt | default: product.title | escape }}"
+            width="1400"
+            height="1050"
+            data-gallery-main
+          >
+        {%- else -%}
+          <div class="placeholder-tile"></div>
+        {%- endif -%}
+      </div>
+
+      {%- if product.media.size > 1 -%}
+        <div class="product__thumbs">
+          {%- for media in product.media -%}
+            <button
+              class="product__thumb"
+              type="button"
+              data-gallery-thumb
+              data-full="{{ media | image_url: width: 1400 }}"
+              data-alt="{{ media.alt | escape }}"
+              aria-current="{% if forloop.first %}true{% else %}false{% endif %}"
+            >
+              <img src="{{ media | image_url: width: 200 }}" alt="{{ media.alt | escape }}" loading="lazy" width="200" height="200">
+            </button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="product__info">
+      {%- if product.vendor != blank -%}
+        <p class="eyebrow">{{ product.vendor }}</p>
+      {%- endif -%}
+
+      <h1>{{ product.title }}</h1>
+
+      <div class="product__price" data-variant-price>
+        {% render 'price', variant: current_variant %}
+      </div>
+
+      {%- form 'product', product, id: 'ProductForm', class: 'product__form' -%}
+        <input type="hidden" name="id" value="{{ current_variant.id }}" data-variant-id>
+
+        {%- if product.has_only_default_variant == false -%}
+          <div
+            class="product__options"
+            data-variant-picker
+            data-variants="VariantData-{{ section.id }}"
+            data-sold-out-text="{{ 'products.product.sold_out' | t }}"
+            data-add-text="{{ 'products.product.add_to_cart' | t }}"
+          >
+            {%- for option in product.options_with_values -%}
+              <div data-option-index="{{ forloop.index }}">
+                <p class="eyebrow" style="margin-bottom:0.5rem">{{ option.name }}</p>
+                <div class="option-values">
+                  {%- for value in option.values -%}
+                    <label class="option-value">
+                      <input
+                        type="radio"
+                        name="option-{{ option.position }}"
+                        value="{{ value | escape }}"
+                        {% if option.selected_value == value %}checked{% endif %}
+                      >
+                      <span>{{ value }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+
+        <div class="product__buy">
+          <div class="quantity" data-quantity>
+            <button type="button" data-step="-1" aria-label="-">&minus;</button>
+            <label class="visually-hidden" for="Quantity">{{ 'products.product.quantity' | t }}</label>
+            <input id="Quantity" type="number" name="quantity" value="1" min="1">
+            <button type="button" data-step="1" aria-label="+">+</button>
+          </div>
+
+          <button class="button" type="submit" name="add" data-add-to-cart {% unless current_variant.available %}disabled{% endunless %}>
+            {%- if current_variant.available -%}
+              {{ 'products.product.add_to_cart' | t }}
+            {%- else -%}
+              {{ 'products.product.sold_out' | t }}
+            {%- endif -%}
+          </button>
+        </div>
+      {%- endform -%}
+
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+          {%- when 'description' -%}
+            <details class="accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="accordion__body rte">{{ product.description }}</div>
+            </details>
+
+          {%- when 'text' -%}
+            <details class="accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+              <summary>{{ block.settings.heading }}</summary>
+              <div class="accordion__body rte">{{ block.settings.text }}</div>
+            </details>
+        {%- endcase -%}
+      {%- endfor -%}
+
+      <div class="product__meta">
+        {%- if current_variant.sku != blank -%}
+          <div>{{ 'products.product.sku' | t }}: {{ current_variant.sku }}</div>
+        {%- endif -%}
+        {%- if product.type != blank -%}
+          <div>{{ product.type }}</div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{%- if product.has_only_default_variant == false -%}
+  <script type="application/json" id="VariantData-{{ section.id }}">
+    [
+      {%- for variant in product.variants -%}
+        {%- capture variant_price_html -%}
+          <div class="price {% if variant.compare_at_price > variant.price %}price--on-sale{% endif %}"><span class="price__regular">{{ variant.price | money }}</span>{% if variant.compare_at_price > variant.price %}<s class="price__compare">{{ variant.compare_at_price | money }}</s>{% endif %}</div>
+        {%- endcapture -%}
+        {
+          "id": {{ variant.id }},
+          "options": {{ variant.options | json }},
+          "available": {{ variant.available }},
+          "price_html": {{ variant_price_html | strip | json }},
+          "featured_image": {{ variant.featured_image | image_url: width: 1400 | json }}
+        }{%- unless forloop.last -%},{%- endunless -%}
+      {%- endfor -%}
+    ]
+  </script>
+{%- endif -%}
+
+<script type="application/ld+json">
+  {{ product | structured_data }}
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "blocks": [
+    {
+      "type": "description",
+      "name": "Omschrijving",
+      "limit": 1,
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Omschrijving" },
+        { "type": "checkbox", "id": "open", "label": "Standaard open", "default": true }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Uitklapbare tekst",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Bezorging en retour" },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Tekst",
+          "default": "<p>Levertijd 2 tot 4 weken. Gratis bezorgd en geplaatst in heel Nederland en België. Niet tevreden? Binnen 30 dagen retour.</p>"
+        },
+        { "type": "checkbox", "id": "open", "label": "Standaard open", "default": false }
+      ]
+    }
+  ]
+}
+{% endschema %}

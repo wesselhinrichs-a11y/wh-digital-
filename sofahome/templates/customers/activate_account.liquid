@@ -1,0 +1,25 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:28rem">
+    <h1>Account activeren</h1>
+    <p class="form-note" style="margin-bottom:1.5rem">Kies een wachtwoord om je account te activeren.</p>
+
+    {%- form 'activate_customer_password' -%}
+      {%- if form.errors -%}
+        <p class="form-message">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
+      <div style="margin-bottom:1rem">
+        <label for="ActivatePassword">Wachtwoord</label>
+        <input class="field" id="ActivatePassword" type="password" name="customer[password]" autocomplete="new-password" required>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="ActivatePasswordConfirm">Herhaal wachtwoord</label>
+        <input class="field" id="ActivatePasswordConfirm" type="password" name="customer[password_confirmation]" autocomplete="new-password" required>
+      </div>
+
+      <button class="button button--full" type="submit">Account activeren</button>
+      <button class="button button--ghost button--full" type="submit" name="decline" style="margin-top:0.75rem">Uitnodiging weigeren</button>
+    {%- endform -%}
+  </div>
+</div>

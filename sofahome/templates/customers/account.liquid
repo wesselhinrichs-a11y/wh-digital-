@@ -1,0 +1,41 @@
+<div class="section">
+  <div class="page-width">
+    <div class="section-head">
+      <h1>Mijn account</h1>
+      <a class="link-arrow" href="{{ routes.account_logout_url }}">Uitloggen</a>
+    </div>
+
+    <div class="cart__layout">
+      <div>
+        <h2 style="font-size:1.35rem">Bestellingen</h2>
+
+        {%- if customer.orders.size == 0 -%}
+          <p class="form-note">Je hebt nog geen bestellingen geplaatst.</p>
+        {%- else -%}
+          {%- for order in customer.orders -%}
+            <div class="cart-item" style="grid-template-columns:minmax(0,1fr) auto">
+              <div>
+                <a class="cart-item__title" href="{{ order.customer_url }}">Bestelling {{ order.name }}</a>
+                <div class="cart-item__variant">{{ order.created_at | date: '%-d %B %Y' }}</div>
+                <div class="cart-item__variant">{{ order.financial_status_label }} — {{ order.fulfillment_status_label }}</div>
+              </div>
+              <div><strong>{{ order.total_price | money }}</strong></div>
+            </div>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      <aside class="cart-summary">
+        <h2 style="font-size:1.1rem; margin-top:0">Standaardadres</h2>
+        {%- if customer.default_address -%}
+          <div class="form-note">{{ customer.default_address | format_address }}</div>
+        {%- else -%}
+          <p class="form-note">Je hebt nog geen adres opgeslagen.</p>
+        {%- endif -%}
+        <a class="button button--secondary button--full" href="{{ routes.account_addresses_url }}" style="margin-top:1rem">
+          Adressen beheren
+        </a>
+      </aside>
+    </div>
+  </div>
+</div>

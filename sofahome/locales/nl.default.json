@@ -1,0 +1,99 @@
+{
+  "general": {
+    "meta": {
+      "tags": "Gelabeld met {{ tags }}",
+      "page": "Pagina {{ page }}"
+    },
+    "search": {
+      "title": "Zoeken",
+      "heading": "Zoekresultaten",
+      "placeholder": "Waar ben je naar op zoek?",
+      "submit": "Zoeken",
+      "results_with_count": {
+        "one": "{{ count }} resultaat voor \"{{ terms }}\"",
+        "other": "{{ count }} resultaten voor \"{{ terms }}\""
+      },
+      "no_results": "Geen resultaten voor \"{{ terms }}\". Probeer een andere zoekterm.",
+      "empty": "Typ een zoekterm om te beginnen."
+    },
+    "pagination": {
+      "previous": "Vorige",
+      "next": "Volgende",
+      "label": "Paginering"
+    },
+    "newsletter_form": {
+      "label": "E-mailadres",
+      "placeholder": "jij@voorbeeld.nl",
+      "submit": "Inschrijven",
+      "confirmation": "Bedankt, je staat op de lijst."
+    },
+    "share": {
+      "title": "Delen"
+    },
+    "404": {
+      "title": "Deze pagina bestaat niet",
+      "subtext": "De link is verlopen of het adres klopt niet helemaal.",
+      "link": "Terug naar de homepage"
+    }
+  },
+  "accessibility": {
+    "skip_to_text": "Ga naar de inhoud",
+    "close": "Sluiten",
+    "menu": "Menu",
+    "cart": "Winkelwagen",
+    "search": "Zoeken",
+    "previous": "Vorige",
+    "next": "Volgende",
+    "error": "Fout"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "In winkelwagen",
+      "sold_out": "Uitverkocht",
+      "unavailable": "Niet beschikbaar",
+      "quantity": "Aantal",
+      "description": "Omschrijving",
+      "vendor": "Merk",
+      "on_sale": "Aanbieding",
+      "regular_price": "Normale prijs",
+      "sale_price": "Aanbiedingsprijs",
+      "from_price_html": "Vanaf {{ price }}",
+      "sku": "Artikelnummer",
+      "view": "Bekijk product",
+      "no_media": "Nog geen foto beschikbaar"
+    }
+  },
+  "collections": {
+    "general": {
+      "no_matches": "Er staan nog geen producten in deze collectie.",
+      "items_with_count": {
+        "one": "{{ count }} product",
+        "other": "{{ count }} producten"
+      },
+      "all_collections": "Alle collecties",
+      "sort_by": "Sorteren op"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Winkelwagen",
+      "empty": "Je winkelwagen is nog leeg.",
+      "continue_shopping": "Verder winkelen",
+      "subtotal": "Subtotaal",
+      "checkout": "Afrekenen",
+      "update": "Winkelwagen bijwerken",
+      "remove": "Verwijderen",
+      "note": "Opmerking bij je bestelling"
+    },
+    "label": {
+      "product": "Product",
+      "price": "Prijs",
+      "quantity": "Aantal",
+      "total": "Totaal"
+    }
+  },
+  "onboarding": {
+    "product_title": "Voorbeeldproduct",
+    "collection_title": "Voorbeeldcollectie"
+  }
+}

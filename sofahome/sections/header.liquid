@@ -1,0 +1,108 @@
+<header class="header">
+  <div class="page-width header__inner">
+    <a class="header__logo" href="{{ routes.root_url }}">
+      {%- if section.settings.logo != blank -%}
+        {%- assign logo_alt = shop.name | escape -%}
+        {{
+          section.settings.logo
+          | image_url: width: 400
+          | image_tag: width: section.settings.logo_width, alt: logo_alt
+        }}
+      {%- else -%}
+        {{ shop.name }}
+      {%- endif -%}
+    </a>
+
+    <nav class="header__nav" id="HeaderNav" aria-label="{{ 'accessibility.menu' | t }}">
+      {%- for link in section.settings.menu.links -%}
+        <a href="{{ link.url }}" {% if link.active %}aria-current="page"{% endif %}>{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
+
+    <div class="header__actions">
+      <button
+        class="header__icon header__menu-toggle"
+        type="button"
+        data-menu-toggle
+        aria-controls="HeaderNav"
+        aria-expanded="false"
+      >
+        {% render 'icon', icon: 'menu' %}
+        <span class="visually-hidden">{{ 'accessibility.menu' | t }}</span>
+      </button>
+
+      <button
+        class="header__icon"
+        type="button"
+        data-search-toggle
+        aria-controls="HeaderSearch"
+        aria-expanded="false"
+      >
+        {% render 'icon', icon: 'search' %}
+        <span class="visually-hidden">{{ 'accessibility.search' | t }}</span>
+      </button>
+
+      {%- if shop.customer_accounts_enabled -%}
+        <a class="header__icon" href="{{ routes.account_url }}">
+          {% render 'icon', icon: 'account' %}
+          <span class="visually-hidden">Account</span>
+        </a>
+      {%- endif -%}
+
+      <a class="header__icon" href="{{ routes.cart_url }}">
+        {% render 'icon', icon: 'cart' %}
+        <span class="visually-hidden">{{ 'accessibility.cart' | t }}</span>
+        {%- if cart.item_count > 0 -%}
+          <span class="header__cart-count">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+    </div>
+  </div>
+
+  <div class="header__search" id="HeaderSearch" hidden>
+    <div class="page-width">
+      <form class="search-form" action="{{ routes.search_url }}" method="get" role="search">
+        <label class="visually-hidden" for="HeaderSearchInput">{{ 'general.search.title' | t }}</label>
+        <input
+          class="field"
+          id="HeaderSearchInput"
+          type="search"
+          name="q"
+          value="{{ search.terms | escape }}"
+          placeholder="{{ 'general.search.placeholder' | t }}"
+        >
+        <button class="button" type="submit">{{ 'general.search.submit' | t }}</button>
+      </form>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Laat leeg om de winkelnaam als tekst te tonen."
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 260,
+      "step": 10,
+      "unit": "px",
+      "label": "Breedte logo",
+      "default": 150
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

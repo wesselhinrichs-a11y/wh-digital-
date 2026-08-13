@@ -1,0 +1,40 @@
+<div class="section">
+  <div class="page-width">
+    <h1>{{ 'collections.general.all_collections' | t }}</h1>
+
+    <div class="grid grid--3" style="margin-top:2rem">
+      {%- for collection in collections -%}
+        <a class="card" href="{{ collection.url }}">
+          <div class="card__media">
+            {%- if collection.featured_image -%}
+              {{
+                collection.featured_image
+                | image_url: width: 900
+                | image_tag:
+                  widths: '300, 500, 700, 900',
+                  sizes: '(min-width: 750px) 33vw, 50vw',
+                  loading: 'lazy',
+                  alt: collection.title | escape
+              }}
+            {%- else -%}
+              <div class="placeholder-tile"></div>
+            {%- endif -%}
+          </div>
+          <div>
+            <h3 class="card__title">{{ collection.title }}</h3>
+            <div class="card__vendor">
+              {{ 'collections.general.items_with_count' | t: count: collection.all_products_count }}
+            </div>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collectieoverzicht",
+  "settings": []
+}
+{% endschema %}

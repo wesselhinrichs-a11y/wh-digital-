@@ -1,0 +1,41 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "description": {
+          "type": "description",
+          "settings": { "heading": "Omschrijving", "open": true }
+        },
+        "delivery": {
+          "type": "text",
+          "settings": {
+            "heading": "Bezorging en retour",
+            "text": "<p>Levertijd 2 tot 4 weken. Gratis bezorgd en geplaatst in heel Nederland en België. Niet tevreden? Binnen 30 dagen retour.</p>",
+            "open": false
+          }
+        },
+        "materials": {
+          "type": "text",
+          "settings": {
+            "heading": "Materiaal en onderhoud",
+            "text": "<p>Massief beukenhouten frame, handgeknoopte vering, vulling van veren en schuim. Losse hoezen zijn afneembaar en wasbaar op 30 graden.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": ["description", "delivery", "materials"]
+    },
+    "related": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Past hier goed bij",
+        "heading": "Combineer met",
+        "link_label": "Bekijk alles",
+        "product_limit": 4,
+        "columns": "4"
+      }
+    }
+  },
+  "order": ["main", "related"]
+}

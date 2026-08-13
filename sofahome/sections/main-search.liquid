@@ -1,0 +1,56 @@
+<div class="section">
+  <div class="page-width">
+    <h1>{{ 'general.search.heading' | t }}</h1>
+
+    <form class="search-form" action="{{ routes.search_url }}" method="get" role="search" style="max-width:520px; margin-bottom:2rem">
+      <label class="visually-hidden" for="SearchInput">{{ 'general.search.title' | t }}</label>
+      <input
+        class="field"
+        id="SearchInput"
+        type="search"
+        name="q"
+        value="{{ search.terms | escape }}"
+        placeholder="{{ 'general.search.placeholder' | t }}"
+      >
+      <button class="button" type="submit">{{ 'general.search.submit' | t }}</button>
+    </form>
+
+    {%- if search.performed -%}
+      {%- if search.results_count == 0 -%}
+        <p class="lede">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+      {%- else -%}
+        <p class="collection-toolbar__count" style="margin-bottom:1.5rem">
+          {{ 'general.search.results_with_count' | t: count: search.results_count, terms: search.terms }}
+        </p>
+
+        {%- paginate search.results by 12 -%}
+          <div class="grid grid--3">
+            {%- for item in search.results -%}
+              {%- if item.object_type == 'product' -%}
+                {% render 'product-card', product: item %}
+              {%- else -%}
+                <a class="card" href="{{ item.url }}">
+                  <div>
+                    <h3 class="card__title">{{ item.title }}</h3>
+                    <p class="card__vendor">{{ item.content | strip_html | truncatewords: 20 }}</p>
+                  </div>
+                </a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {% render 'pagination', paginate: paginate %}
+        {%- endpaginate -%}
+      {%- endif -%}
+    {%- else -%}
+      <p class="lede">{{ 'general.search.empty' | t }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Zoekresultaten",
+  "settings": []
+}
+{% endschema %}

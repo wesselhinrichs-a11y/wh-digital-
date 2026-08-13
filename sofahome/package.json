@@ -1,0 +1,16 @@
+{
+  "name": "sofahome-theme",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Shopify-thema voor Sofahome",
+  "scripts": {
+    "dev": "shopify theme dev --store qstzjv-nd.myshopify.com",
+    "check": "shopify theme check",
+    "pull": "shopify theme pull --store qstzjv-nd.myshopify.com --theme 205807255883",
+    "preview": "shopify theme push --store qstzjv-nd.myshopify.com --unpublished --theme \"Sofahome — preview\"",
+    "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205807255883"
+  },
+  "devDependencies": {
+    "@shopify/cli": "^3"
+  }
+}

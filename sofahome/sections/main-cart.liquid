@@ -1,0 +1,118 @@
+<div class="cart page-width">
+  <h1>{{ 'cart.general.title' | t }}</h1>
+
+  {%- if cart.item_count == 0 -%}
+    <div class="cart-empty">
+      <p class="lede" style="margin-inline:auto">{{ 'cart.general.empty' | t }}</p>
+      <p style="margin-top:1.5rem">
+        <a class="button" href="{{ routes.all_products_collection_url }}">
+          {{ 'cart.general.continue_shopping' | t }}
+        </a>
+      </p>
+    </div>
+  {%- else -%}
+    <form action="{{ routes.cart_url }}" method="post" novalidate data-cart-form>
+      <div class="cart__layout">
+        <div>
+          {%- for item in cart.items -%}
+            <div class="cart-item">
+              <a class="cart-item__image" href="{{ item.url }}">
+                {%- if item.image -%}
+                  <img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.image.alt | escape }}" loading="lazy" width="200" height="200">
+                {%- else -%}
+                  <div class="placeholder-tile"></div>
+                {%- endif -%}
+              </a>
+
+              <div>
+                <a class="cart-item__title" href="{{ item.url }}">{{ item.product.title }}</a>
+
+                {%- unless item.product.has_only_default_variant -%}
+                  <div class="cart-item__variant">{{ item.variant.title }}</div>
+                {%- endunless -%}
+
+                {%- for property in item.properties -%}
+                  {%- unless property.last == blank -%}
+                    <div class="cart-item__variant">{{ property.first }}: {{ property.last }}</div>
+                  {%- endunless -%}
+                {%- endfor -%}
+
+                {%- if item.selling_plan_allocation -%}
+                  <div class="cart-item__variant">{{ item.selling_plan_allocation.selling_plan.name }}</div>
+                {%- endif -%}
+
+                <div class="cart-item__variant" style="margin-top:0.35rem">{{ item.original_price | money }}</div>
+              </div>
+
+              <div class="cart-item__actions">
+                <div class="quantity" data-quantity>
+                  <label class="visually-hidden" for="Quantity-{{ forloop.index }}">
+                    {{ 'cart.label.quantity' | t }}
+                  </label>
+                  <input
+                    id="Quantity-{{ forloop.index }}"
+                    type="number"
+                    name="updates[]"
+                    value="{{ item.quantity }}"
+                    min="0"
+                    data-cart-quantity
+                  >
+                </div>
+
+                <div><strong>{{ item.final_line_price | money }}</strong></div>
+
+                <a class="cart-item__remove" href="{{ item.url_to_remove }}">
+                  {{ 'cart.general.remove' | t }}
+                </a>
+              </div>
+            </div>
+          {%- endfor -%}
+
+          {%- if settings.show_cart_note -%}
+            <div style="margin-top:1.5rem">
+              <label for="CartNote">{{ 'cart.general.note' | t }}</label>
+              <textarea class="field" id="CartNote" name="note" rows="3">{{ cart.note }}</textarea>
+            </div>
+          {%- endif -%}
+        </div>
+
+        <aside class="cart-summary">
+          <div class="cart-summary__row">
+            <span>{{ 'cart.general.subtotal' | t }}</span>
+            <span class="cart-summary__total">{{ cart.total_price | money }}</span>
+          </div>
+
+          {%- if cart.cart_level_discount_applications.size > 0 -%}
+            {%- for discount in cart.cart_level_discount_applications -%}
+              <div class="cart-summary__row">
+                <span>{{ discount.title }}</span>
+                <span>&minus; {{ discount.total_allocated_amount | money }}</span>
+              </div>
+            {%- endfor -%}
+          {%- endif -%}
+
+          {%- if settings.cart_terms != blank -%}
+            <div class="form-note rte" style="margin-bottom:1rem">{{ settings.cart_terms }}</div>
+          {%- endif -%}
+
+          <button class="button button--full" type="submit" name="checkout">
+            {{ 'cart.general.checkout' | t }}
+          </button>
+
+          <p style="margin-top:1rem; text-align:center">
+            <a class="form-note" href="{{ routes.all_products_collection_url }}">
+              {{ 'cart.general.continue_shopping' | t }}
+            </a>
+          </p>
+        </aside>
+      </div>
+    </form>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "Winkelwagen",
+  "settings": []
+}
+{% endschema %}

@@ -1,0 +1,37 @@
+<div class="section">
+  <div class="page-width page-width--narrow" style="max-width:28rem">
+    <h1>Account aanmaken</h1>
+
+    {%- form 'create_customer' -%}
+      {%- if form.errors -%}
+        <p class="form-message">{{ form.errors | default_errors }}</p>
+      {%- endif -%}
+
+      <div style="margin-bottom:1rem">
+        <label for="RegisterFirstName">Voornaam</label>
+        <input class="field" id="RegisterFirstName" type="text" name="customer[first_name]" autocomplete="given-name">
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label for="RegisterLastName">Achternaam</label>
+        <input class="field" id="RegisterLastName" type="text" name="customer[last_name]" autocomplete="family-name">
+      </div>
+
+      <div style="margin-bottom:1rem">
+        <label for="RegisterEmail">E-mailadres</label>
+        <input class="field" id="RegisterEmail" type="email" name="customer[email]" autocomplete="email" required>
+      </div>
+
+      <div style="margin-bottom:1.25rem">
+        <label for="RegisterPassword">Wachtwoord</label>
+        <input class="field" id="RegisterPassword" type="password" name="customer[password]" autocomplete="new-password" required>
+      </div>
+
+      <button class="button button--full" type="submit">Account aanmaken</button>
+    {%- endform -%}
+
+    <p class="form-note" style="margin-top:1.5rem">
+      Heb je al een account? <a href="{{ routes.account_login_url }}">Inloggen</a>.
+    </p>
+  </div>
+</div>

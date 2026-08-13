@@ -1,0 +1,16 @@
+{
+  "current": {
+    "color_background": "#faf7f2",
+    "color_surface": "#ffffff",
+    "color_text": "#1c1917",
+    "color_accent": "#a8593c",
+    "color_accent_text": "#ffffff",
+    "color_sale": "#9b2c2c",
+    "type_heading_font": "playfair_display_n4",
+    "type_body_font": "assistant_n4",
+    "page_width": 1280,
+    "corner_radius": 4,
+    "show_cart_note": true,
+    "cart_terms": "<p>Verzendkosten en kortingen worden bij het afrekenen berekend.</p>"
+  }
+}

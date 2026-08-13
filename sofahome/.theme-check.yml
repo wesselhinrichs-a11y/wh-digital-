@@ -1,0 +1,10 @@
+extends: theme-check:recommended
+
+ignore:
+  - node_modules/**
+
+TemplateLength:
+  enabled: false
+
+UndefinedObject:
+  enabled: true

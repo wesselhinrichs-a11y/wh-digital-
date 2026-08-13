@@ -1,0 +1,150 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Nieuw — collectie 2026",
+        "heading": "Een bank waar je jaren in wegzakt",
+        "text": "Met de hand gemaakt, in stoffen die je zelf kiest. Thuisbezorgd en geplaatst waar jij hem hebben wilt.",
+        "button_label": "Shop banken",
+        "button_link": "/collections/all",
+        "button_2_label": "Vraag stalen aan",
+        "button_2_link": "/pages/stalen",
+        "overlay": true
+      }
+    },
+    "usps": {
+      "type": "usps",
+      "blocks": {
+        "usp-1": {
+          "type": "usp",
+          "settings": {
+            "icon": "truck",
+            "title": "Gratis bezorgd en geplaatst",
+            "text": "Onze bezorgers zetten je bank op zijn plek en nemen het verpakkingsmateriaal weer mee."
+          }
+        },
+        "usp-2": {
+          "type": "usp",
+          "settings": {
+            "icon": "swatch",
+            "title": "Eerst stalen thuis",
+            "text": "Kies vijf stoffen uit en voel thuis hoe ze in jouw licht vallen. Gratis."
+          }
+        },
+        "usp-3": {
+          "type": "usp",
+          "settings": {
+            "icon": "shield",
+            "title": "Tien jaar garantie",
+            "text": "Op frame en vering. Onderdelen blijven leverbaar, ook over tien jaar."
+          }
+        },
+        "usp-4": {
+          "type": "usp",
+          "settings": {
+            "icon": "leaf",
+            "title": "Gemaakt in Europa",
+            "text": "FSC-hout, natuurlijke vullingen en ateliers waar we zelf komen."
+          }
+        }
+      },
+      "block_order": ["usp-1", "usp-2", "usp-3", "usp-4"]
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "eyebrow": "Bestsellers",
+        "heading": "Waar iedereen op wil zitten",
+        "link_label": "Bekijk alles",
+        "product_limit": 4,
+        "columns": "4"
+      }
+    },
+    "categories": {
+      "type": "collection-list",
+      "settings": {
+        "heading": "Shop per categorie",
+        "columns": "3"
+      },
+      "blocks": {
+        "cat-1": { "type": "collection", "settings": {} },
+        "cat-2": { "type": "collection", "settings": {} },
+        "cat-3": { "type": "collection", "settings": {} }
+      },
+      "block_order": ["cat-1", "cat-2", "cat-3"]
+    },
+    "atelier": {
+      "type": "image-with-text",
+      "settings": {
+        "eyebrow": "Ons atelier",
+        "heading": "Zeventig uur werk per bank",
+        "text": "<p>Elk frame wordt met de hand van massief beukenhout gemaakt en met pen-en-gatverbindingen in elkaar gezet — geen schroeven, geen nietjes. De vering wordt met de hand geknoopt, de vulling in lagen opgebouwd. Dat kost tijd. Daarom zit je er ook over vijftien jaar nog goed op.</p>",
+        "button_label": "Lees ons verhaal",
+        "button_link": "/pages/over-ons",
+        "reverse": false
+      }
+    },
+    "stalen": {
+      "type": "rich-text",
+      "settings": {
+        "heading": "Kiezen doe je thuis, niet in een showroom",
+        "text": "<p>Bestel gratis vijf stalen en leg ze een week op je bank. Zo zie je hoe een stof er 's ochtends uitziet en hoe 's avonds. Pas als het klopt, bestel je.</p>",
+        "alignment": "center",
+        "button_label": "Stalen bestellen",
+        "button_link": "/pages/stalen"
+      }
+    },
+    "reviews": {
+      "type": "testimonials",
+      "settings": {
+        "eyebrow": "4,8 uit 1.240 beoordelingen",
+        "heading": "Wat klanten ervan vinden"
+      },
+      "blocks": {
+        "quote-1": {
+          "type": "quote",
+          "settings": {
+            "rating": 5,
+            "quote": "“De stalen kwamen binnen twee dagen. Drie weken later stond de bank er — en hij is precies zo zacht als beloofd.”",
+            "author": "Marieke, Utrecht"
+          }
+        },
+        "quote-2": {
+          "type": "quote",
+          "settings": {
+            "rating": 5,
+            "quote": "“Twee bezorgers, een trap van niks, en toch stond hij binnen twintig minuten op zijn plek. Netjes opgeruimd ook.”",
+            "author": "Joost, Rotterdam"
+          }
+        },
+        "quote-3": {
+          "type": "quote",
+          "settings": {
+            "rating": 4,
+            "quote": "“Levertijd was iets langer dan gehoopt, maar de kwaliteit maakt dat helemaal goed. Zit als een huis.”",
+            "author": "Fenna, Groningen"
+          }
+        }
+      },
+      "block_order": ["quote-1", "quote-2", "quote-3"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "heading": "Nieuwe stoffen, nieuwe modellen",
+        "text": "Eén mail per maand. Als eerste zien wat er nieuw is, en af en toe iets dat alleen voor de lijst geldt."
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "usps",
+    "featured",
+    "categories",
+    "atelier",
+    "stalen",
+    "reviews",
+    "newsletter"
+  ]
+}

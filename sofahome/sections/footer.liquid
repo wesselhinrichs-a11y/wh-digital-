@@ -1,0 +1,127 @@
+<footer class="footer">
+  <div class="page-width">
+    <div class="footer__grid">
+      {%- for block in section.blocks -%}
+        <div {{ block.shopify_attributes }}>
+          {%- case block.type -%}
+            {%- when 'brand' -%}
+              <div class="header__logo" style="font-size:1.4rem">{{ shop.name }}</div>
+              {%- if block.settings.text != blank -%}
+                <div class="rte" style="margin-top:0.75rem; color:var(--color-muted); font-size:0.95rem">
+                  {{ block.settings.text }}
+                </div>
+              {%- endif -%}
+
+              <div class="footer__social">
+                {%- if settings.social_instagram_link != blank -%}
+                  <a href="{{ settings.social_instagram_link }}" aria-label="Instagram">{% render 'icon', icon: 'instagram' %}</a>
+                {%- endif -%}
+                {%- if settings.social_facebook_link != blank -%}
+                  <a href="{{ settings.social_facebook_link }}" aria-label="Facebook">{% render 'icon', icon: 'facebook' %}</a>
+                {%- endif -%}
+                {%- if settings.social_pinterest_link != blank -%}
+                  <a href="{{ settings.social_pinterest_link }}" aria-label="Pinterest">{% render 'icon', icon: 'pinterest' %}</a>
+                {%- endif -%}
+              </div>
+
+            {%- when 'menu' -%}
+              <div class="footer__heading">{{ block.settings.heading }}</div>
+              <ul class="footer__list">
+                {%- for link in block.settings.menu.links -%}
+                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+                {%- endfor -%}
+              </ul>
+
+            {%- when 'text' -%}
+              <div class="footer__heading">{{ block.settings.heading }}</div>
+              <div class="rte" style="color:var(--color-muted); font-size:0.95rem">{{ block.settings.text }}</div>
+          {%- endcase -%}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    <div class="footer__bottom">
+      <div>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle rechten voorbehouden.</div>
+
+      {%- if section.settings.show_payment_icons -%}
+        <div class="footer__payment">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_payment_icons",
+      "label": "Betaalmethodes tonen",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Merk",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Tekst",
+          "default": "<p>Banken en fauteuils die je een leven lang meegaan. Met de hand gemaakt in Europa.</p>"
+        }
+      ]
+    },
+    {
+      "type": "menu",
+      "name": "Menukolom",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Kop",
+          "default": "Shop"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "name": "Tekstkolom",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Kop",
+          "default": "Contact"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "Tekst",
+          "default": "<p>hallo@sofahome.nl<br>Ma t/m vr, 9.00 – 17.00 uur</p>"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "brand" },
+      { "type": "menu" },
+      { "type": "text" }
+    ]
+  }
+}
+{% endschema %}

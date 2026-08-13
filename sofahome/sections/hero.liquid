@@ -1,0 +1,106 @@
+<section class="hero {% if section.settings.image != blank or section.settings.overlay %}hero--light{% endif %}">
+  <div class="hero__media">
+    {%- if section.settings.image != blank -%}
+      {{
+        section.settings.image
+        | image_url: width: 2200
+        | image_tag:
+          widths: '600, 900, 1200, 1600, 2200',
+          sizes: '100vw',
+          fetchpriority: 'high',
+          alt: section.settings.image.alt | default: section.settings.heading | escape
+      }}
+    {%- else -%}
+      <div class="placeholder-tile"></div>
+    {%- endif -%}
+    {%- if section.settings.overlay -%}
+      <div class="hero__overlay"></div>
+    {%- endif -%}
+  </div>
+
+  <div class="page-width">
+    <div class="hero__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+
+      <h1>{{ section.settings.heading }}</h1>
+
+      {%- if section.settings.text != blank -%}
+        <p class="lede">{{ section.settings.text }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank or section.settings.button_2_label != blank -%}
+        <div class="hero__buttons">
+          {%- if section.settings.button_label != blank -%}
+            <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+          {%- endif -%}
+          {%- if section.settings.button_2_label != blank -%}
+            <a class="button button--secondary" href="{{ section.settings.button_2_link }}">{{ section.settings.button_2_label }}</a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Achtergrondafbeelding",
+      "info": "Liggend, minimaal 2000 px breed."
+    },
+    {
+      "type": "checkbox",
+      "id": "overlay",
+      "label": "Donkere gradiënt over de afbeelding",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Bovenkopje",
+      "default": "Nieuw — collectie 2026"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Kop",
+      "default": "Een bank waar je jaren in wegzakt"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Tekst",
+      "default": "Met de hand gemaakt, in stoffen die je zelf kiest. Thuisbezorgd en geplaatst waar jij hem hebben wilt."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Knop 1 — tekst",
+      "default": "Shop banken"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Knop 1 — link"
+    },
+    {
+      "type": "text",
+      "id": "button_2_label",
+      "label": "Knop 2 — tekst",
+      "default": "Vraag stalen aan"
+    },
+    {
+      "type": "url",
+      "id": "button_2_link",
+      "label": "Knop 2 — link"
+    }
+  ],
+  "presets": [{ "name": "Hero" }]
+}
+{% endschema %}
