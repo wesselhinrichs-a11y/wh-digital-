@@ -28,49 +28,44 @@
         "usp-1": {
           "type": "usp",
           "settings": {
-            "icon": "truck",
-            "title": "Gratis bezorgd en geplaatst",
-            "text": "Onze bezorgers zetten je bank op zijn plek en nemen het verpakkingsmateriaal weer mee."
+            "icon": "swatch",
+            "title": "22 momme moerbeizijde",
+            "text": "Dichter geweven dan de gangbare 19. Zwaarder in de hand, en het blijft jaren mooi."
           }
         },
         "usp-2": {
           "type": "usp",
           "settings": {
-            "icon": "swatch",
-            "title": "Eerst stalen thuis",
-            "text": "Kies vijf stoffen uit en voel thuis hoe ze in jouw licht vallen. Gratis."
+            "icon": "leaf",
+            "title": "Direct van de weverij",
+            "text": "We kopen in bij de bron. Geen tussenhandel, geen merknaam waar je voor betaalt."
           }
         },
         "usp-3": {
           "type": "usp",
           "settings": {
-            "icon": "shield",
-            "title": "Tien jaar garantie",
-            "text": "Op frame en vering. Onderdelen blijven leverbaar, ook over tien jaar."
+            "icon": "truck",
+            "title": "Gratis verzending",
+            "text": "Op elke bestelling, zonder minimumbedrag. Verstuurd op de dag dat je bestelt."
           }
         },
         "usp-4": {
           "type": "usp",
           "settings": {
-            "icon": "leaf",
-            "title": "Gemaakt in Europa",
-            "text": "FSC-hout, natuurlijke vullingen en ateliers waar we zelf komen."
+            "icon": "shield",
+            "title": "30 dagen bedenktijd",
+            "text": "Slaap er een maand op. Bevalt het niet, dan gaat het terug — ook als het gebruikt is."
           }
         }
       },
-      "block_order": [
-        "usp-1",
-        "usp-2",
-        "usp-3",
-        "usp-4"
-      ],
+      "block_order": ["usp-1", "usp-2", "usp-3", "usp-4"],
       "settings": {}
     },
     "featured": {
       "type": "featured-collection",
       "settings": {
         "eyebrow": "Bestsellers",
-        "heading": "Waar iedereen op wil zitten",
+        "heading": "Waar je 's ochtends het verschil mee voelt",
         "link_label": "Bekijk alles",
         "product_limit": 4,
         "columns": "4"
@@ -79,24 +74,11 @@
     "categories": {
       "type": "collection-list",
       "blocks": {
-        "cat-1": {
-          "type": "collection",
-          "settings": {}
-        },
-        "cat-2": {
-          "type": "collection",
-          "settings": {}
-        },
-        "cat-3": {
-          "type": "collection",
-          "settings": {}
-        }
+        "cat-1": { "type": "collection", "settings": {} },
+        "cat-2": { "type": "collection", "settings": {} },
+        "cat-3": { "type": "collection", "settings": {} }
       },
-      "block_order": [
-        "cat-1",
-        "cat-2",
-        "cat-3"
-      ],
+      "block_order": ["cat-1", "cat-2", "cat-3"],
       "settings": {
         "heading": "Shop per categorie",
         "columns": "3"
@@ -106,21 +88,21 @@
       "type": "image-with-text",
       "settings": {
         "reverse": false,
-        "eyebrow": "Ons atelier",
-        "heading": "Zeventig uur werk per bank",
-        "text": "<p>Elk frame wordt met de hand van massief beukenhout gemaakt en met pen-en-gatverbindingen in elkaar gezet — geen schroeven, geen nietjes. De vering wordt met de hand geknoopt, de vulling in lagen opgebouwd. Dat kost tijd. Daarom zit je er ook over vijftien jaar nog goed op.</p>",
+        "eyebrow": "Onze zijde",
+        "heading": "Waarom 22 momme, en niet 19",
+        "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
         "button_label": "Lees ons verhaal",
         "button_link": "/pages/over-ons"
       }
     },
-    "stalen": {
+    "waarom-zijde": {
       "type": "rich-text",
       "settings": {
-        "heading": "Kiezen doe je thuis, niet in een showroom",
-        "text": "<p>Bestel gratis vijf stalen en leg ze een week op je bank. Zo zie je hoe een stof er 's ochtends uitziet en hoe 's avonds. Pas als het klopt, bestel je.</p>",
+        "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
+        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; zijde doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
         "alignment": "center",
-        "button_label": "Stalen bestellen",
-        "button_link": "/pages/stalen"
+        "button_label": "Shop nu",
+        "button_link": "/collections/all"
       }
     },
     "reviews": {
@@ -130,7 +112,7 @@
           "type": "quote",
           "settings": {
             "rating": 5,
-            "quote": "“De stalen kwamen binnen twee dagen. Drie weken later stond de bank er — en hij is precies zo zacht als beloofd.”",
+            "quote": "“Na een week zag ik het aan mijn haar — 's ochtends geen klit meer, en veel minder slaapvouwen in mijn gezicht.”",
             "author": "Marieke, Utrecht"
           }
         },
@@ -138,7 +120,7 @@
           "type": "quote",
           "settings": {
             "rating": 5,
-            "quote": "“Twee bezorgers, een trap van niks, en toch stond hij binnen twintig minuten op zijn plek. Netjes opgeruimd ook.”",
+            "quote": "“Het masker sluit echt licht buiten zonder te drukken. Ik word niet meer wakker van de lantaarn voor het raam.”",
             "author": "Joost, Rotterdam"
           }
         },
@@ -146,26 +128,22 @@
           "type": "quote",
           "settings": {
             "rating": 4,
-            "quote": "“Levertijd was iets langer dan gehoopt, maar de kwaliteit maakt dat helemaal goed. Zit als een huis.”",
+            "quote": "“Ik sliep al op zijde van een duur merk. Dit voelt hetzelfde en kostte me de helft.”",
             "author": "Fenna, Groningen"
           }
         }
       },
-      "block_order": [
-        "quote-1",
-        "quote-2",
-        "quote-3"
-      ],
+      "block_order": ["quote-1", "quote-2", "quote-3"],
       "settings": {
-        "eyebrow": "4,8 uit 1.240 beoordelingen",
-        "heading": "Wat klanten ervan vinden"
+        "eyebrow": "Van klanten",
+        "heading": "Wat mensen 's ochtends merken"
       }
     },
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "heading": "Nieuwe stoffen, nieuwe modellen",
-        "text": "Eén mail per maand. Als eerste zien wat er nieuw is, en af en toe iets dat alleen voor de lijst geldt."
+        "heading": "Nieuwe kleuren, nieuw in de collectie",
+        "text": "Eén mail per maand. Als eerste zien wat erbij komt, en af en toe iets dat alleen voor de lijst geldt."
       }
     }
   },
@@ -175,7 +153,7 @@
     "featured",
     "categories",
     "atelier",
-    "stalen",
+    "waarom-zijde",
     "reviews",
     "newsletter"
   ]
