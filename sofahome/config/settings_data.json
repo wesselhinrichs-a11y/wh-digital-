@@ -20,6 +20,85 @@
     "page_width": 1280,
     "corner_radius": 4,
     "show_cart_note": true,
-    "cart_terms": "<p>Verzendkosten en kortingen worden bij het afrekenen berekend.</p>"
+    "cart_terms": "<p>Verzendkosten en kortingen worden bij het afrekenen berekend.</p>",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "blocks": {
+          "announcement-bar-0": {
+            "type": "message",
+            "settings": {
+              "text": "Gratis verzending",
+              "link": ""
+            }
+          },
+          "announcement-bar-1": {
+            "type": "message",
+            "settings": {
+              "text": "22 momme zijde, direct van de bron",
+              "link": ""
+            }
+          },
+          "announcement-bar-2": {
+            "type": "message",
+            "settings": {
+              "text": "30 dagen bedenktijd",
+              "link": ""
+            }
+          }
+        },
+        "block_order": [
+          "announcement-bar-0",
+          "announcement-bar-1",
+          "announcement-bar-2"
+        ],
+        "settings": {
+          "speed": 3,
+          "background": "#1c1917",
+          "text_color": "#faf7f2"
+        }
+      },
+      "header": {
+        "type": "header",
+        "settings": {
+          "logo_width": 150,
+          "menu": "main-menu"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "brand",
+            "settings": {
+              "text": "<p>Banken en fauteuils die je een leven lang meegaan. Met de hand gemaakt in Europa.</p>"
+            }
+          },
+          "footer-1": {
+            "type": "menu",
+            "settings": {
+              "heading": "Shop",
+              "menu": "footer"
+            }
+          },
+          "footer-2": {
+            "type": "text",
+            "settings": {
+              "heading": "Contact",
+              "text": "<p>hallo@sofahome.nl<br>Ma t/m vr, 9.00 – 17.00 uur</p>"
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "footer-1",
+          "footer-2"
+        ],
+        "settings": {
+          "show_payment_icons": true
+        }
+      }
+    },
+    "content_for_index": []
   }
 }
