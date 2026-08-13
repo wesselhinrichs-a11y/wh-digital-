@@ -2,6 +2,52 @@
 (function () {
   'use strict';
 
+  /* ---------- Aankondigingsbalk: rouleren ---------- */
+  document.querySelectorAll('[data-announcement]').forEach(function (bar) {
+    var items = bar.querySelectorAll('.announcement__item');
+    if (items.length < 2) return;
+
+    var interval = parseInt(bar.getAttribute('data-interval'), 10) || 5000;
+    var index = 0;
+    var timer = null;
+
+    function show(next) {
+      items[index].classList.remove('is-active');
+      items[index].setAttribute('aria-hidden', 'true');
+      index = next;
+      items[index].classList.add('is-active');
+      items[index].removeAttribute('aria-hidden');
+    }
+
+    function start() {
+      if (timer) return;
+      timer = setInterval(function () {
+        show((index + 1) % items.length);
+      }, interval);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    bar.addEventListener('mouseenter', stop);
+    bar.addEventListener('mouseleave', start);
+    bar.addEventListener('focusin', stop);
+    bar.addEventListener('focusout', start);
+
+    // Niet doorrouleren wanneer het tabblad op de achtergrond staat.
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    start();
+  });
+
   /* ---------- Mobiel menu ---------- */
   document.querySelectorAll('[data-menu-toggle]').forEach(function (button) {
     var nav = document.getElementById(button.getAttribute('aria-controls'));

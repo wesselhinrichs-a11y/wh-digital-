@@ -8,7 +8,7 @@
     "check": "shopify theme check",
     "pull": "shopify theme pull --store qstzjv-nd.myshopify.com --theme 205807255883",
     "preview": "shopify theme push --store qstzjv-nd.myshopify.com --unpublished --theme \"Sofahome — preview\"",
-    "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205807255883"
+    "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205807255883 --allow-live"
   },
   "devDependencies": {
     "@shopify/cli": "^3"

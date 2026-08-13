@@ -1,16 +1,25 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
+        "overlay": true,
         "eyebrow": "Nieuw — collectie 2026",
         "heading": "Een bank waar je jaren in wegzakt",
         "text": "Met de hand gemaakt, in stoffen die je zelf kiest. Thuisbezorgd en geplaatst waar jij hem hebben wilt.",
         "button_label": "Shop banken",
         "button_link": "/collections/all",
         "button_2_label": "Vraag stalen aan",
-        "button_2_link": "/pages/stalen",
-        "overlay": true
+        "button_2_link": "/pages/stalen"
       }
     },
     "usps": {
@@ -49,7 +58,13 @@
           }
         }
       },
-      "block_order": ["usp-1", "usp-2", "usp-3", "usp-4"]
+      "block_order": [
+        "usp-1",
+        "usp-2",
+        "usp-3",
+        "usp-4"
+      ],
+      "settings": {}
     },
     "featured": {
       "type": "featured-collection",
@@ -63,26 +78,39 @@
     },
     "categories": {
       "type": "collection-list",
+      "blocks": {
+        "cat-1": {
+          "type": "collection",
+          "settings": {}
+        },
+        "cat-2": {
+          "type": "collection",
+          "settings": {}
+        },
+        "cat-3": {
+          "type": "collection",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3"
+      ],
       "settings": {
         "heading": "Shop per categorie",
         "columns": "3"
-      },
-      "blocks": {
-        "cat-1": { "type": "collection", "settings": {} },
-        "cat-2": { "type": "collection", "settings": {} },
-        "cat-3": { "type": "collection", "settings": {} }
-      },
-      "block_order": ["cat-1", "cat-2", "cat-3"]
+      }
     },
     "atelier": {
       "type": "image-with-text",
       "settings": {
+        "reverse": false,
         "eyebrow": "Ons atelier",
         "heading": "Zeventig uur werk per bank",
         "text": "<p>Elk frame wordt met de hand van massief beukenhout gemaakt en met pen-en-gatverbindingen in elkaar gezet — geen schroeven, geen nietjes. De vering wordt met de hand geknoopt, de vulling in lagen opgebouwd. Dat kost tijd. Daarom zit je er ook over vijftien jaar nog goed op.</p>",
         "button_label": "Lees ons verhaal",
-        "button_link": "/pages/over-ons",
-        "reverse": false
+        "button_link": "/pages/over-ons"
       }
     },
     "stalen": {
@@ -97,10 +125,6 @@
     },
     "reviews": {
       "type": "testimonials",
-      "settings": {
-        "eyebrow": "4,8 uit 1.240 beoordelingen",
-        "heading": "Wat klanten ervan vinden"
-      },
       "blocks": {
         "quote-1": {
           "type": "quote",
@@ -127,7 +151,15 @@
           }
         }
       },
-      "block_order": ["quote-1", "quote-2", "quote-3"]
+      "block_order": [
+        "quote-1",
+        "quote-2",
+        "quote-3"
+      ],
+      "settings": {
+        "eyebrow": "4,8 uit 1.240 beoordelingen",
+        "heading": "Wat klanten ervan vinden"
+      }
     },
     "newsletter": {
       "type": "newsletter",

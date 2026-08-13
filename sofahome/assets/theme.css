@@ -241,6 +241,35 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
 
 .announcement a { color: inherit; }
 
+/* Alle teksten liggen in dezelfde grid-cel, zodat de balk de hoogte van de
+   langste tekst aanhoudt en niet verspringt tijdens het wisselen. */
+.announcement__viewport {
+  display: grid;
+  align-items: center;
+}
+
+.announcement__item {
+  grid-area: 1 / 1;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(0.35em);
+  transition: opacity 0.5s ease, transform 0.5s ease, visibility 0s linear 0.5s;
+}
+
+.announcement__item.is-active {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  transition-delay: 0s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .announcement__item {
+    transform: none;
+    transition: none;
+  }
+}
+
 /* --------------------------------------------------------------------------
    Header
    -------------------------------------------------------------------------- */
