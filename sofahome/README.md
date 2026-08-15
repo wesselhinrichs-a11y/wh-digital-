@@ -26,18 +26,32 @@ winkeldata; er verandert niets aan de live winkel:
 cd ~/Pictures/ai/sofahome && npm run dev
 ```
 
-Wijzigingen die je in de **theme-editor** hebt gemaakt eerst ophalen — anders overschrijf
-je ze bij de volgende push:
+### De volgorde is belangrijk
 
-```bash
-cd ~/Pictures/ai/sofahome && npm run pull
-```
+`pull` overschrijft je lokale bestanden met wat er op Shopify staat. Draai hem dus
+**vóór** je begint met werken, nooit vlak voor een push — dan wist hij precies de
+wijzigingen die je wilde uploaden.
 
-Naar de live winkel zetten:
+1. **Voor je begint**, editor-wijzigingen ophalen:
 
-```bash
-cd ~/Pictures/ai/sofahome && npm run push:live
-```
+   ```bash
+   cd ~/Pictures/ai/sofahome && npm run pull
+   ```
+
+2. Werken, en controleren op fouten:
+
+   ```bash
+   cd ~/Pictures/ai/sofahome && npm run check
+   ```
+
+3. **Daarna pas** uploaden:
+
+   ```bash
+   cd ~/Pictures/ai/sofahome && npm run push:live
+   ```
+
+Ging het toch mis en heeft een pull je werk overschreven? Zolang het gecommit was:
+`git checkout -- sofahome/` zet alles terug.
 
 Een losse, niet-gepubliceerde kopie om iets groots eerst te bekijken (maakt elke keer een
 nieuw thema aan — ruim ze af en toe op):
