@@ -32,13 +32,13 @@
         "type": "color",
         "id": "color_accent",
         "label": "Accent (knoppen)",
-        "default": "#a8593c"
+        "default": "#b0a496"
       },
       {
         "type": "color",
         "id": "color_accent_text",
         "label": "Tekst op accent",
-        "default": "#ffffff"
+        "default": "#1c1917"
       },
       {
         "type": "color",

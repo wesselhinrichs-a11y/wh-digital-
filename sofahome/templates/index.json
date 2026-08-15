@@ -13,9 +13,9 @@
       "type": "hero",
       "settings": {
         "overlay": true,
-        "eyebrow": "Nieuw — collectie 2026",
-        "heading": "Wakker worden alsof je écht geslapen hebt",
-        "text": "Zijde van 22 momme, uit dezelfde ateliers als de grote namen. Zonder de opslag die je voor hun naam betaalt.",
+        "eyebrow": "Silk sleep essentials",
+        "heading": "Beddengoed zonder compromis",
+        "text": "Wakker worden met huid en haar die je dankbaar zijn. Premium silk, zonder het prijskaartje van de grote merken.",
         "button_label": "Shop nu",
         "button_link": "/collections/all",
         "button_2_label": "Ontdek Sova Home",
@@ -58,27 +58,53 @@
           }
         }
       },
-      "block_order": ["usp-1", "usp-2", "usp-3", "usp-4"],
+      "block_order": [
+        "usp-1",
+        "usp-2",
+        "usp-3",
+        "usp-4"
+      ],
       "settings": {}
     },
     "featured": {
       "type": "featured-collection",
       "settings": {
+        "collection": "",
         "eyebrow": "Bestsellers",
         "heading": "Waar je 's ochtends het verschil mee voelt",
         "link_label": "Bekijk alles",
         "product_limit": 4,
-        "columns": "4"
+        "columns": "4",
+        "show_vendor": false
       }
     },
     "categories": {
       "type": "collection-list",
       "blocks": {
-        "cat-1": { "type": "collection", "settings": {} },
-        "cat-2": { "type": "collection", "settings": {} },
-        "cat-3": { "type": "collection", "settings": {} }
+        "cat-1": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "cat-2": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        },
+        "cat-3": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        }
       },
-      "block_order": ["cat-1", "cat-2", "cat-3"],
+      "block_order": [
+        "cat-1",
+        "cat-2",
+        "cat-3"
+      ],
       "settings": {
         "heading": "Shop per categorie",
         "columns": "3"
@@ -98,11 +124,24 @@
     "waarom-zijde": {
       "type": "rich-text",
       "settings": {
-        "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
+        "eyebrow": "",
+        "heading": "het materiaal dat wij gebruiken",
         "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; zijde doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
         "alignment": "center",
         "button_label": "Shop nu",
         "button_link": "/collections/all"
+      }
+    },
+    "image_with_text_pTyANC": {
+      "type": "image-with-text",
+      "name": "Afbeelding met tekst",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Onze zijde",
+        "heading": "Waarom 22 momme, en niet 19",
+        "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
+        "button_label": "Lees ons verhaal",
+        "button_link": ""
       }
     },
     "reviews": {
@@ -133,7 +172,11 @@
           }
         }
       },
-      "block_order": ["quote-1", "quote-2", "quote-3"],
+      "block_order": [
+        "quote-1",
+        "quote-2",
+        "quote-3"
+      ],
       "settings": {
         "eyebrow": "Van klanten",
         "heading": "Wat mensen 's ochtends merken"
@@ -145,6 +188,18 @@
         "heading": "Nieuwe kleuren, nieuw in de collectie",
         "text": "Eén mail per maand. Als eerste zien wat erbij komt, en af en toe iets dat alleen voor de lijst geldt."
       }
+    },
+    "rich_text_AVjAWR": {
+      "type": "rich-text",
+      "name": "Tekstblok",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
+        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; zijde doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
+        "alignment": "center",
+        "button_label": "",
+        "button_link": ""
+      }
     }
   },
   "order": [
@@ -154,7 +209,9 @@
     "categories",
     "atelier",
     "waarom-zijde",
+    "image_with_text_pTyANC",
     "reviews",
-    "newsletter"
+    "newsletter",
+    "rich_text_AVjAWR"
   ]
 }

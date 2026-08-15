@@ -12,8 +12,8 @@
     "color_background": "#faf7f2",
     "color_surface": "#ffffff",
     "color_text": "#1c1917",
-    "color_accent": "#a8593c",
-    "color_accent_text": "#ffffff",
+    "color_accent": "#b0a496",
+    "color_accent_text": "#1c1917",
     "color_sale": "#9b2c2c",
     "type_heading_font": "playfair_display_n4",
     "type_body_font": "assistant_n4",
@@ -35,7 +35,7 @@
           "announcement-bar-1": {
             "type": "message",
             "settings": {
-              "text": "22 momme zijde, direct van de bron",
+              "text": "Rechtstreeks van producent, geen tussenhandel",
               "link": ""
             }
           },

@@ -42,6 +42,11 @@
         --color-muted: {{ settings.color_text | color_mix: settings.color_background, 62 }};
         --color-accent: {{ settings.color_accent }};
         --color-accent-text: {{ settings.color_accent_text }};
+        {%- comment -%}
+          Dezelfde accentkleur, dieper gemaakt. Voor losse iconen en sterren: die
+          hebben geen vlak eromheen en verdwijnen anders tegen de achtergrond.
+        {%- endcomment -%}
+        --color-accent-deep: {{ settings.color_accent | color_mix: settings.color_text, 70 }};
         --color-border: {{ settings.color_text | color_mix: settings.color_background, 14 }};
         --color-sale: {{ settings.color_sale }};
 
