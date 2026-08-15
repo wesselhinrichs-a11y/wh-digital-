@@ -78,38 +78,6 @@
         "show_vendor": false
       }
     },
-    "categories": {
-      "type": "collection-list",
-      "blocks": {
-        "cat-1": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cat-2": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        },
-        "cat-3": {
-          "type": "collection",
-          "settings": {
-            "collection": ""
-          }
-        }
-      },
-      "block_order": [
-        "cat-1",
-        "cat-2",
-        "cat-3"
-      ],
-      "settings": {
-        "heading": "Shop per categorie",
-        "columns": "3"
-      }
-    },
     "atelier": {
       "type": "image-with-text",
       "settings": {
@@ -117,8 +85,8 @@
         "eyebrow": "Onze zijde",
         "heading": "Waarom 22 momme, en niet 19",
         "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
-        "button_label": "Lees ons verhaal",
-        "button_link": "/pages/over-ons"
+        "button_label": "Shop nu",
+        "button_link": "/collections/all"
       }
     },
     "waarom-zijde": {
@@ -140,8 +108,8 @@
         "eyebrow": "Onze zijde",
         "heading": "Waarom 22 momme, en niet 19",
         "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
-        "button_label": "Lees ons verhaal",
-        "button_link": ""
+        "button_label": "Shop nu",
+        "button_link": "/collections/all"
       }
     },
     "reviews": {
@@ -206,7 +174,6 @@
     "hero",
     "usps",
     "featured",
-    "categories",
     "atelier",
     "waarom-zijde",
     "image_with_text_pTyANC",
