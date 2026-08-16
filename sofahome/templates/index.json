@@ -163,10 +163,12 @@
       "settings": {
         "eyebrow": "",
         "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
-        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; zijde doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
+        "text": "<p>Premium silk, eerlijke prijs, dertig dagen om het te voelen.</p>",
         "alignment": "center",
-        "button_label": "",
-        "button_link": ""
+        "button_label": "Shop kussenslopen",
+        "button_link": "/collections/all",
+        "button_2_label": "Shop slaapmasker",
+        "button_2_link": "/collections/all"
       }
     }
   },

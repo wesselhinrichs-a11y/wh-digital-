@@ -185,6 +185,14 @@ button.button {
 
 .button--full { width: 100%; }
 
+/* Rij met een of twee knoppen onder een tekstblok. */
+.button-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
 .link-arrow {
   display: inline-flex;
   align-items: center;

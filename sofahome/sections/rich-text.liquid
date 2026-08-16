@@ -7,10 +7,18 @@
       <h2>{{ section.settings.heading }}</h2>
     {%- endif -%}
     <div class="rte">{{ section.settings.text }}</div>
-    {%- if section.settings.button_label != blank -%}
-      <p style="margin-top:1.75rem">
-        <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
-      </p>
+    {%- if section.settings.button_label != blank or section.settings.button_2_label != blank -%}
+      <div
+        class="button-row"
+        style="justify-content: {% if section.settings.alignment == 'center' %}center{% else %}flex-start{% endif %}"
+      >
+        {%- if section.settings.button_label != blank -%}
+          <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+        {%- endif -%}
+        {%- if section.settings.button_2_label != blank -%}
+          <a class="button" href="{{ section.settings.button_2_link }}">{{ section.settings.button_2_label }}</a>
+        {%- endif -%}
+      </div>
     {%- endif -%}
   </div>
 </section>
@@ -37,8 +45,10 @@
       ],
       "default": "center"
     },
-    { "type": "text", "id": "button_label", "label": "Knoptekst" },
-    { "type": "url", "id": "button_link", "label": "Knoplink" }
+    { "type": "text", "id": "button_label", "label": "Knop 1 — tekst" },
+    { "type": "url", "id": "button_link", "label": "Knop 1 — link" },
+    { "type": "text", "id": "button_2_label", "label": "Knop 2 — tekst" },
+    { "type": "url", "id": "button_2_link", "label": "Knop 2 — link" }
   ],
   "presets": [{ "name": "Tekstblok" }]
 }
