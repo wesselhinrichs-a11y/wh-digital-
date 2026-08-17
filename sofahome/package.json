@@ -1,13 +1,12 @@
 {
-  "name": "sofahome-theme",
+  "name": "sova-home-theme",
   "version": "1.0.0",
   "private": true,
-  "description": "Shopify-thema voor Sofahome",
+  "description": "Shopify-thema voor Sova Home",
   "scripts": {
-    "dev": "shopify theme dev --store qstzjv-nd.myshopify.com",
     "check": "shopify theme check",
     "pull": "shopify theme pull --store qstzjv-nd.myshopify.com --theme 205809287499",
-    "preview": "shopify theme push --store qstzjv-nd.myshopify.com --unpublished --theme \"Sofahome — preview\"",
+    "push": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205985907019",
     "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205809287499 --allow-live"
   },
   "devDependencies": {

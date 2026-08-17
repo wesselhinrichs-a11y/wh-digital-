@@ -17,54 +17,54 @@ locales/      nl.default.json — alle teksten van het thema
 
 ## Werken aan het thema
 
-> Thema `205807255883` is **live**. Elke `push:live` is direct zichtbaar voor bezoekers.
+Twee thema's, en het verschil is de hele afspraak:
 
-Lokaal meekijken terwijl je bestanden aanpast. Draait op je eigen machine tegen echte
-winkeldata; er verandert niets aan de live winkel:
+| Thema | Id | Rol |
+|---|---|---|
+| Sofahome — preview | `205809287499` | **live** — de winkel. Alleen Wessel publiceert hier. |
+| Sova Home — werkversie | `205985907019` | ongepubliceerd — hier komt werk uit de code binnen. |
 
-```bash
-cd ~/Pictures/ai/sofahome && npm run dev
-```
+Bekijken: https://qstzjv-nd.myshopify.com/admin/themes/205985907019/editor
 
-### De volgorde is belangrijk
+### Vaste volgorde
 
-`pull` overschrijft je lokale bestanden met wat er op Shopify staat. Draai hem dus
-**vóór** je begint met werken, nooit vlak voor een push — dan wist hij precies de
-wijzigingen die je wilde uploaden.
+`pull` overschrijft lokale bestanden met wat er op Shopify staat. Draai hem dus **vóór**
+je begint, nooit vlak voor een push — dan wist hij precies wat je wilde uploaden.
 
-1. **Voor je begint**, editor-wijzigingen ophalen:
+1. **Beginnen** — haal op wat Wessel in de editor deed:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run pull
    ```
 
-2. Werken, en controleren op fouten:
+2. **Werken**, en controleren op fouten:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run check
    ```
 
-3. **Daarna pas** uploaden:
+3. **Laten zien** — naar de werkversie, nooit rechtstreeks naar de winkel:
+
+   ```bash
+   cd ~/Pictures/ai/sofahome && npm run push
+   ```
+
+4. **Pas als Wessel akkoord is** naar de live winkel:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run push:live
    ```
 
-Ging het toch mis en heeft een pull je werk overschreven? Zolang het gecommit was:
+Ging het mis en heeft een pull je werk overschreven? Zolang het gecommit was:
 `git checkout -- sofahome/` zet alles terug.
 
-Een losse, niet-gepubliceerde kopie om iets groots eerst te bekijken (maakt elke keer een
-nieuw thema aan — ruim ze af en toe op):
+### Geen `theme dev` meer
 
-```bash
-cd ~/Pictures/ai/sofahome && npm run preview
-```
-
-Controleren op fouten:
-
-```bash
-cd ~/Pictures/ai/sofahome && npm run check
-```
+`shopify theme dev` blijft draaien en uploadt continu lokale bestanden naar het thema
+waar het op gericht staat. Dat heeft een keer editor-werk overschreven en zorgde ervoor
+dat ongevraagd werk live kwam te staan toen dat thema gepubliceerd werd. Gebruik in
+plaats daarvan `npm run push` naar de werkversie: dat gebeurt één keer, op een moment
+dat je zelf kiest.
 
 ## Wie past wat aan
 
