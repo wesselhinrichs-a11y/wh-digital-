@@ -73,8 +73,8 @@
         "eyebrow": "Bestsellers",
         "heading": "Waar je 's ochtends het verschil mee voelt",
         "link_label": "Bekijk alles",
-        "product_limit": 4,
-        "columns": "4",
+        "product_limit": 2,
+        "columns": "2",
         "show_vendor": false
       }
     },
@@ -83,19 +83,8 @@
       "settings": {
         "reverse": false,
         "eyebrow": "Onze silk",
-        "heading": "Kwaliteit meet je in momme, niet in merknaam",
-        "text": "<p>Momme is de dichtheid van de vezel. Veel webshops verkopen silk onder de 12 momme, zo dun dat het nauwelijks van polyester te onderscheiden is. Wij kozen 19 momme voor de kussenslopen en 22 voor de slaapmaskers — de dikte waarop je het verschil elke nacht opnieuw voelt.</p>",
-        "button_label": "Shop nu",
-        "button_link": "/collections/all"
-      }
-    },
-    "waarom-zijde": {
-      "type": "rich-text",
-      "settings": {
-        "eyebrow": "",
-        "heading": "het materiaal dat wij gebruiken",
-        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; silk doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
-        "alignment": "center",
+        "heading": "Wat onze silk goed maakt",
+        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; silk doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p><p>Hoe goed silk is, zit in de dichtheid: momme. Veel webshops blijven onder de 12, zo dun dat het nauwelijks van polyester te onderscheiden is. Wij kozen 19 momme voor de kussenslopen en 22 voor de slaapmaskers — de dikte waarop je het verschil elke nacht opnieuw voelt.</p>",
         "button_label": "Shop nu",
         "button_link": "/collections/all"
       }
@@ -177,10 +166,9 @@
     "usps",
     "featured",
     "atelier",
-    "waarom-zijde",
     "image_with_text_pTyANC",
     "reviews",
-    "newsletter",
-    "rich_text_AVjAWR"
+    "rich_text_AVjAWR",
+    "newsletter"
   ]
 }
