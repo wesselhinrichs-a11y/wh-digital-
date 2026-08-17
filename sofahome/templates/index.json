@@ -19,7 +19,7 @@
         "button_label": "Shop nu",
         "button_link": "/collections/all",
         "button_2_label": "Ontdek Sova Home",
-        "button_2_link": "/pages/over-ons"
+        "button_2_link": "/pages/ons-verhaal"
       }
     },
     "usps": {
@@ -29,16 +29,16 @@
           "type": "usp",
           "settings": {
             "icon": "swatch",
-            "title": "22 momme moerbeizijde",
-            "text": "Dichter geweven dan de gangbare 19. Zwaarder in de hand, en het blijft jaren mooi."
+            "title": "19 en 22 momme",
+            "text": "Kussenslopen 19, slaapmaskers 22. Veel webshops blijven onder de 12 — dat voelt als polyester."
           }
         },
         "usp-2": {
           "type": "usp",
           "settings": {
             "icon": "leaf",
-            "title": "Direct van de weverij",
-            "text": "We kopen in bij de bron. Geen tussenhandel, geen merknaam waar je voor betaalt."
+            "title": "Rechtstreeks van de producent",
+            "text": "Geen tussenhandel, geen merknaam die je extra betaalt. Alleen het product."
           }
         },
         "usp-3": {
@@ -82,9 +82,9 @@
       "type": "image-with-text",
       "settings": {
         "reverse": false,
-        "eyebrow": "Onze zijde",
-        "heading": "Waarom 22 momme, en niet 19",
-        "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
+        "eyebrow": "Onze silk",
+        "heading": "Kwaliteit meet je in momme, niet in merknaam",
+        "text": "<p>Momme is de dichtheid van de vezel. Veel webshops verkopen silk onder de 12 momme, zo dun dat het nauwelijks van polyester te onderscheiden is. Wij kozen 19 momme voor de kussenslopen en 22 voor de slaapmaskers — de dikte waarop je het verschil elke nacht opnieuw voelt.</p>",
         "button_label": "Shop nu",
         "button_link": "/collections/all"
       }
@@ -94,7 +94,7 @@
       "settings": {
         "eyebrow": "",
         "heading": "het materiaal dat wij gebruiken",
-        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; zijde doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
+        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; silk doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p>",
         "alignment": "center",
         "button_label": "Shop nu",
         "button_link": "/collections/all"
@@ -105,9 +105,9 @@
       "name": "Afbeelding met tekst",
       "settings": {
         "reverse": false,
-        "eyebrow": "Onze zijde",
+        "eyebrow": "Ons verhaal",
         "heading": "Voel het verschil vanaf de eerste nacht",
-        "text": "<p>Momme is een gewichtsmaat: hoe hoger het getal, hoe dichter het weefsel. De meeste zijden slopen zijn 19. Wij gaan naar 22 — merkbaar zwaarder, koeler op je huid en veel beter bestand tegen wassen. Diezelfde stof gebruiken we voor de slaapmaskers, want de reden om ervoor te kiezen is precies dezelfde.</p>",
+        "text": "<p>Op papier sliep ik prima, en toch werd ik elke ochtend moe wakker. De dure merken lieten je vooral voor de naam betalen; in de goedkope hoek viel de kwaliteit na een week door de mand. Iets ertussenin bestond niet. Dus maakte ik het zelf.</p>",
         "button_label": "Shop nu",
         "button_link": "/collections/all"
       }
@@ -135,7 +135,7 @@
           "type": "quote",
           "settings": {
             "rating": 4,
-            "quote": "“Ik sliep al op zijde van een duur merk. Dit voelt hetzelfde en kostte me de helft.”",
+            "quote": "“Ik sliep al op silk van een duur merk. Dit voelt hetzelfde en kostte me de helft.”",
             "author": "Fenna, Groningen"
           }
         }
