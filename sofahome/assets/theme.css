@@ -845,29 +845,103 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
 .stars { display: flex; gap: 0.15rem; color: var(--color-accent-deep, var(--color-accent)); }
 .stars svg { width: 1rem; height: 1rem; }
 
+/* Nieuwsbrief — een rustige band over de volle breedte. Alles gecentreerd,
+   veel witruimte, geen iconen of randversiering. */
 .newsletter {
-  background: var(--color-text);
-  color: var(--color-bg);
-  border-radius: var(--radius);
-  padding: clamp(2rem, 5vw, 3.5rem);
-  display: grid;
-  gap: 1.5rem;
-  justify-items: center;
+  background: var(--newsletter-bg, #f3efe8);
+  padding: clamp(4.5rem, 11vw, 8rem) 0;
+}
+
+.newsletter__inner {
+  max-width: 34rem;
+  margin-inline: auto;
   text-align: center;
 }
 
-.newsletter .lede { color: rgba(255, 255, 255, 0.75); }
+.newsletter__heading {
+  margin: 0;
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: clamp(1.6rem, 3.2vw, 2.25rem);
+  line-height: 1.25;
+}
+
+.newsletter__text {
+  margin: 1.1rem auto 0;
+  max-width: 28rem;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
 
 .newsletter__form {
   display: flex;
-  gap: 0.5rem;
-  width: min(100%, 32rem);
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 2.75rem;
 }
 
-.newsletter__form .field { flex: 1; }
+.newsletter__field {
+  flex: 1 1 18rem;
+  max-width: 22rem;
+  padding: 0.9rem 1.1rem;
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  color: var(--color-text);
+  background: transparent;
+  border: 1px solid rgb(0 0 0 / 0.18);
+  border-radius: var(--radius);
+  transition: border-color 200ms ease;
+}
 
-@media (max-width: 480px) {
-  .newsletter__form { flex-direction: column; }
+.newsletter__field::placeholder { color: var(--color-muted); }
+
+.newsletter__field:hover { border-color: rgb(0 0 0 / 0.32); }
+
+.newsletter__field:focus {
+  outline: none;
+  border-color: rgb(0 0 0 / 0.55);
+}
+
+/* Toetsenbordgebruikers moeten wel kunnen zien waar ze zijn. */
+.newsletter__field:focus-visible {
+  outline: 2px solid rgb(0 0 0 / 0.55);
+  outline-offset: 2px;
+}
+
+.newsletter__button {
+  flex: 0 0 auto;
+  padding: 0.9rem 1.9rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--newsletter-bg, #f3efe8);
+  background: var(--newsletter-ink, #1c1917);
+  border: 0;
+  border-radius: var(--radius);
+  box-shadow: none;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.newsletter__button:hover { opacity: 0.82; }
+
+.newsletter__note {
+  flex: 1 1 100%;
+  margin: 0.4rem 0 0;
+  font-size: 0.875rem;
+  color: var(--color-muted);
+}
+
+@media (max-width: 560px) {
+  .newsletter__field,
+  .newsletter__button {
+    flex: 1 1 100%;
+    max-width: none;
+  }
 }
 
 /* --------------------------------------------------------------------------

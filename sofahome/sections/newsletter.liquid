@@ -1,18 +1,20 @@
-<section class="section">
+<section
+  class="newsletter"
+  style="--newsletter-bg: {{ section.settings.background }}; --newsletter-ink: {{ section.settings.button_color }}"
+>
   <div class="page-width">
-    <div class="newsletter">
-      <div>
-        <h2>{{ section.settings.heading }}</h2>
-        {%- if section.settings.text != blank -%}
-          <p class="lede" style="margin-inline:auto">{{ section.settings.text }}</p>
-        {%- endif -%}
-      </div>
+    <div class="newsletter__inner">
+      <h2 class="newsletter__heading">{{ section.settings.heading }}</h2>
+
+      {%- if section.settings.text != blank -%}
+        <p class="newsletter__text">{{ section.settings.text }}</p>
+      {%- endif -%}
 
       {%- form 'customer', class: 'newsletter__form' -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
         <label class="visually-hidden" for="NewsletterEmail">{{ 'general.newsletter_form.label' | t }}</label>
         <input
-          class="field"
+          class="newsletter__field"
           id="NewsletterEmail"
           type="email"
           name="contact[email]"
@@ -20,10 +22,10 @@
           placeholder="{{ 'general.newsletter_form.placeholder' | t }}"
           required
         >
-        <button class="button" type="submit">{{ 'general.newsletter_form.submit' | t }}</button>
+        <button class="newsletter__button" type="submit">{{ 'general.newsletter_form.submit' | t }}</button>
 
         {%- if form.posted_successfully? -%}
-          <p class="form-note" style="color:inherit">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          <p class="newsletter__note">{{ 'general.newsletter_form.confirmation' | t }}</p>
         {%- endif -%}
       {%- endform -%}
     </div>
@@ -34,12 +36,27 @@
 {
   "name": "Nieuwsbrief",
   "settings": [
-    { "type": "text", "id": "heading", "label": "Kop", "default": "Nieuwe kleuren, nieuw in de collectie" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Blijf op de hoogte" },
     {
       "type": "textarea",
       "id": "text",
       "label": "Tekst",
-      "default": "Eén mail per maand. Als eerste zien wat erbij komt, en af en toe iets dat alleen voor de lijst geldt."
+      "default": "Eén mail per maand, als er iets nieuws is.",
+      "info": "Houd het bij één korte zin."
+    },
+    {
+      "type": "color",
+      "id": "background",
+      "label": "Achtergrond",
+      "default": "#f3efe8",
+      "info": "Zacht en neutraal. Crème, off-white of een lichte lavendel."
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Knopkleur",
+      "default": "#1c1917",
+      "info": "Effen donker, zonder schaduw."
     }
   ],
   "presets": [{ "name": "Nieuwsbrief" }]

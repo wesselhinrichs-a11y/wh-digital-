@@ -142,8 +142,10 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "heading": "Nieuwe kleuren, nieuw in de collectie",
-        "text": "Eén mail per maand. Als eerste zien wat erbij komt, en af en toe iets dat alleen voor de lijst geldt."
+        "heading": "Blijf op de hoogte",
+        "text": "Eén mail per maand, als er iets nieuws is.",
+        "background": "#f3efe8",
+        "button_color": "#1c1917"
       }
     },
     "rich_text_AVjAWR": {
