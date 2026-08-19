@@ -142,8 +142,10 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "heading": "Blijf op de hoogte",
-        "text": "Eén mail per maand, als er iets nieuws is.",
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Als eerste op de hoogte van nieuwe collecties",
+        "text": "Geen spam, alleen updates die ertoe doen.",
+        "button_label": "Aanmelden",
         "background": "#f3efe8",
         "button_color": "#1c1917"
       }
