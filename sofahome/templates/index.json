@@ -163,11 +163,49 @@
         "button_2_label": "Shop slaapmasker",
         "button_2_link": "/collections/all"
       }
+    },
+    "material": {
+      "type": "material",
+      "blocks": {
+        "spec-1": {
+          "type": "spec",
+          "settings": {
+            "icon": "ruler",
+            "text": "22 momme"
+          }
+        },
+        "spec-2": {
+          "type": "spec",
+          "settings": {
+            "icon": "swatch",
+            "text": "100% mulberry silk"
+          }
+        },
+        "spec-3": {
+          "type": "spec",
+          "settings": {
+            "icon": "leaf",
+            "text": "Huidvriendelijk"
+          }
+        }
+      },
+      "block_order": [
+        "spec-1",
+        "spec-2",
+        "spec-3"
+      ],
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Het materiaal",
+        "heading": "22 momme, gemaakt om te voelen",
+        "note": "Waar andere merken je laten betalen voor de naam, betaal je bij ons voor het materiaal zelf."
+      }
     }
   },
   "order": [
     "hero",
     "usps",
+    "material",
     "featured",
     "atelier",
     "image_with_text_pTyANC",

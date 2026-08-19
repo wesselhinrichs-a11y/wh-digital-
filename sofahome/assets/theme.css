@@ -845,6 +845,41 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
 .stars { display: flex; gap: 0.15rem; color: var(--color-accent-deep, var(--color-accent)); }
 .stars svg { width: 1rem; height: 1rem; }
 
+/* Kenmerken naast de materiaalfoto. Kleine iconen, veel lucht, geen kaders. */
+.specs {
+  list-style: none;
+  margin: 2rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 1rem;
+}
+
+.specs__item {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  font-size: 0.9375rem;
+}
+
+.specs__icon {
+  display: flex;
+  color: var(--color-accent-deep, var(--color-accent));
+}
+
+.specs__icon svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.specs__note {
+  max-width: 34rem;
+  margin: clamp(2.5rem, 6vw, 4rem) auto 0;
+  text-align: center;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+}
+
 /* Nieuwsbrief — een rustige band over de volle breedte. Alles gecentreerd,
    veel witruimte, geen iconen of randversiering. */
 .newsletter {
