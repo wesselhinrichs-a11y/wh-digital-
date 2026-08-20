@@ -1,6 +1,6 @@
 <section class="section">
   <div class="page-width">
-    <div class="split {% if section.settings.reverse %}split--reverse{% endif %}">
+    <div class="split split--fill {% if section.settings.reverse %}split--reverse{% endif %}">
       <div class="split__media">
         {%- if section.settings.image != blank -%}
           {{
@@ -23,6 +23,10 @@
         {%- endif -%}
 
         <h2>{{ section.settings.heading }}</h2>
+
+        {%- if section.settings.text != blank -%}
+          <div class="rte">{{ section.settings.text }}</div>
+        {%- endif -%}
 
         {%- if section.blocks.size > 0 -%}
           <ul class="specs">
@@ -52,6 +56,12 @@
     { "type": "checkbox", "id": "reverse", "label": "Foto rechts", "default": false },
     { "type": "text", "id": "eyebrow", "label": "Label erboven", "default": "Het materiaal" },
     { "type": "text", "id": "heading", "label": "Kop", "default": "22 momme, gemaakt om te voelen" },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Tekst",
+      "default": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht uit je huid en je haar, en geeft weerstand bij elke beweging die je maakt. Dat zie je 's ochtends terug: strepen in je gezicht die er een uur over doen om weg te trekken, haar dat klit, een huid die droger aanvoelt dan toen je ging slapen.</p><p>Silk doet geen van beide. Het glijdt mee in plaats van te trekken, en laat het vocht zitten waar het hoort. Hoe dichter het weefsel — dat is precies wat momme meet — hoe soepeler het aanvoelt en hoe beter het tegen wassen kan. Veel webshops blijven onder de 12 momme; daar begint silk pas op silk te lijken.</p>"
+    },
     {
       "type": "textarea",
       "id": "note",
@@ -86,7 +96,7 @@
       "name": "Het materiaal",
       "blocks": [
         { "type": "spec", "settings": { "icon": "ruler", "text": "22 momme" } },
-        { "type": "spec", "settings": { "icon": "swatch", "text": "100% mulberry silk" } },
+        { "type": "spec", "settings": { "icon": "swatch", "text": "100% moerbeizijde" } },
         { "type": "spec", "settings": { "icon": "leaf", "text": "Huidvriendelijk" } }
       ]
     }
