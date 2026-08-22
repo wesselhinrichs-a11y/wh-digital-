@@ -1,0 +1,19 @@
+{
+  "name": "workout-tracker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Weekschema en trainingslog als installeerbare PWA. Alles lokaal, geen backend.",
+  "scripts": {
+    "build": "esbuild src/app.jsx --bundle --minify --format=iife --target=es2018 --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --outfile=app.js",
+    "watch": "npm run build -- --watch",
+    "start": "python3 -m http.server 8795"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

@@ -8,10 +8,28 @@
       "port": 8791
     },
     {
+      "name": "kapper",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8793", "--directory", "kapper"],
+      "port": 8793
+    },
+    {
       "name": "bosma-coaching",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8792", "--directory", "bosma-coaching"],
       "port": 8792
+    },
+    {
+      "name": "workout",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8795", "--directory", "workout"],
+      "port": 8795
+    },
+    {
+      "name": "krachttraining",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8794", "--directory", "krachttraining"],
+      "port": 8794
     }
   ]
 }

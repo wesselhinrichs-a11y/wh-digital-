@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LUMA Hairstudio — De beste kapper van de stad</title>
+<meta name="description" content="LUMA Hairstudio. Kleur, knippen en styling door de best beoordeelde stylisten van de stad. Boek online in 10 seconden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f6f1ea;         /* warm ivoor */
+  --bg-2:#eee6db;       /* warm zand */
+  --ink:#26201a;        /* espresso */
+  --ink-soft:#75665a;
+  --line:rgba(38,32,26,.16);
+  --accent:#a05c38;     /* gebrande siena */
+  --btn:#a05c38;        /* sticky-knop, wisselt per sectie */
+  --radius:6px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+::selection{background:var(--accent);color:var(--bg)}
+h1,h2,h3,.serif{font-family:'Fraunces',serif;font-weight:450}
+img{max-width:100%;display:block}
+section{padding:clamp(5rem,10vw,9rem) clamp(1.5rem,5vw,5rem)}
+.wrap{max-width:1200px;margin:0 auto}
+
+/* ---------- micro-labels & koppen ---------- */
+.label{
+  display:flex;align-items:center;gap:.9rem;
+  font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:1.6rem;
+}
+.label::after{content:'';width:3rem;height:1px;background:var(--accent);opacity:.5}
+h2{
+  font-size:clamp(2.1rem,4.6vw,3.4rem);
+  line-height:1.08;letter-spacing:-.015em;
+  margin-bottom:1rem;max-width:18ch;
+}
+h2 em{font-style:italic;color:var(--accent)}
+.section-sub{color:var(--ink-soft);max-width:52ch;margin-bottom:3.5rem;font-size:1.02rem}
+
+/* ---------- knoppen ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.7rem;
+  padding:1.05rem 2rem;border-radius:var(--radius);
+  font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;transition:background .3s,color .3s,border-color .3s;
+}
+.btn .arr{font-size:.9rem;letter-spacing:0;transition:transform .3s}
+.btn:hover .arr{transform:translateX(4px)}
+.btn-primary{background:var(--ink);color:var(--bg)}
+.btn-primary:hover{background:var(--accent)}
+.btn-ghost{border:1px solid var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink)}
+
+/* ---------- header ---------- */
+header{
+  position:absolute;top:0;left:0;right:0;z-index:10;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:1.6rem clamp(1.5rem,5vw,5rem);
+}
+.logo{font-family:'Fraunces',serif;font-weight:600;font-size:1.3rem;letter-spacing:.04em;color:var(--ink);text-decoration:none}
+.logo span{color:var(--accent)}
+nav{display:flex;gap:2.2rem}
+nav a{
+  font-size:.78rem;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;opacity:.65;transition:opacity .25s;
+}
+nav a:hover{opacity:1}
+
+/* ---------- hero: editorial split ---------- */
+.hero{
+  min-height:100svh;padding:0;
+  display:grid;grid-template-columns:minmax(0,11fr) minmax(0,9fr);
+}
+.hero-copy{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem clamp(1.5rem,5vw,5rem) 4rem;
+}
+.hero .eyebrow{
+  font-size:.72rem;font-weight:600;letter-spacing:.28em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:2rem;
+  opacity:0;animation:fadeUp .8s .2s forwards;
+}
+.hero h1{
+  font-size:clamp(2.8rem,6.4vw,5.6rem);
+  line-height:1.04;letter-spacing:-.025em;
+  max-width:13ch;
+}
+.hero h1 em{font-style:italic;color:var(--accent)}
+.hero h1 .ch{display:inline-block;opacity:0;transform:translateY(.45em);animation:chIn .6s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes chIn{to{opacity:1;transform:none}}
+.hero .sub{
+  margin-top:2rem;font-size:1.02rem;max-width:40ch;color:var(--ink-soft);
+  opacity:0;animation:fadeUp .8s 1.4s forwards;
+}
+.hero .cta-row{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fadeUp .8s 1.7s forwards}
+.hero .proof{
+  display:flex;gap:clamp(1.5rem,3vw,3rem);flex-wrap:wrap;
+  margin-top:3.5rem;padding-top:1.8rem;border-top:1px solid var(--line);
+  opacity:0;animation:fadeUp .8s 2s forwards;
+}
+.proof div{font-size:.8rem;color:var(--ink-soft);line-height:1.5}
+.proof strong{
+  display:block;font-family:'Fraunces',serif;font-weight:500;
+  font-size:1.35rem;color:var(--ink);letter-spacing:-.01em;
+}
+.proof .stars{color:var(--accent);letter-spacing:.1em;font-size:.8rem}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.hero-visual{position:relative;overflow:hidden}
+.hero-visual img{
+  width:100%;height:100%;object-fit:cover;
+  filter:sepia(.14) saturate(.92) contrast(.98);
+}
+.hero-visual::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--bg) 0%,transparent 12%);
+}
+
+/* ---------- marquee ---------- */
+.marquee{
+  background:var(--ink);color:var(--bg);
+  overflow:hidden;padding:1.05rem 0;
+}
+.marquee .track{
+  display:flex;width:max-content;gap:0;
+  animation:marquee 30s linear infinite;
+  font-family:'Fraunces',serif;font-style:italic;font-weight:400;
+  font-size:clamp(1rem,2.1vw,1.35rem);white-space:nowrap;letter-spacing:.02em;
+}
+.marquee .track span i{font-style:normal;color:var(--accent);margin:0 2.2rem;font-size:.6em;vertical-align:middle}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ---------- galerij ---------- */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(1.2rem,2.5vw,2.5rem)}
+.g-item:nth-child(2){transform:translateY(3.5rem)}
+.card{
+  position:relative;border-radius:var(--radius);overflow:hidden;
+  aspect-ratio:3/4;
+  clip-path:inset(0 100% 0 0 round var(--radius));
+  transition:clip-path 1.2s cubic-bezier(.77,0,.18,1);
+}
+.grid.in .card{clip-path:inset(0 0 0 0 round var(--radius))}
+.g-item:nth-child(2) .card{transition-delay:.15s}
+.g-item:nth-child(3) .card{transition-delay:.3s}
+.card img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.22,1,.36,1)}
+.card::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg,transparent 55%,rgba(38,32,26,.45));
+  opacity:0;transition:opacity .5s;
+}
+.card:hover img{transform:scale(1.045)}
+.card:hover::after{opacity:1}
+.g-cap{
+  display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+  margin-top:1.1rem;
+}
+.g-cap .t{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:500}
+.g-cap .n{font-size:.72rem;font-weight:600;letter-spacing:.2em;color:var(--ink-soft)}
+
+/* ---------- voor/na ---------- */
+.ba{background:var(--bg-2)}
+.ba-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(2rem,5vw,5rem);align-items:center}
+.ba-layout .section-sub{margin-bottom:2rem}
+.ba-note{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-soft)}
+.ba-frame{
+  position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:4/5;
+  max-height:78vh;
+  touch-action:pan-y;
+}
+.ba-frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none}
+.ba-frame .before{filter:grayscale(1) contrast(.94) brightness(.97)}
+.ba-frame .after{clip-path:inset(0 0 0 var(--cut,50%))}
+.ba-handle{
+  position:absolute;top:0;bottom:0;left:var(--cut,50%);width:1px;
+  background:rgba(246,241,234,.9);transform:translateX(-50%);pointer-events:none;
+}
+.ba-handle::after{
+  content:'◂ ▸';display:grid;place-items:center;
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:46px;height:46px;border-radius:50%;
+  background:var(--bg);color:var(--ink);
+  font-size:.6rem;letter-spacing:.05em;
+  box-shadow:0 4px 16px rgba(38,32,26,.28);
+}
+.ba-label{
+  position:absolute;top:1.1rem;z-index:2;pointer-events:none;
+  border:1px solid rgba(246,241,234,.5);color:var(--bg);
+  background:rgba(38,32,26,.35);backdrop-filter:blur(4px);
+  padding:.28rem .85rem;border-radius:var(--radius);
+  font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;
+}
+.ba-label.l{left:1.1rem}.ba-label.r{right:1.1rem}
+.ba-range{
+  position:absolute;inset:0;width:100%;height:100%;
+  opacity:0;cursor:ew-resize;-webkit-appearance:none;appearance:none;
+}
+
+/* ---------- prijslijst ---------- */
+.prices-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:clamp(2rem,5vw,5rem);align-items:start}
+.prices-intro{position:sticky;top:6rem}
+.prices-intro .note{font-size:.85rem;color:var(--ink-soft);margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid var(--line);max-width:34ch}
+.price-row{
+  display:flex;justify-content:space-between;align-items:baseline;gap:2rem;
+  padding:1.5rem 0;border-bottom:1px solid var(--line);
+  opacity:0;transform:translateY(18px);
+  transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1);
+}
+.price-row:first-child{border-top:1px solid var(--line)}
+.price-row.in{opacity:1;transform:none}
+.price-row .name{font-family:'Fraunces',serif;font-size:1.15rem;font-weight:500;letter-spacing:-.01em}
+.price-row .desc{font-family:'Inter',sans-serif;font-size:.84rem;color:var(--ink-soft);display:block;margin-top:.2rem}
+.price-row .amount{
+  font-size:.95rem;font-weight:600;white-space:nowrap;
+  font-variant-numeric:tabular-nums;
+}
+.price-row .amount i{font-style:normal;color:var(--ink-soft);font-weight:400;margin-right:.3rem;font-size:.8rem}
+
+/* ---------- boeken ---------- */
+.book{background:var(--ink);color:var(--bg)}
+.book .label{color:var(--accent)}
+.book h2{max-width:22ch}
+.book .section-sub{color:rgba(246,241,234,.6)}
+.book-cta{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:4.5rem}
+.book .btn-light{background:var(--bg);color:var(--ink)}
+.book .btn-light:hover{background:var(--accent);color:var(--bg)}
+.book .btn-outline{border:1px solid rgba(246,241,234,.3);color:var(--bg)}
+.book .btn-outline:hover{border-color:var(--bg)}
+.book-info{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;
+  padding-top:2.5rem;border-top:1px solid rgba(246,241,234,.15);
+}
+.book-info h3{
+  font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;
+  letter-spacing:.24em;text-transform:uppercase;color:var(--accent);margin-bottom:.8rem;
+}
+.book-info p{font-size:.9rem;color:rgba(246,241,234,.7);line-height:1.8}
+.book-info a{color:var(--bg);text-decoration:none;border-bottom:1px solid rgba(246,241,234,.3)}
+.book-info a:hover{border-color:var(--bg)}
+
+footer{
+  background:var(--ink);color:rgba(246,241,234,.4);
+  padding:1.8rem clamp(1.5rem,5vw,5rem);
+  border-top:1px solid rgba(246,241,234,.1);
+  display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+  font-size:.78rem;
+}
+
+/* ---------- sticky boek-nu ---------- */
+.sticky-book{
+  position:fixed;right:1.4rem;bottom:1.4rem;z-index:50;
+  background:var(--btn);color:#f6f1ea;
+  padding:1rem 1.8rem;border-radius:var(--radius);
+  font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;
+  text-decoration:none;
+  box-shadow:0 10px 30px rgba(38,32,26,.28);
+  transition:background .6s,transform .25s;
+  display:inline-flex;align-items:center;gap:.7rem;
+}
+.sticky-book:hover{transform:translateY(-3px)}
+.sticky-book::after{content:'↗';font-size:.95rem;letter-spacing:0}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .ba-layout,.prices-layout{grid-template-columns:1fr}
+  .prices-intro{position:static}
+  .g-item:nth-child(2){transform:none}
+}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr;min-height:0}
+  .hero-copy{padding-top:7.5rem}
+  .hero-visual{aspect-ratio:4/3}
+  .hero-visual::after{background:linear-gradient(180deg,var(--bg) 0%,transparent 14%)}
+  nav{display:none}
+  .grid{grid-template-columns:1fr 1fr}
+  .grid .g-item:nth-child(3){grid-column:1/-1}
+  .grid .g-item:nth-child(3) .card{aspect-ratio:16/10}
+  .book-info{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero h1 .ch,.hero .eyebrow,.hero .sub,.hero .cta-row,.hero .proof{animation:none;opacity:1;transform:none}
+  .marquee .track{animation:none}
+  .card{clip-path:inset(0 0 0 0 round var(--radius))}
+  .price-row{opacity:1;transform:none;transition:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#top">LUMA<span>.</span></a>
+  <nav>
+    <a href="#werk">Werk</a>
+    <a href="#voorna">Voor &amp; na</a>
+    <a href="#prijzen">Prijzen</a>
+    <a href="#boek">Contact</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" data-btn="#a05c38">
+  <div class="hero-copy">
+    <p class="eyebrow">Hairstudio · Hartje stad</p>
+    <h1 id="heroTitle" data-text="Goed haar,|de rest volgt |vanzelf."></h1>
+    <p class="sub">Kleur, knippen en styling door de meest geboekte stylisten van de stad. Persoonlijk advies, eerlijke prijzen en een resultaat waar je mee thuiskomt.</p>
+    <div class="cta-row">
+      <a class="btn btn-primary" href="#boek">Boek een afspraak <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="#werk">Bekijk ons werk</a>
+    </div>
+    <div class="proof">
+      <div><strong>4,9 <span class="stars">★★★★★</span></strong>512 Google-reviews</div>
+      <div><strong>12 jr</strong>vakmanschap</div>
+      <div><strong>6</strong>gespecialiseerde stylisten</div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1400&auto=format&fit=crop" alt="De lichte, rustige salon van LUMA met stoel en spiegel" fetchpriority="high">
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="track" id="marqueeTrack">
+    <span>before<i>✦</i>during<i>✦</i>after<i>✦</i>before<i>✦</i>during<i>✦</i>after<i>✦</i>before<i>✦</i>during<i>✦</i>after<i>✦</i></span>
+    <span>before<i>✦</i>during<i>✦</i>after<i>✦</i>before<i>✦</i>during<i>✦</i>after<i>✦</i>before<i>✦</i>during<i>✦</i>after<i>✦</i></span>
+  </div>
+</div>
+
+<!-- GALERIJ -->
+<section class="gallery" id="werk" data-btn="#26201a">
+  <div class="wrap">
+    <p class="label">01 — Ons werk</p>
+    <h2>Werk dat voor <em>zichzelf</em> spreekt</h2>
+    <p class="section-sub">Elke stoel een transformatie. Dit is wat er gebeurt als je haar aan de juiste handen toevertrouwt.</p>
+    <div class="grid">
+      <div class="g-item">
+        <figure class="card">
+          <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=800&auto=format&fit=crop" alt="Stylist föhnt lachend het haar van een klant in de salon" loading="lazy">
+        </figure>
+        <div class="g-cap"><span class="t">Knippen &amp; styling</span><span class="n">01</span></div>
+      </div>
+      <div class="g-item">
+        <figure class="card">
+          <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?q=80&w=800&auto=format&fit=crop" alt="Vrouw met prachtige natuurlijke krullen kijkt over haar schouder" loading="lazy">
+        </figure>
+        <div class="g-cap"><span class="t">Krullen &amp; texture</span><span class="n">02</span></div>
+      </div>
+      <div class="g-item">
+        <figure class="card">
+          <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=800&auto=format&fit=crop" alt="Klant ontspant tijdens een haarwassing aan de wasbak" loading="lazy">
+        </figure>
+        <div class="g-cap"><span class="t">Wassen &amp; care</span><span class="n">03</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOOR / NA -->
+<section class="ba" id="voorna" data-btn="#8a6544">
+  <div class="wrap ba-layout">
+    <div>
+      <p class="label">02 — Het verschil</p>
+      <h2>Voor &amp; <em>na</em></h2>
+      <p class="section-sub">Hetzelfde haar, een wereld van verschil. Sleep de balk en oordeel zelf.</p>
+      <p class="ba-note">◂ Sleep de balk ▸</p>
+    </div>
+    <div class="ba-frame" id="baFrame">
+      <img class="before" src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=900&auto=format&fit=crop" alt="Voor: portret in vlakke tinten">
+      <img class="after" src="https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=900&auto=format&fit=crop" alt="Na: hetzelfde portret, stralend van kleur">
+      <span class="ba-label l">Voor</span>
+      <span class="ba-label r">Na</span>
+      <div class="ba-handle"></div>
+      <input class="ba-range" id="baRange" type="range" min="0" max="100" value="50" aria-label="Vergelijk voor en na">
+    </div>
+  </div>
+</section>
+
+<!-- PRIJSLIJST -->
+<section class="prices" id="prijzen" data-btn="#26201a">
+  <div class="wrap prices-layout">
+    <div class="prices-intro">
+      <p class="label">03 — Prijzen</p>
+      <h2>Helder, zonder <em>verrassingen</em></h2>
+      <p class="note">Alle behandelingen zijn inclusief consult, wassen en drogen. Prijzen incl. btw.</p>
+    </div>
+    <div class="price-list">
+      <div class="price-row"><span class="name">Knippen &amp; stylen<span class="desc">Consult, wassen, knippen, föhnen</span></span><span class="amount"><i>vanaf</i>€ 59</span></div>
+      <div class="price-row"><span class="name">Balayage<span class="desc">Handgeschilderde highlights, incl. toner</span></span><span class="amount"><i>vanaf</i>€ 145</span></div>
+      <div class="price-row"><span class="name">Volledige kleuring<span class="desc">Uitgroei of complete kleurverandering</span></span><span class="amount"><i>vanaf</i>€ 95</span></div>
+      <div class="price-row"><span class="name">Keratine behandeling<span class="desc">Glad, glanzend, drie maanden lang</span></span><span class="amount">€ 120</span></div>
+      <div class="price-row"><span class="name">Bruids- &amp; eventstyling<span class="desc">Incl. proefsessie, op locatie of in de salon</span></span><span class="amount"><i>vanaf</i>€ 175</span></div>
+      <div class="price-row"><span class="name">Föhnen &amp; styling<span class="desc">Voor als het écht goed moet zitten</span></span><span class="amount">€ 35</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOEKEN -->
+<section class="book" id="boek" data-btn="#a05c38">
+  <div class="wrap">
+    <p class="label">04 — Afspraak</p>
+    <h2>Jouw stoel staat <em>klaar</em></h2>
+    <p class="section-sub">Online geboekt in tien seconden, of stuur een appje en we regelen het voor je.</p>
+    <div class="book-cta">
+      <a class="btn btn-light" href="https://wa.me/31612345678?text=Hoi%20LUMA!%20Ik%20wil%20graag%20een%20afspraak%20maken." target="_blank" rel="noopener">Boek via WhatsApp <span class="arr">→</span></a>
+      <a class="btn btn-outline" href="tel:+31201234567">Bel 020 – 123 45 67</a>
+    </div>
+    <div class="book-info">
+      <div>
+        <h3>Bezoek</h3>
+        <p>Herenstraat 12<br>Hartje stad</p>
+      </div>
+      <div>
+        <h3>Openingstijden</h3>
+        <p>di – za · 9:00 – 18:00<br>donderdag tot 21:00</p>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <p><a href="tel:+31201234567">020 – 123 45 67</a><br><a href="mailto:hallo@lumahair.nl">hallo@lumahair.nl</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 LUMA Hairstudio</span>
+  <span>KvK 12345678 · Alle prijzen incl. btw</span>
+</footer>
+
+<!-- STICKY BOEK NU -->
+<a class="sticky-book" href="#boek">Boek nu</a>
+
+<script>
+/* ---- hero: letter voor letter ---- */
+(function(){
+  const h1 = document.getElementById('heroTitle');
+  const lines = h1.dataset.text.split('|');
+  h1.setAttribute('aria-label', lines.join(' ').replace(/\s+/g,' ').trim());
+  let delay = .35, html = '';
+  lines.forEach((line, li) => {
+    const em = li === 2; // laatste regel cursief/accent
+    if (em) html += '<em>';
+    for (const ch of line) {
+      if (ch === ' ') { html += ' '; continue; }
+      html += `<span class="ch" aria-hidden="true" style="animation-delay:${delay.toFixed(2)}s">${ch}</span>`;
+      delay += .04;
+    }
+    if (em) html += '</em>';
+    if (li < lines.length - 1) html += '<br>';
+  });
+  h1.innerHTML = html;
+})();
+
+/* ---- scroll reveals: foto's (clip-path) + prijsrijen (staggered) ---- */
+(function(){
+  // let op: observeer de grid, niet de kaarten zelf — een element dat volledig
+  // is weggeclipt met clip-path telt in Chromium niet als "intersecting"
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: .2 });
+  document.querySelectorAll('.grid').forEach(el => io.observe(el));
+
+  const rows = [...document.querySelectorAll('.price-row')];
+  const ioRows = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      e.target.style.transitionDelay = (rows.indexOf(e.target) % rows.length) * 0.1 + 's';
+      e.target.classList.add('in');
+      ioRows.unobserve(e.target);
+    });
+  }, { threshold: .3 });
+  rows.forEach(el => ioRows.observe(el));
+})();
+
+/* ---- voor/na slider ---- */
+(function(){
+  const frame = document.getElementById('baFrame');
+  const range = document.getElementById('baRange');
+  range.addEventListener('input', () => frame.style.setProperty('--cut', range.value + '%'));
+})();
+
+/* ---- sticky knop wisselt van kleur per sectie ---- */
+(function(){
+  const root = document.documentElement;
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && e.target.dataset.btn) root.style.setProperty('--btn', e.target.dataset.btn);
+    });
+  }, { rootMargin: '-45% 0px -45% 0px' });
+  document.querySelectorAll('section[data-btn]').forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>

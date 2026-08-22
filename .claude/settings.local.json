@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "mcp__9419f02d-4694-4678-ba75-06805ae39674__get_game_creation_instructions"
+      "mcp__9419f02d-4694-4678-ba75-06805ae39674__get_game_creation_instructions",
+      "Bash(./node_modules/.bin/esbuild src/app.jsx --bundle --minify --format=iife --target=es2018 --jsx=automatic --define:process.env.NODE_ENV='\"production\"' --outfile=app.js)",
+      "Bash(timeout 45 npx shopify theme list --store qstzjv-nd.myshopify.com)",
+      "Bash(npm run *)"
     ]
   }
 }
