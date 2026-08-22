@@ -78,17 +78,6 @@
         "show_vendor": false
       }
     },
-    "atelier": {
-      "type": "image-with-text",
-      "settings": {
-        "reverse": false,
-        "eyebrow": "Onze silk",
-        "heading": "Wat onze silk goed maakt",
-        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht weg en geeft wrijving; silk doet geen van beide. Minder slaapvouwen, minder klit in je haar, en met een masker dat licht buitensluit ook minder halfwakkere uren.</p><p>Hoe goed silk is, zit in de dichtheid: momme. Veel webshops blijven onder de 12, zo dun dat het nauwelijks van polyester te onderscheiden is. Wij kozen 19 momme voor de kussenslopen en 22 voor de slaapmaskers — de dikte waarop je het verschil elke nacht opnieuw voelt.</p>",
-        "button_label": "Shop nu",
-        "button_link": "/collections/all"
-      }
-    },
     "image_with_text_pTyANC": {
       "type": "image-with-text",
       "name": "Afbeelding met tekst",
@@ -199,7 +188,9 @@
         "eyebrow": "Het materiaal",
         "heading": "22 momme, gemaakt om te voelen",
         "note": "Waar andere merken je laten betalen voor de naam, betaal je bij ons voor het materiaal zelf.",
-        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht uit je huid en je haar, en geeft weerstand bij elke beweging die je maakt. Dat zie je 's ochtends terug: strepen in je gezicht die er een uur over doen om weg te trekken, haar dat klit, een huid die droger aanvoelt dan toen je ging slapen.</p><p>Silk doet geen van beide. Het glijdt mee in plaats van te trekken, en laat het vocht zitten waar het hoort. Hoe dichter het weefsel — dat is precies wat momme meet — hoe soepeler het aanvoelt en hoe beter het tegen wassen kan. Veel webshops blijven onder de 12 momme; daar begint silk pas op silk te lijken.</p>"
+        "text": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht uit je huid en je haar, en geeft weerstand bij elke beweging die je maakt. Dat zie je 's ochtends terug: strepen in je gezicht die er een uur over doen om weg te trekken, haar dat klit, een huid die droger aanvoelt dan toen je ging slapen.</p><p>Silk doet geen van beide. Het glijdt mee in plaats van te trekken, en laat het vocht zitten waar het hoort. Hoe dichter het weefsel — dat is precies wat momme meet — hoe soepeler het aanvoelt en hoe beter het tegen wassen kan. Veel webshops blijven onder de 12 momme; daar begint silk pas op silk te lijken. Wij kozen 19 momme voor de kussenslopen en 22 voor de slaapmaskers.</p>",
+        "button_label": "",
+        "button_link": "/collections/all"
       }
     }
   },
@@ -207,11 +198,10 @@
     "hero",
     "usps",
     "featured",
-    "material",
-    "atelier",
-    "image_with_text_pTyANC",
-    "reviews",
     "rich_text_AVjAWR",
+    "material",
+    "reviews",
+    "image_with_text_pTyANC",
     "newsletter"
   ]
 }

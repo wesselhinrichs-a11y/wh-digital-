@@ -28,6 +28,14 @@
           <div class="rte">{{ section.settings.text }}</div>
         {%- endif -%}
 
+        {%- if section.settings.button_label != blank -%}
+          <p style="margin-top:1.5rem">
+            <a class="button button--secondary" href="{{ section.settings.button_link }}">
+              {{ section.settings.button_label }}
+            </a>
+          </p>
+        {%- endif -%}
+
         {%- if section.blocks.size > 0 -%}
           <ul class="specs">
             {%- for block in section.blocks -%}
@@ -62,6 +70,8 @@
       "label": "Tekst",
       "default": "<p>Zeven, acht uur per nacht ligt je huid tegen je kussen. Katoen trekt vocht uit je huid en je haar, en geeft weerstand bij elke beweging die je maakt. Dat zie je 's ochtends terug: strepen in je gezicht die er een uur over doen om weg te trekken, haar dat klit, een huid die droger aanvoelt dan toen je ging slapen.</p><p>Silk doet geen van beide. Het glijdt mee in plaats van te trekken, en laat het vocht zitten waar het hoort. Hoe dichter het weefsel — dat is precies wat momme meet — hoe soepeler het aanvoelt en hoe beter het tegen wassen kan. Veel webshops blijven onder de 12 momme; daar begint silk pas op silk te lijken.</p>"
     },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "info": "Leeg laten voor geen knop." },
+    { "type": "url", "id": "button_link", "label": "Knoplink" },
     {
       "type": "textarea",
       "id": "note",
