@@ -315,6 +315,43 @@ a {
   height: 24px;
 }
 
+/* Concrete voorbeelden per dienst */
+.dienst-sub {
+  margin-top: var(--space-3);
+  margin-bottom: var(--space-1);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.dienst-lijst {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.dienst-lijst li {
+  position: relative;
+  padding-left: var(--space-3);
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
+.dienst-lijst li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
 /* -------------------------------------------------- */
 /* Concept work                                        */
 /* -------------------------------------------------- */
@@ -647,8 +684,12 @@ a {
 
 
 /* -------------------------------------------------- */
-/* Werkwijze: editorial blokken zonder sectiekop       */
+/* Werkwijze: editorial blokken                        */
 /* -------------------------------------------------- */
+.werkwijze-titel {
+  margin-bottom: var(--space-6);
+}
+
 .stap-blok {
   display: grid;
   grid-template-columns: 58% 1fr;
@@ -734,6 +775,40 @@ a {
 .stap-animatie.zichtbaar .stap-inhoud {
   opacity: 1;
   transform: none;
+}
+
+/* -------------------------------------------------- */
+/* Waarom WH Digital                                   */
+/* -------------------------------------------------- */
+.waarom-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: var(--space-5);
+}
+
+.waarom-icon {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-small);
+  background: var(--accent-tint);
+  color: var(--accent);
+  margin-bottom: var(--space-3);
+}
+
+.waarom-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.waarom-item h3 {
+  margin-bottom: var(--space-2);
+}
+
+.waarom-item p {
+  color: var(--text-muted);
 }
 
 /* -------------------------------------------------- */
