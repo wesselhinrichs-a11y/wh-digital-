@@ -206,8 +206,8 @@
   "order": [
     "hero",
     "usps",
-    "material",
     "featured",
+    "material",
     "atelier",
     "image_with_text_pTyANC",
     "reviews",
