@@ -192,6 +192,52 @@
         "button_label": "",
         "button_link": "/collections/all"
       }
+    },
+    "benefits": {
+      "type": "benefits",
+      "blocks": {
+        "b-1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Glijdt, in plaats van trekt",
+            "text": "Geen wrijving betekent geen frizz, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
+          }
+        },
+        "b-2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Ademend van nature",
+            "text": "Silk regelt zijn eigen temperatuur, koel wanneer het warm is, warm wanneer het koud is."
+          }
+        },
+        "b-3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Zacht voor de huid",
+            "text": "Trekt geen vocht weg, maar houdt het vast. Minder druklijnen, meer rust voor je huid."
+          }
+        },
+        "b-4": {
+          "type": "benefit",
+          "settings": {
+            "title": "Van nature hypoallergeen",
+            "text": "Stoot mijten en bacteriën van nature af, gemaakt voor gevoelige huid."
+          }
+        }
+      },
+      "block_order": [
+        "b-1",
+        "b-2",
+        "b-3",
+        "b-4"
+      ],
+      "settings": {
+        "reverse": true,
+        "eyebrow": "",
+        "heading": "De voordelen van 100% mulberry silk",
+        "button_label": "Shop kussenslopen",
+        "button_link": "/collections/all"
+      }
     }
   },
   "order": [
@@ -200,6 +246,7 @@
     "featured",
     "material",
     "rich_text_AVjAWR",
+    "benefits",
     "image_with_text_pTyANC",
     "reviews",
     "newsletter"

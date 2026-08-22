@@ -1,0 +1,106 @@
+<section class="section">
+  <div class="page-width">
+    <div class="split split--fill {% if section.settings.reverse %}split--reverse{% endif %}">
+      <div class="split__media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1400
+            | image_tag:
+              widths: '500, 800, 1100, 1400',
+              sizes: '(min-width: 750px) 50vw, 100vw',
+              loading: 'lazy',
+              alt: section.settings.image.alt | default: section.settings.heading | escape
+          }}
+        {%- else -%}
+          <div class="placeholder-tile"></div>
+        {%- endif -%}
+      </div>
+
+      <div class="split__content">
+        {%- if section.settings.eyebrow != blank -%}
+          <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+        {%- endif -%}
+
+        <h2>{{ section.settings.heading }}</h2>
+
+        {%- if section.blocks.size > 0 -%}
+          <ul class="benefits">
+            {%- for block in section.blocks -%}
+              <li {{ block.shopify_attributes }}>
+                <h3 class="benefits__title">{{ block.settings.title }}</h3>
+                <p class="benefits__text">{{ block.settings.text }}</p>
+              </li>
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        {%- if section.settings.button_label != blank -%}
+          <p style="margin-top:2rem">
+            <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
+          </p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Voordelen",
+  "max_blocks": 6,
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Foto" },
+    { "type": "checkbox", "id": "reverse", "label": "Foto rechts", "default": true },
+    { "type": "text", "id": "eyebrow", "label": "Label erboven" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "De voordelen van 100% mulberry silk" },
+    { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Shop kussenslopen" },
+    { "type": "url", "id": "button_link", "label": "Knoplink" }
+  ],
+  "blocks": [
+    {
+      "type": "benefit",
+      "name": "Voordeel",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Titel", "default": "Glijdt, in plaats van trekt" },
+        { "type": "textarea", "id": "text", "label": "Tekst" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Voordelen",
+      "blocks": [
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Glijdt, in plaats van trekt",
+            "text": "Geen wrijving betekent geen frizz, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Ademend van nature",
+            "text": "Silk regelt zijn eigen temperatuur, koel wanneer het warm is, warm wanneer het koud is."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Zacht voor de huid",
+            "text": "Trekt geen vocht weg, maar houdt het vast. Minder druklijnen, meer rust voor je huid."
+          }
+        },
+        {
+          "type": "benefit",
+          "settings": {
+            "title": "Van nature hypoallergeen",
+            "text": "Stoot mijten en bacteriën van nature af, gemaakt voor gevoelige huid."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
