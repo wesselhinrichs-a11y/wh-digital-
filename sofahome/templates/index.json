@@ -160,7 +160,7 @@
           "type": "spec",
           "settings": {
             "icon": "ruler",
-            "text": "22 momme"
+            "text": "19 en 22 momme"
           }
         },
         "spec-2": {
@@ -200,8 +200,8 @@
     "featured",
     "material",
     "rich_text_AVjAWR",
-    "reviews",
     "image_with_text_pTyANC",
+    "reviews",
     "newsletter"
   ]
 }
