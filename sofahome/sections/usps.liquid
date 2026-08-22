@@ -1,13 +1,32 @@
 <section class="section section--tight">
   <div class="page-width">
-    <div class="grid grid--{{ section.blocks.size | at_most: 4 }}">
-      {%- for block in section.blocks -%}
-        <div class="usp" {{ block.shopify_attributes }}>
-          <div class="usp__icon">{% render 'icon', icon: block.settings.icon %}</div>
-          <h3 class="usp__title">{{ block.settings.title }}</h3>
-          <p class="usp__text">{{ block.settings.text }}</p>
+    {%- comment -%}
+      Op desktop een raster, op telefoon een carrousel: één voordeel in beeld,
+      swipen met de vinger en verder rollend op eigen kracht. Het scrollen zelf
+      is CSS (scroll-snap); de JS zet alleen de volgende in beeld.
+    {%- endcomment -%}
+    <div
+      class="usps"
+      data-usps
+      data-interval="{{ section.settings.speed | times: 1000 }}"
+    >
+      <div class="usps__track grid grid--{{ section.blocks.size | at_most: 4 }}">
+        {%- for block in section.blocks -%}
+          <div class="usp" {{ block.shopify_attributes }}>
+            <div class="usp__icon">{% render 'icon', icon: block.settings.icon %}</div>
+            <h3 class="usp__title">{{ block.settings.title }}</h3>
+            <p class="usp__text">{{ block.settings.text }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.blocks.size > 1 -%}
+        <div class="usps__dots" data-usps-dots aria-hidden="true">
+          {%- for block in section.blocks -%}
+            <span class="usps__dot {% if forloop.first %}is-active{% endif %}"></span>
+          {%- endfor -%}
         </div>
-      {%- endfor -%}
+      {%- endif -%}
     </div>
   </div>
 </section>
@@ -16,6 +35,19 @@
 {
   "name": "Waarom Sova Home",
   "max_blocks": 4,
+  "settings": [
+    {
+      "type": "range",
+      "id": "speed",
+      "label": "Wisselen na",
+      "unit": "sec",
+      "min": 3,
+      "max": 10,
+      "step": 1,
+      "default": 4,
+      "info": "Alleen op telefoon, waar de voordelen één voor één in beeld komen."
+    }
+  ],
   "blocks": [
     {
       "type": "usp",

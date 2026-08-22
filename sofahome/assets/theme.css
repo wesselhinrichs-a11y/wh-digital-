@@ -791,6 +791,52 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   gap: 0.5rem;
 }
 
+/* Op telefoon staan de vier voordelen naast elkaar in een strook waar je
+   doorheen swipet, in plaats van als raster onder elkaar. */
+.usps__dots {
+  display: none;
+  justify-content: center;
+  gap: 0.45rem;
+  margin-top: 1.25rem;
+}
+
+.usps__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-border);
+  transition: background 200ms ease;
+}
+
+.usps__dot.is-active { background: var(--color-accent-deep, var(--color-accent)); }
+
+@media (max-width: 749px) {
+  .usps__track {
+    display: flex;
+    gap: 0;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .usps__track::-webkit-scrollbar { display: none; }
+
+  .usps__track > .usp {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    justify-items: center;
+    text-align: center;
+  }
+
+  .usps__dots { display: flex; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .usps__track { scroll-behavior: auto; }
+}
+
 .usp__icon {
   width: 2rem;
   height: 2rem;

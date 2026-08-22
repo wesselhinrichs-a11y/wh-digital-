@@ -48,6 +48,91 @@
     start();
   });
 
+  /* ---------- Voordelen: carrousel op telefoon ---------- */
+  document.querySelectorAll('[data-usps]').forEach(function (wrap) {
+    var track = wrap.querySelector('.usps__track');
+    if (!track) return;
+
+    var items = track.querySelectorAll('.usp');
+    var dots = wrap.querySelectorAll('.usps__dot');
+    if (items.length < 2) return;
+
+    var interval = parseInt(wrap.getAttribute('data-interval'), 10) || 4000;
+    var rustig = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var timer = null;
+
+    // Op desktop staat alles naast elkaar in een raster en valt er niets te
+    // rollen. Dat is meteen de test of de carrousel actief moet zijn.
+    function rolt() {
+      return track.scrollWidth > track.clientWidth + 4;
+    }
+
+    function index() {
+      if (!track.clientWidth) return 0;
+      return Math.round(track.scrollLeft / track.clientWidth);
+    }
+
+    function markeer() {
+      var huidig = index();
+      dots.forEach(function (dot, n) {
+        dot.classList.toggle('is-active', n === huidig);
+      });
+    }
+
+    function volgende() {
+      if (!rolt()) return;
+      var n = (index() + 1) % items.length;
+      track.scrollTo({
+        left: n * track.clientWidth,
+        // 'auto' zou terugvallen op de CSS-waarde, en die staat op smooth.
+        behavior: rustig.matches ? 'instant' : 'smooth'
+      });
+    }
+
+    function start() {
+      if (timer || !rolt()) return;
+      timer = setInterval(volgende, interval);
+    }
+
+    function stop() {
+      clearInterval(timer);
+      timer = null;
+    }
+
+    track.addEventListener('scroll', markeer, { passive: true });
+
+    // Wie zelf swipet wil niet dat het onder z'n vinger vandaan schuift.
+    track.addEventListener('pointerdown', stop);
+    track.addEventListener('pointerup', start);
+    // Alleen waar echt met een muis gewezen wordt. Op touch kan een tik een
+    // mouseenter opleveren zonder dat er ooit een mouseleave volgt — dan zou
+    // de carrousel na één aanraking voorgoed stilstaan.
+    if (window.matchMedia('(hover: hover)').matches) {
+      wrap.addEventListener('mouseenter', stop);
+      wrap.addEventListener('mouseleave', start);
+    }
+
+    wrap.addEventListener('focusin', stop);
+    wrap.addEventListener('focusout', start);
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) {
+        stop();
+      } else {
+        start();
+      }
+    });
+
+    // Bij draaien van de telefoon klopt de breedte niet meer.
+    window.addEventListener('resize', function () {
+      stop();
+      markeer();
+      start();
+    });
+
+    start();
+  });
+
   /* ---------- Mobiel menu ---------- */
   document.querySelectorAll('[data-menu-toggle]').forEach(function (button) {
     var nav = document.getElementById(button.getAttribute('aria-controls'));

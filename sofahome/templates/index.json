@@ -64,7 +64,9 @@
         "usp-3",
         "usp-4"
       ],
-      "settings": {}
+      "settings": {
+        "speed": 4
+      }
     },
     "featured": {
       "type": "featured-collection",
