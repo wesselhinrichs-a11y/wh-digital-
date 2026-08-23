@@ -48,6 +48,101 @@
     start();
   });
 
+  /* ---------- Voor/na-schuif ---------- */
+  document.querySelectorAll('[data-compare]').forEach(function (comp) {
+    var handle = comp.querySelector('[data-compare-handle]');
+    if (!handle) return;
+
+    var sleept = false;
+    var laatsteX = 0;
+    var frameGepland = false;
+
+    function zet(waarde) {
+      var pos = Math.max(0, Math.min(100, waarde));
+      comp.style.setProperty('--pos', pos + '%');
+      handle.setAttribute('aria-valuenow', Math.round(pos));
+    }
+
+    function zetUitX(clientX) {
+      var rect = comp.getBoundingClientRect();
+      if (!rect.width) return;
+      zet(((clientX - rect.left) / rect.width) * 100);
+    }
+
+    // Eén verzetting per beeldframe. Slepen levert veel meer events dan het
+    // scherm kan tonen; zo blijft de beweging vloeiend in plaats van schokkerig.
+    function plan(clientX) {
+      laatsteX = clientX;
+      if (frameGepland) return;
+      frameGepland = true;
+      requestAnimationFrame(function () {
+        frameGepland = false;
+        zetUitX(laatsteX);
+      });
+    }
+
+    function begin(clientX) {
+      sleept = true;
+      zetUitX(clientX);
+    }
+
+    function eind() {
+      sleept = false;
+    }
+
+    // Bewegen en loslaten hangen aan het document, niet aan de foto: zo loopt
+    // het slepen door wanneer de muis buiten het kader komt, zonder dat we
+    // afhankelijk zijn van setPointerCapture.
+    if (window.PointerEvent) {
+      comp.addEventListener('pointerdown', function (event) {
+        event.preventDefault();
+        begin(event.clientX);
+      });
+      document.addEventListener('pointermove', function (event) {
+        if (sleept) plan(event.clientX);
+      });
+      document.addEventListener('pointerup', eind);
+      document.addEventListener('pointercancel', eind);
+    } else {
+      comp.addEventListener('mousedown', function (event) {
+        event.preventDefault();
+        begin(event.clientX);
+      });
+      document.addEventListener('mousemove', function (event) {
+        if (sleept) plan(event.clientX);
+      });
+      document.addEventListener('mouseup', eind);
+
+      comp.addEventListener('touchstart', function (event) {
+        begin(event.touches[0].clientX);
+      }, { passive: true });
+      comp.addEventListener('touchmove', function (event) {
+        if (sleept) plan(event.touches[0].clientX);
+      }, { passive: true });
+      comp.addEventListener('touchend', eind);
+      comp.addEventListener('touchcancel', eind);
+    }
+
+    // Met het toetsenbord in stappen van vijf procent.
+    handle.addEventListener('keydown', function (event) {
+      var nu = parseFloat(handle.getAttribute('aria-valuenow')) || 50;
+      if (event.key === 'ArrowLeft') {
+        zet(nu - 5);
+      } else if (event.key === 'ArrowRight') {
+        zet(nu + 5);
+      } else if (event.key === 'Home') {
+        zet(0);
+      } else if (event.key === 'End') {
+        zet(100);
+      } else {
+        return;
+      }
+      event.preventDefault();
+    });
+
+    zet(50);
+  });
+
   /* ---------- Voordelen: carrousel op telefoon ---------- */
   document.querySelectorAll('[data-usps]').forEach(function (wrap) {
     var track = wrap.querySelector('.usps__track');

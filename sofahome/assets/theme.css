@@ -902,6 +902,81 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   }
 }
 
+/* Voor/na-schuif. Beide foto's liggen over elkaar; de bovenste wordt met
+   inset(0 0 0 --pos) bijgesneden, zodat slepen alleen de zichtbare snede
+   verschuift en niet de foto zelf. */
+.compare {
+  position: relative;
+  align-self: start;
+  aspect-ratio: var(--ratio, 3 / 4);
+  /* Een smalle, hoge foto zou een kader opleveren dat langer is dan het
+     scherm, met de sleepknop halverwege — dus buiten beeld. Hoogte begrenzen;
+     de foto's vullen het kader met object-fit. */
+  max-height: min(70vh, 620px);
+  overflow: hidden;
+  border-radius: var(--radius);
+  background: var(--color-surface);
+  /* Verticaal scrollen blijft van de bezoeker; horizontaal slepen is van ons. */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.compare__pane {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.compare__pane img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.compare__pane--after { clip-path: inset(0 0 0 var(--pos, 50%)); }
+
+/* Eén bestand met voor en na naast elkaar: de foto is twee kaders breed en
+   elke helft schuift zijn eigen kant in beeld. */
+.compare--split .compare__pane img {
+  width: 200%;
+  max-width: none;
+}
+
+.compare--split .compare__pane--after img { margin-left: -100%; }
+
+.compare__line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos, 50%);
+  width: 1px;
+  margin-left: -0.5px;
+  background: rgb(255 255 255 / 0.8);
+}
+
+.compare__handle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border: 1px solid rgb(0 0 0 / 0.06);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 0.92);
+  box-shadow: 0 2px 12px rgb(0 0 0 / 0.18);
+  cursor: ew-resize;
+  touch-action: none;
+}
+
+.compare__handle:focus-visible {
+  outline: 2px solid var(--color-text);
+  outline-offset: 3px;
+}
+
 /* Voordelen: titel met een korte toelichting eronder. Geen iconen of kaders,
    de witruimte tussen de items doet het werk. */
 .benefits {
