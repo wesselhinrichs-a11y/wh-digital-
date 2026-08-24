@@ -82,40 +82,55 @@
       });
     }
 
-    var pointer = !!window.PointerEvent;
-    var indrukken = pointer ? 'pointerdown' : 'mousedown';
-    var bewegen = pointer ? 'pointermove' : 'mousemove';
-    var loslaten = pointer ? 'pointerup' : 'mouseup';
+    // Zowel pointer- als muis- als aanraakevents. Ze leveren dezelfde
+    // positie op, dus dubbel afvuren is onschadelijk — en zo blijft het
+    // werken in omgevingen waar één van de drie niet doorkomt.
+    var aan = false;
 
     function beweeg(event) {
+      if (!aan) return;
       plan(event.clientX);
     }
 
-    // Bewegen en loslaten hangen aan het document, zodat slepen doorloopt
-    // buiten het kader. Ze worden weer losgekoppeld zodra je loslaat: anders
-    // stapelen ze op elke keer dat de editor de sectie opnieuw opbouwt.
     function los() {
-      document.removeEventListener(bewegen, beweeg);
-      document.removeEventListener(loslaten, los);
+      aan = false;
+      document.removeEventListener('pointermove', beweeg);
+      document.removeEventListener('mousemove', beweeg);
+      document.removeEventListener('pointerup', los);
+      document.removeEventListener('mouseup', los);
       document.removeEventListener('pointercancel', los);
     }
 
-    comp.addEventListener(indrukken, function (event) {
-      event.preventDefault();
-      zetUitX(event.clientX);
-      document.addEventListener(bewegen, beweeg);
-      document.addEventListener(loslaten, los);
+    function begin(clientX) {
+      aan = true;
+      zetUitX(clientX);
+      document.addEventListener('pointermove', beweeg);
+      document.addEventListener('mousemove', beweeg);
+      document.addEventListener('pointerup', los);
+      document.addEventListener('mouseup', los);
       document.addEventListener('pointercancel', los);
+    }
+
+    comp.addEventListener('pointerdown', function (event) {
+      event.preventDefault();
+      begin(event.clientX);
     });
 
-    if (!pointer) {
-      comp.addEventListener('touchstart', function (event) {
-        zetUitX(event.touches[0].clientX);
-      }, { passive: true });
-      comp.addEventListener('touchmove', function (event) {
-        plan(event.touches[0].clientX);
-      }, { passive: true });
-    }
+    comp.addEventListener('mousedown', function (event) {
+      event.preventDefault();
+      begin(event.clientX);
+    });
+
+    comp.addEventListener('touchstart', function (event) {
+      begin(event.touches[0].clientX);
+    }, { passive: true });
+
+    comp.addEventListener('touchmove', function (event) {
+      if (aan) plan(event.touches[0].clientX);
+    }, { passive: true });
+
+    comp.addEventListener('touchend', los);
+    comp.addEventListener('touchcancel', los);
 
     // Met het toetsenbord in stappen van vijf procent.
     handle.addEventListener('keydown', function (event) {
