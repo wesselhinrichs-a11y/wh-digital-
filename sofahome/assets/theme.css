@@ -910,9 +910,10 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   align-self: start;
   aspect-ratio: var(--ratio, 3 / 4);
   /* Een smalle, hoge foto zou een kader opleveren dat langer is dan het
-     scherm, met de sleepknop halverwege — dus buiten beeld. Hoogte begrenzen;
-     de foto's vullen het kader met object-fit. */
-  max-height: min(70vh, 620px);
+     scherm, met de sleepknop halverwege — dus buiten beeld. Alleen begrenzen
+     waar dat echt speelt; de foto's vullen het kader met object-fit. */
+  max-height: 85vh;
+  min-height: 12rem;
   overflow: hidden;
   border-radius: var(--radius);
   background: var(--color-surface);

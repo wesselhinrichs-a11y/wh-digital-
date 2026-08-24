@@ -29,7 +29,11 @@
       <div
         class="compare {% if gesplitst %}compare--split{% endif %}"
         data-compare
-        style="--pos: 50%; --ratio: {{ verhouding }}"
+        {%- comment -%}
+          Een lege of nul-verhouding zou een ongeldige aspect-ratio opleveren.
+          Dan liever niets doorgeven, zodat de CSS zijn eigen waarde pakt.
+        {%- endcomment -%}
+        style="--pos: 50%;{% if verhouding > 0 %} --ratio: {{ verhouding }};{% endif %}"
       >
         <div class="compare__pane compare__pane--before">
           {{
