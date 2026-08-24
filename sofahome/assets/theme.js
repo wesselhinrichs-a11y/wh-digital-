@@ -3,9 +3,10 @@
   'use strict';
 
   /* ---------- Aankondigingsbalk: rouleren ---------- */
-  document.querySelectorAll('[data-announcement]').forEach(function (bar) {
+  function maakBalk(bar) {
     var items = bar.querySelectorAll('.announcement__item');
-    if (items.length < 2) return;
+    if (items.length < 2 || bar.getAttribute('data-klaar')) return;
+    bar.setAttribute('data-klaar', 'true');
 
     var interval = parseInt(bar.getAttribute('data-interval'), 10) || 5000;
     var index = 0;
@@ -46,14 +47,14 @@
     });
 
     start();
-  });
+  }
 
   /* ---------- Voor/na-schuif ---------- */
-  document.querySelectorAll('[data-compare]').forEach(function (comp) {
+  function maakVergelijking(comp) {
     var handle = comp.querySelector('[data-compare-handle]');
-    if (!handle) return;
+    if (!handle || comp.getAttribute('data-klaar')) return;
+    comp.setAttribute('data-klaar', 'true');
 
-    var sleept = false;
     var laatsteX = 0;
     var frameGepland = false;
 
@@ -81,46 +82,39 @@
       });
     }
 
-    function begin(clientX) {
-      sleept = true;
-      zetUitX(clientX);
+    var pointer = !!window.PointerEvent;
+    var indrukken = pointer ? 'pointerdown' : 'mousedown';
+    var bewegen = pointer ? 'pointermove' : 'mousemove';
+    var loslaten = pointer ? 'pointerup' : 'mouseup';
+
+    function beweeg(event) {
+      plan(event.clientX);
     }
 
-    function eind() {
-      sleept = false;
+    // Bewegen en loslaten hangen aan het document, zodat slepen doorloopt
+    // buiten het kader. Ze worden weer losgekoppeld zodra je loslaat: anders
+    // stapelen ze op elke keer dat de editor de sectie opnieuw opbouwt.
+    function los() {
+      document.removeEventListener(bewegen, beweeg);
+      document.removeEventListener(loslaten, los);
+      document.removeEventListener('pointercancel', los);
     }
 
-    // Bewegen en loslaten hangen aan het document, niet aan de foto: zo loopt
-    // het slepen door wanneer de muis buiten het kader komt, zonder dat we
-    // afhankelijk zijn van setPointerCapture.
-    if (window.PointerEvent) {
-      comp.addEventListener('pointerdown', function (event) {
-        event.preventDefault();
-        begin(event.clientX);
-      });
-      document.addEventListener('pointermove', function (event) {
-        if (sleept) plan(event.clientX);
-      });
-      document.addEventListener('pointerup', eind);
-      document.addEventListener('pointercancel', eind);
-    } else {
-      comp.addEventListener('mousedown', function (event) {
-        event.preventDefault();
-        begin(event.clientX);
-      });
-      document.addEventListener('mousemove', function (event) {
-        if (sleept) plan(event.clientX);
-      });
-      document.addEventListener('mouseup', eind);
+    comp.addEventListener(indrukken, function (event) {
+      event.preventDefault();
+      zetUitX(event.clientX);
+      document.addEventListener(bewegen, beweeg);
+      document.addEventListener(loslaten, los);
+      document.addEventListener('pointercancel', los);
+    });
 
+    if (!pointer) {
       comp.addEventListener('touchstart', function (event) {
-        begin(event.touches[0].clientX);
+        zetUitX(event.touches[0].clientX);
       }, { passive: true });
       comp.addEventListener('touchmove', function (event) {
-        if (sleept) plan(event.touches[0].clientX);
+        plan(event.touches[0].clientX);
       }, { passive: true });
-      comp.addEventListener('touchend', eind);
-      comp.addEventListener('touchcancel', eind);
     }
 
     // Met het toetsenbord in stappen van vijf procent.
@@ -141,12 +135,13 @@
     });
 
     zet(50);
-  });
+  }
 
   /* ---------- Voordelen: carrousel op telefoon ---------- */
-  document.querySelectorAll('[data-usps]').forEach(function (wrap) {
+  function maakCarrousel(wrap) {
     var track = wrap.querySelector('.usps__track');
-    if (!track) return;
+    if (!track || wrap.getAttribute('data-klaar')) return;
+    wrap.setAttribute('data-klaar', 'true');
 
     var items = track.querySelectorAll('.usp');
     var dots = wrap.querySelectorAll('.usps__dot');
@@ -226,6 +221,21 @@
     });
 
     start();
+  }
+
+  /* ---------- Aanzetten ---------- */
+  function zetAan(root) {
+    root.querySelectorAll('[data-announcement]').forEach(maakBalk);
+    root.querySelectorAll('[data-compare]').forEach(maakVergelijking);
+    root.querySelectorAll('[data-usps]').forEach(maakCarrousel);
+  }
+
+  zetAan(document);
+
+  // De theme-editor bouwt een sectie opnieuw op bij elke wijziging. De nieuwe
+  // elementen zijn dan andere dan die hierboven, dus koppelen we opnieuw.
+  document.addEventListener('shopify:section:load', function (event) {
+    zetAan(event.target);
   });
 
   /* ---------- Mobiel menu ---------- */
