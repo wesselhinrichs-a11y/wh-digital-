@@ -26,6 +26,12 @@
       "port": 8795
     },
     {
+      "name": "fullbody",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8796", "--directory", "fullbody"],
+      "port": 8796
+    },
+    {
       "name": "krachttraining",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["-m", "http.server", "8794", "--directory", "krachttraining"],
