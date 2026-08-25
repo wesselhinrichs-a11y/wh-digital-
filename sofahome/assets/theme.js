@@ -55,15 +55,49 @@
     if (!range || comp.getAttribute('data-klaar')) return;
     comp.setAttribute('data-klaar', 'true');
 
-    // De browser regelt het slepen; wij vertalen alleen de stand naar de
-    // bijsnede van de bovenste foto.
-    function toon() {
-      comp.style.setProperty('--pos', range.value + '%');
+    var rustig = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var zelfBediend = false;
+
+    function toon(waarde) {
+      comp.style.setProperty('--pos', waarde + '%');
     }
 
-    range.addEventListener('input', toon);
-    range.addEventListener('change', toon);
-    toon();
+    // Draait de bezoeker er zelf aan, dan houdt de scroll er verder af.
+    range.addEventListener('input', function () {
+      zelfBediend = true;
+      toon(range.value);
+    });
+
+    function uitScroll() {
+      if (zelfBediend || rustig.matches || !comp.isConnected) return;
+
+      var rect = comp.getBoundingClientRect();
+      var hoogte = window.innerHeight || document.documentElement.clientHeight;
+
+      // 0 op het moment dat de foto onderaan in beeld schuift, 1 als hij er
+      // bovenlangs weer uit is. Halverwege staat de scheiding dus in het midden.
+      var voortgang = (hoogte - rect.top) / (hoogte + rect.height);
+      voortgang = Math.max(0, Math.min(1, voortgang));
+
+      // Van 100 naar 0: de na-foto veegt binnen terwijl je naar beneden scrolt.
+      var pos = 100 - voortgang * 100;
+      range.value = pos;
+      toon(pos);
+    }
+
+    var gepland = false;
+    function opScroll() {
+      if (gepland) return;
+      gepland = true;
+      requestAnimationFrame(function () {
+        gepland = false;
+        uitScroll();
+      });
+    }
+
+    window.addEventListener('scroll', opScroll, { passive: true });
+    window.addEventListener('resize', opScroll);
+    uitScroll();
   }
 
   /* ---------- Voordelen: carrousel op telefoon ---------- */
