@@ -238,7 +238,9 @@
         "eyebrow": "",
         "heading": "De voordelen van 100% mulberry silk",
         "button_label": "Shop kussenslopen",
-        "button_link": "/collections/all"
+        "button_link": "/collections/all",
+        "label_before": "before",
+        "label_after": "after"
       }
     }
   },

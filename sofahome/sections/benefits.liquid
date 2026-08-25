@@ -26,6 +26,7 @@
         de bovenste wordt bijgesneden met clip-path, zodat er niets verschuift —
         alleen wat je ervan ziet.
       {%- endcomment -%}
+      <div class="compare-wrap">
       <div
         class="compare {% if gesplitst %}compare--split{% endif %}"
         data-compare
@@ -70,6 +71,14 @@
           data-compare-range
           aria-label="Schuif om voor en na te vergelijken"
         >
+      </div>
+
+        {%- if section.settings.label_before != blank or section.settings.label_after != blank -%}
+          <div class="compare__labels">
+            <span>{{ section.settings.label_before }}</span>
+            <span>{{ section.settings.label_after }}</span>
+          </div>
+        {%- endif -%}
       </div>
     {%- else -%}
       <div class="split__media">
@@ -138,6 +147,8 @@
       "default": false,
       "info": "Zet dit aan als je één beeld hebt waarin links het voor en rechts het na staat. Zet hem dan bij 'Foto voor'; 'Foto na' laat je leeg."
     },
+    { "type": "text", "id": "label_before", "label": "Bijschrift links", "default": "before" },
+    { "type": "text", "id": "label_after", "label": "Bijschrift rechts", "default": "after" },
     { "type": "text", "id": "eyebrow", "label": "Label erboven" },
     { "type": "text", "id": "heading", "label": "Kop", "default": "De voordelen van 100% mulberry silk" },
     { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Shop kussenslopen" },
