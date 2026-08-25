@@ -949,16 +949,21 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   object-fit: cover;
 }
 
-.compare__pane--after { clip-path: inset(0 0 0 var(--pos, 50%)); }
-
-/* Eén bestand met voor en na naast elkaar: de foto is twee kaders breed en
-   elke helft schuift zijn eigen kant in beeld. */
-.compare--split .compare__pane img {
-  width: 200%;
-  max-width: none;
+.compare__pane--after {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 var(--pos, 50%));
+  /* Puur CSS, geen JavaScript: de scheiding veegt vanzelf heen en weer.
+     Zo hangt het effect nergens van af behalve van de browser zelf. */
+  animation: compare-veeg 9s ease-in-out infinite;
 }
 
-.compare--split .compare__pane--after img { margin-left: -100%; }
+.compare__pane--after img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
 .compare__line {
   position: absolute;
@@ -968,9 +973,8 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   width: 1px;
   margin-left: -0.5px;
   background: rgb(255 255 255 / 0.8);
-  /* Lijn en knop zijn er om te zien, niet om te pakken. De schuifregelaar
-     eronder vangt alles op. */
   pointer-events: none;
+  animation: compare-veeg-lijn 9s ease-in-out infinite;
 }
 
 .compare__handle {
@@ -986,57 +990,21 @@ label { display: block; font-size: 0.9rem; margin-bottom: 0.35rem; }
   box-shadow: 0 2px 12px rgb(0 0 0 / 0.18);
 }
 
-/* De schuifregelaar zelf: doorzichtig, over de volle foto. De browser doet
-   het slepen — muis, vinger en pijltjestoetsen — dus daar hoeft geen eigen
-   code omheen. */
-.compare__range {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  appearance: none;
-  -webkit-appearance: none;
-  cursor: ew-resize;
+/* Rustig heen en weer, niet van rand tot rand: aan beide kanten blijft
+   genoeg staan om te kunnen vergelijken. */
+@keyframes compare-veeg {
+  0%, 100% { clip-path: inset(0 0 0 70%); }
+  50% { clip-path: inset(0 0 0 30%); }
 }
 
-.compare__range::-webkit-slider-runnable-track {
-  height: 100%;
-  background: transparent;
+@keyframes compare-veeg-lijn {
+  0%, 100% { left: 70%; }
+  50% { left: 30%; }
 }
 
-.compare__range::-moz-range-track {
-  height: 100%;
-  background: transparent;
-}
-
-/* Een greep zo hoog als het kader, zodat je overal kunt pakken. */
-.compare__range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 3rem;
-  height: 100vh;
-  border: 0;
-  background: transparent;
-  cursor: ew-resize;
-}
-
-.compare__range::-moz-range-thumb {
-  width: 3rem;
-  height: 100vh;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  cursor: ew-resize;
-}
-
-.compare__range:focus { outline: none; }
-
-.compare:has(.compare__range:focus-visible) .compare__handle {
-  outline: 2px solid var(--color-text);
-  outline-offset: 3px;
+@media (prefers-reduced-motion: reduce) {
+  .compare__pane--after,
+  .compare__line { animation: none; }
 }
 
 /* Voordelen: titel met een korte toelichting eronder. Geen iconen of kaders,

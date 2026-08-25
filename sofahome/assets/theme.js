@@ -49,57 +49,6 @@
     start();
   }
 
-  /* ---------- Voor/na-schuif ---------- */
-  function maakVergelijking(comp) {
-    var range = comp.querySelector('[data-compare-range]');
-    if (!range || comp.getAttribute('data-klaar')) return;
-    comp.setAttribute('data-klaar', 'true');
-
-    var rustig = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var zelfBediend = false;
-
-    function toon(waarde) {
-      comp.style.setProperty('--pos', waarde + '%');
-    }
-
-    // Draait de bezoeker er zelf aan, dan houdt de scroll er verder af.
-    range.addEventListener('input', function () {
-      zelfBediend = true;
-      toon(range.value);
-    });
-
-    function uitScroll() {
-      if (zelfBediend || rustig.matches || !comp.isConnected) return;
-
-      var rect = comp.getBoundingClientRect();
-      var hoogte = window.innerHeight || document.documentElement.clientHeight;
-
-      // 0 op het moment dat de foto onderaan in beeld schuift, 1 als hij er
-      // bovenlangs weer uit is. Halverwege staat de scheiding dus in het midden.
-      var voortgang = (hoogte - rect.top) / (hoogte + rect.height);
-      voortgang = Math.max(0, Math.min(1, voortgang));
-
-      // Van 100 naar 0: de na-foto veegt binnen terwijl je naar beneden scrolt.
-      var pos = 100 - voortgang * 100;
-      range.value = pos;
-      toon(pos);
-    }
-
-    var gepland = false;
-    function opScroll() {
-      if (gepland) return;
-      gepland = true;
-      requestAnimationFrame(function () {
-        gepland = false;
-        uitScroll();
-      });
-    }
-
-    window.addEventListener('scroll', opScroll, { passive: true });
-    window.addEventListener('resize', opScroll);
-    uitScroll();
-  }
-
   /* ---------- Voordelen: carrousel op telefoon ---------- */
   function maakCarrousel(wrap) {
     var track = wrap.querySelector('.usps__track');
@@ -189,7 +138,6 @@
   /* ---------- Aanzetten ---------- */
   function zetAan(root) {
     root.querySelectorAll('[data-announcement]').forEach(maakBalk);
-    root.querySelectorAll('[data-compare]').forEach(maakVergelijking);
     root.querySelectorAll('[data-usps]').forEach(maakCarrousel);
   }
 

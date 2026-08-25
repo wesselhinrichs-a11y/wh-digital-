@@ -56,21 +56,7 @@
           <span class="compare__handle"></span>
         </div>
 
-        {%- comment -%}
-          Een echte schuifregelaar over de hele foto, doorzichtig gemaakt. Het
-          slepen doet de browser zelf — met muis, vinger en toetsenbord — en dat
-          werkt overal, ook binnen de theme-editor.
-        {%- endcomment -%}
-        <input
-          class="compare__range"
-          type="range"
-          min="0"
-          max="100"
-          step="0.1"
-          value="50"
-          data-compare-range
-          aria-label="Schuif om voor en na te vergelijken"
-        >
+
       </div>
 
         {%- if section.settings.label_before != blank or section.settings.label_after != blank -%}
