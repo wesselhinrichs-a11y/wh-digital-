@@ -51,105 +51,19 @@
 
   /* ---------- Voor/na-schuif ---------- */
   function maakVergelijking(comp) {
-    var handle = comp.querySelector('[data-compare-handle]');
-    if (!handle || comp.getAttribute('data-klaar')) return;
+    var range = comp.querySelector('[data-compare-range]');
+    if (!range || comp.getAttribute('data-klaar')) return;
     comp.setAttribute('data-klaar', 'true');
 
-    var laatsteX = 0;
-    var frameGepland = false;
-
-    function zet(waarde) {
-      var pos = Math.max(0, Math.min(100, waarde));
-      comp.style.setProperty('--pos', pos + '%');
-      handle.setAttribute('aria-valuenow', Math.round(pos));
+    // De browser regelt het slepen; wij vertalen alleen de stand naar de
+    // bijsnede van de bovenste foto.
+    function toon() {
+      comp.style.setProperty('--pos', range.value + '%');
     }
 
-    function zetUitX(clientX) {
-      var rect = comp.getBoundingClientRect();
-      if (!rect.width) return;
-      zet(((clientX - rect.left) / rect.width) * 100);
-    }
-
-    // Eén verzetting per beeldframe. Slepen levert veel meer events dan het
-    // scherm kan tonen; zo blijft de beweging vloeiend in plaats van schokkerig.
-    function plan(clientX) {
-      laatsteX = clientX;
-      if (frameGepland) return;
-      frameGepland = true;
-      requestAnimationFrame(function () {
-        frameGepland = false;
-        zetUitX(laatsteX);
-      });
-    }
-
-    // Zowel pointer- als muis- als aanraakevents. Ze leveren dezelfde
-    // positie op, dus dubbel afvuren is onschadelijk — en zo blijft het
-    // werken in omgevingen waar één van de drie niet doorkomt.
-    var aan = false;
-
-    function beweeg(event) {
-      if (!aan) return;
-      plan(event.clientX);
-    }
-
-    function los() {
-      aan = false;
-      document.removeEventListener('pointermove', beweeg);
-      document.removeEventListener('mousemove', beweeg);
-      document.removeEventListener('pointerup', los);
-      document.removeEventListener('mouseup', los);
-      document.removeEventListener('pointercancel', los);
-    }
-
-    function begin(clientX) {
-      aan = true;
-      zetUitX(clientX);
-      document.addEventListener('pointermove', beweeg);
-      document.addEventListener('mousemove', beweeg);
-      document.addEventListener('pointerup', los);
-      document.addEventListener('mouseup', los);
-      document.addEventListener('pointercancel', los);
-    }
-
-    comp.addEventListener('pointerdown', function (event) {
-      event.preventDefault();
-      begin(event.clientX);
-    });
-
-    comp.addEventListener('mousedown', function (event) {
-      event.preventDefault();
-      begin(event.clientX);
-    });
-
-    comp.addEventListener('touchstart', function (event) {
-      begin(event.touches[0].clientX);
-    }, { passive: true });
-
-    comp.addEventListener('touchmove', function (event) {
-      if (aan) plan(event.touches[0].clientX);
-    }, { passive: true });
-
-    comp.addEventListener('touchend', los);
-    comp.addEventListener('touchcancel', los);
-
-    // Met het toetsenbord in stappen van vijf procent.
-    handle.addEventListener('keydown', function (event) {
-      var nu = parseFloat(handle.getAttribute('aria-valuenow')) || 50;
-      if (event.key === 'ArrowLeft') {
-        zet(nu - 5);
-      } else if (event.key === 'ArrowRight') {
-        zet(nu + 5);
-      } else if (event.key === 'Home') {
-        zet(0);
-      } else if (event.key === 'End') {
-        zet(100);
-      } else {
-        return;
-      }
-      event.preventDefault();
-    });
-
-    zet(50);
+    range.addEventListener('input', toon);
+    range.addEventListener('change', toon);
+    toon();
   }
 
   /* ---------- Voordelen: carrousel op telefoon ---------- */
