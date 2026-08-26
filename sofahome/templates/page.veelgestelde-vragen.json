@@ -6,40 +6,40 @@
         "vraag-1": {
           "type": "vraag",
           "settings": {
-            "question": "Is dit echt beter dan een gewone katoenen kussensloop, of is het gewoon marketing?",
-            "answer": "<p>Katoen trekt vocht uit je huid en haar en zorgt voor wrijving tijdens het slapen. Silk glijdt, waardoor je huid vocht vasthoudt en je haar geen weerstand ondervindt. Het verschil zit in het materiaal zelf, niet in een verhaal eromheen.</p>",
+            "question": "Voel ik echt verschil na de eerste nacht, of is dat overdreven?",
+            "answer": "<p>De meeste mensen voelen het meteen aan hun huid en haar bij het opstaan. Het volledige effect (minder haarbreuk, minder huidirritatie) bouwt zich op over enkele weken, omdat je huid en haar dan structureel minder schade oplopen.</p>",
             "open": true
           }
         },
         "vraag-2": {
           "type": "vraag",
           "settings": {
-            "question": "Wat als de kwaliteit tegenvalt of het niet is wat ik verwachtte?",
-            "answer": "<p>Je hebt 30 dagen bedenktijd. Past het niet bij je verwachting, dan stuur je het gewoon terug.</p>",
+            "question": "Kan ik dit gebruiken als ik acne of een gevoelige huid heb?",
+            "answer": "<p>Silk trekt geen vocht en oliën uit je huid zoals katoen dat doet, en zorgt voor minder wrijving tegen je gezicht 's nachts. Veel mensen met een gevoelige of acnegevoelige huid merken dat hun huid zich rustiger voelt na de overstap.</p>",
             "open": false
           }
         },
         "vraag-3": {
           "type": "vraag",
           "settings": {
-            "question": "Gaat silk snel kreuken of verkleuren na een paar wasbeurten?",
-            "answer": "<p>Bij correct onderhoud (koud wassen, niet in de droger) behoudt 100% moerbeizijde zijn glans en structuur voor jaren. Het is juist duurzamer dan veel mensen denken.</p>",
+            "question": "Verkleurt of verslijt het snel?",
+            "answer": "<p>Bij koud wassen en drogen zonder droger behoudt moerbeizijde zijn glans en sterkte voor jaren. Het is duurzamer dan de meeste mensen verwachten van zo'n luxe materiaal.</p>",
             "open": false
           }
         },
         "vraag-4": {
           "type": "vraag",
           "settings": {
-            "question": "Is dit alleen voor mensen met droge huid of specifieke haarproblemen, of werkt het voor iedereen?",
-            "answer": "<p>Silk werkt voor elk huid- en haartype, omdat het mechanisme (minder wrijving, minder vochtverlies) voor iedereen hetzelfde voordeel geeft.</p>",
+            "question": "Waarom is de prijs hoger dan een gewone kussensloop?",
+            "answer": "<p>Je betaalt voor het materiaal zelf, geen synthetisch mengsel met een “silk-effect”. Eén nacht op echte silk laat meteen het verschil voelen met wat je gewend was.</p>",
             "open": false
           }
         },
         "vraag-5": {
           "type": "vraag",
           "settings": {
-            "question": "Waarom kost dit meer dan een gewone kussensloop uit de supermarkt?",
-            "answer": "<p>Je betaalt voor 100% moerbeizijde, niet voor een katoen/polyester-mix met een “silk-look”. De prijs zit in het materiaal, niet in de merknaam.</p>",
+            "question": "Wat als het toch niet bevalt?",
+            "answer": "<p>30 dagen bedenktijd, geen gedoe. Je probeert het risicovrij uit.</p>",
             "open": false
           }
         }
