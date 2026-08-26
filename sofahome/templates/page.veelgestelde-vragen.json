@@ -1,5 +1,9 @@
 {
   "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {}
+    },
     "faq": {
       "type": "faq",
       "blocks": {
@@ -53,13 +57,14 @@
       ],
       "settings": {
         "eyebrow": "",
-        "heading": "Veelgestelde vragen",
+        "heading": "",
         "text": "",
         "note": ""
       }
     }
   },
   "order": [
+    "main",
     "faq"
   ]
 }
