@@ -75,7 +75,15 @@
               "link_1_label": "Over ons",
               "link_1_url": "/pages/ons-verhaal",
               "link_2_label": "Contact",
-              "link_2_url": "/pages/contact"
+              "link_2_url": "/pages/contact",
+              "link_3_label": "",
+              "link_3_url": "",
+              "link_4_label": "",
+              "link_4_url": "",
+              "link_5_label": "",
+              "link_5_url": "",
+              "link_6_label": "",
+              "link_6_url": ""
             }
           },
           "kolom-2": {
@@ -83,15 +91,17 @@
             "settings": {
               "heading": "Klantenservice",
               "link_1_label": "Verzendbeleid",
-              "link_1_url": "/policies/shipping-policy",
+              "link_1_url": "shopify://pages/verzendbeleid",
               "link_2_label": "Retour- en ruilbeleid",
-              "link_2_url": "/policies/refund-policy",
+              "link_2_url": "shopify://pages/retour-en-ruilbeleid",
               "link_3_label": "Veelgestelde vragen",
-              "link_3_url": "/pages/veelgestelde-vragen",
+              "link_3_url": "shopify://pages/veelgestelde-vragen",
               "link_4_label": "Privacybeleid",
               "link_4_url": "/policies/privacy-policy",
               "link_5_label": "Algemene voorwaarden",
-              "link_5_url": "/policies/terms-of-service"
+              "link_5_url": "shopify://pages/algemene-voorwaarden",
+              "link_6_label": "",
+              "link_6_url": ""
             }
           },
           "kolom-3": {
@@ -103,7 +113,13 @@
               "link_2_label": "Kussenslopen",
               "link_2_url": "/collections/kussenslopen",
               "link_3_label": "Slaapmaskers",
-              "link_3_url": "/collections/slaapmaskers"
+              "link_3_url": "/collections/slaapmaskers",
+              "link_4_label": "",
+              "link_4_url": "",
+              "link_5_label": "",
+              "link_5_url": "",
+              "link_6_label": "",
+              "link_6_url": ""
             }
           }
         },

@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "image": "shopify://shop_images/Scherm_afbeelding_2026-08-20_om_23.51.55.png",
         "overlay": true,
         "eyebrow": "Silk sleep essentials",
         "heading": "Beddengoed zonder compromis",
@@ -80,81 +81,6 @@
         "show_vendor": false
       }
     },
-    "image_with_text_pTyANC": {
-      "type": "image-with-text",
-      "name": "Afbeelding met tekst",
-      "settings": {
-        "reverse": false,
-        "eyebrow": "Ons verhaal",
-        "heading": "Hoe is Sova Home ontstaan?",
-        "text": "<p>Het begon met een simpele frustratie: waarom moest goed beddengoed altijd duur zijn? We zagen maar twee opties op de markt: peperdure merken die je laten betalen voor een naam, of budgetbeddengoed dat na een paar wasbeurten al pluist. Daar zat niks tussenin.</p><p>Dus zijn we op zoek gegaan naar kwalitatief goed beddengoed, waar je niet voor het merk betaalt maar voor het product zelf. Zo is Sova Home ontstaan: beddengoed dat goed aanvoelt, lang meegaat, en toegankelijk is voor iedereen.</p>",
-        "button_label": "Lees ons hele verhaal",
-        "button_link": "/pages/ons-verhaal"
-      }
-    },
-    "reviews": {
-      "type": "testimonials",
-      "blocks": {
-        "quote-1": {
-          "type": "quote",
-          "settings": {
-            "rating": 5,
-            "quote": "“Na een week zag ik het aan mijn haar — 's ochtends geen klit meer, en veel minder slaapvouwen in mijn gezicht.”",
-            "author": "Marieke, Utrecht"
-          }
-        },
-        "quote-2": {
-          "type": "quote",
-          "settings": {
-            "rating": 5,
-            "quote": "“Het masker sluit echt licht buiten zonder te drukken. Ik word niet meer wakker van de lantaarn voor het raam.”",
-            "author": "Joost, Rotterdam"
-          }
-        },
-        "quote-3": {
-          "type": "quote",
-          "settings": {
-            "rating": 4,
-            "quote": "“Ik sliep al op silk van een duur merk. Dit voelt hetzelfde en kostte me de helft.”",
-            "author": "Fenna, Groningen"
-          }
-        }
-      },
-      "block_order": [
-        "quote-1",
-        "quote-2",
-        "quote-3"
-      ],
-      "settings": {
-        "eyebrow": "Van klanten",
-        "heading": "Wat mensen 's ochtends merken"
-      }
-    },
-    "newsletter": {
-      "type": "newsletter",
-      "settings": {
-        "eyebrow": "Blijf op de hoogte",
-        "heading": "Als eerste op de hoogte van nieuwe collecties",
-        "text": "Exclusieve previews, aanbiedingen, en updates van Sova Home.",
-        "button_label": "Aanmelden",
-        "background": "#f3efe8",
-        "button_color": "#1c1917"
-      }
-    },
-    "rich_text_AVjAWR": {
-      "type": "rich-text",
-      "name": "Tekstblok",
-      "settings": {
-        "eyebrow": "",
-        "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
-        "text": "<p>Premium silk, eerlijke prijs, dertig dagen om het te voelen.</p>",
-        "alignment": "center",
-        "button_label": "Shop kussenslopen",
-        "button_link": "/collections/all",
-        "button_2_label": "Shop slaapmasker",
-        "button_2_link": "/collections/all"
-      }
-    },
     "material": {
       "type": "material",
       "blocks": {
@@ -186,13 +112,28 @@
         "spec-3"
       ],
       "settings": {
+        "image": "shopify://shop_images/ChatGPT_Image_13_aug_2026_22_19_58_721774e4-6d33-4a38-a30b-25dfb3d4a6fd.png",
         "reverse": false,
         "eyebrow": "Het materiaal",
         "heading": "Gemaakt om te voelen",
-        "note": "Dát is waarom je het voelt zodra je hoofd het kussen raakt.",
         "text": "<p>Je huid raakt niks zo vaak aan als je kussen. Zeven, acht uur per nacht, elke nacht. En toch is het meestal het laatste waar mensen over nadenken.</p><p>Silk is geen synthetische stof, het is een natuurlijke eiwitvezel, gesponnen door de moerbeizijderups. Geen chemische bewerking, geen kunstmatige gladheid, gewoon een vezel die van nature zacht is en meebeweegt in plaats van weerstand te bieden.</p><p>Wij gebruiken uitsluitend 100% moerbeizijde, de zuiverste vorm van silk die er is. Geen mengsels, geen bijmengsels, niks dat de kwaliteit verwatert.</p>",
         "button_label": "",
-        "button_link": "/collections/all"
+        "button_link": "/collections/all",
+        "note": "Dát is waarom je het voelt zodra je hoofd het kussen raakt."
+      }
+    },
+    "rich_text_AVjAWR": {
+      "type": "rich-text",
+      "name": "Tekstblok",
+      "settings": {
+        "eyebrow": "",
+        "heading": "Uitgerust wakker worden begint bij wat je gezicht raakt",
+        "text": "<p>Premium silk, eerlijke prijs, dertig dagen om het te voelen.</p>",
+        "alignment": "center",
+        "button_label": "Shop kussenslopen",
+        "button_link": "/collections/all",
+        "button_2_label": "Shop slaapmasker",
+        "button_2_link": "/collections/all"
       }
     },
     "benefits": {
@@ -235,13 +176,39 @@
       ],
       "settings": {
         "reverse": true,
-        "eyebrow": "",
-        "heading": "De voordelen van 100% mulberry silk",
-        "button_label": "Shop kussenslopen",
-        "button_link": "/collections/all",
+        "image_before": "shopify://shop_images/Foto_26-08-2026_om_19.43.png",
+        "image_after": "shopify://shop_images/Foto_24-08-2026_om_17.24.png",
+        "split_image": false,
         "label_before": "before",
         "label_after": "after",
-        "note": "Je merkt het verschil niet na één nacht. Je merkt het wanneer je een keer weer op katoen slaapt, en je meteen weet wat je mist."
+        "eyebrow": "",
+        "heading": "De voordelen van 100% mulberry silk",
+        "note": "Je merkt het verschil niet na één nacht. Je merkt het wanneer je een keer weer op katoen slaapt, en je meteen weet wat je mist.",
+        "button_label": "Shop kussenslopen",
+        "button_link": "/collections/all"
+      }
+    },
+    "image_with_text_pTyANC": {
+      "type": "image-with-text",
+      "name": "Afbeelding met tekst",
+      "settings": {
+        "reverse": false,
+        "eyebrow": "Ons verhaal",
+        "heading": "Hoe is Sova Home ontstaan?",
+        "text": "<p>Het begon met een simpele frustratie: waarom moest goed beddengoed altijd duur zijn? We zagen maar twee opties op de markt: peperdure merken die je laten betalen voor een naam, of budgetbeddengoed dat na een paar wasbeurten al pluist. Daar zat niks tussenin.</p><p>Dus zijn we op zoek gegaan naar kwalitatief goed beddengoed, waar je niet voor het merk betaalt maar voor het product zelf. Zo is Sova Home ontstaan: beddengoed dat goed aanvoelt, lang meegaat, en toegankelijk is voor iedereen.</p>",
+        "button_label": "Lees ons hele verhaal",
+        "button_link": "/pages/ons-verhaal"
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "eyebrow": "Blijf op de hoogte",
+        "heading": "Als eerste op de hoogte van nieuwe collecties",
+        "text": "Exclusieve previews, aanbiedingen, en updates van Sova Home.",
+        "button_label": "Aanmelden",
+        "background": "#f3efe8",
+        "button_color": "#1c1917"
       }
     }
   },
@@ -253,7 +220,6 @@
     "rich_text_AVjAWR",
     "benefits",
     "image_with_text_pTyANC",
-    "reviews",
     "newsletter"
   ]
 }
