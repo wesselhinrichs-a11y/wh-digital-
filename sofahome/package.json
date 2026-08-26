@@ -5,9 +5,9 @@
   "description": "Shopify-thema voor Sova Home",
   "scripts": {
     "check": "shopify theme check",
-    "pull": "shopify theme pull --store qstzjv-nd.myshopify.com --theme 205809287499",
-    "push": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205985907019",
-    "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205809287499 --allow-live"
+    "pull": "shopify theme pull --store qstzjv-nd.myshopify.com --theme 205985907019",
+    "push": "shopify theme push --store qstzjv-nd.myshopify.com --theme 206577107275",
+    "push:live": "shopify theme push --store qstzjv-nd.myshopify.com --theme 205985907019 --allow-live"
   },
   "devDependencies": {
     "@shopify/cli": "^3"

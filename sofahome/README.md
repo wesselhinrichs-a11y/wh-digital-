@@ -17,21 +17,24 @@ locales/      nl.default.json — alle teksten van het thema
 
 ## Werken aan het thema
 
-Twee thema's, en het verschil is de hele afspraak:
+Twee vaste thema's, en dat verschil is de hele afspraak:
 
 | Thema | Id | Rol |
 |---|---|---|
-| Sofahome — preview | `205809287499` | **live** — de winkel. Alleen Wessel publiceert hier. |
-| Sova Home — werkversie | `205985907019` | ongepubliceerd — hier komt werk uit de code binnen. |
+| Sova Home — werkversie | `205985907019` | **live** — de winkel |
+| Werkversie — Claude | `206577107275` | ongepubliceerd — hier komt werk uit de code binnen |
 
-Bekijken: https://qstzjv-nd.myshopify.com/admin/themes/205985907019/editor
+De rollen blijven zo. Wessel publiceert niet meer zelf; goedgekeurd werk gaat
+met `npm run push:live` naar de winkel.
+
+Bekijken: https://qstzjv-nd.myshopify.com/admin/themes/206577107275/editor
 
 ### Vaste volgorde
 
-`pull` overschrijft lokale bestanden met wat er op Shopify staat. Draai hem dus **vóór**
-je begint, nooit vlak voor een push — dan wist hij precies wat je wilde uploaden.
+`pull` overschrijft lokale bestanden met wat er op Shopify staat. Draai hem dus
+**vóór** je begint, nooit vlak voor een push.
 
-1. **Beginnen** — haal op wat Wessel in de editor deed:
+1. **Beginnen** — heeft Wessel in de editor gewerkt, haal dat eerst op:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run pull
@@ -43,13 +46,13 @@ je begint, nooit vlak voor een push — dan wist hij precies wat je wilde upload
    cd ~/Pictures/ai/sofahome && npm run check
    ```
 
-3. **Laten zien** — naar de werkversie, nooit rechtstreeks naar de winkel:
+3. **Laten zien** — naar de werkversie:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run push
    ```
 
-4. **Pas als Wessel akkoord is** naar de live winkel:
+4. **Pas na akkoord van Wessel** naar de winkel:
 
    ```bash
    cd ~/Pictures/ai/sofahome && npm run push:live
@@ -58,12 +61,11 @@ je begint, nooit vlak voor een push — dan wist hij precies wat je wilde upload
 Ging het mis en heeft een pull je werk overschreven? Zolang het gecommit was:
 `git checkout -- sofahome/` zet alles terug.
 
-### Geen `theme dev` meer
+### Geen `theme dev`
 
-`shopify theme dev` blijft draaien en uploadt continu lokale bestanden naar het thema
-waar het op gericht staat. Dat heeft een keer editor-werk overschreven en zorgde ervoor
-dat ongevraagd werk live kwam te staan toen dat thema gepubliceerd werd. Gebruik in
-plaats daarvan `npm run push` naar de werkversie: dat gebeurt één keer, op een moment
+Die blijft draaien en uploadt continu naar het thema waar hij op gericht staat.
+Dat heeft een keer editor-werk overschreven en zette ongevraagd werk live toen
+dat thema gepubliceerd werd. Gebruik `npm run push`: één keer, op een moment
 dat je zelf kiest.
 
 ## Wie past wat aan
