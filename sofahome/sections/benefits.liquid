@@ -102,6 +102,10 @@
           </ul>
         {%- endif -%}
 
+        {%- if section.settings.note != blank -%}
+          <p class="benefits__note">{{ section.settings.note }}</p>
+        {%- endif -%}
+
         {%- if section.settings.button_label != blank -%}
           <p style="margin-top:2rem">
             <a class="button" href="{{ section.settings.button_link }}">{{ section.settings.button_label }}</a>
@@ -137,6 +141,12 @@
     { "type": "text", "id": "label_after", "label": "Bijschrift rechts", "default": "after" },
     { "type": "text", "id": "eyebrow", "label": "Label erboven" },
     { "type": "text", "id": "heading", "label": "Kop", "default": "De voordelen van 100% mulberry silk" },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Slotzin",
+      "info": "Staat los onder de voordelen, als afsluiting."
+    },
     { "type": "text", "id": "button_label", "label": "Knoptekst", "default": "Shop kussenslopen" },
     { "type": "url", "id": "button_link", "label": "Knoplink" }
   ],
@@ -158,28 +168,28 @@
           "type": "benefit",
           "settings": {
             "title": "Glijdt, in plaats van trekt",
-            "text": "Geen wrijving betekent geen frizz, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
+            "text": "Geen wrijving betekent geen pluizig haar, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
           }
         },
         {
           "type": "benefit",
           "settings": {
             "title": "Ademend van nature",
-            "text": "Silk regelt zijn eigen temperatuur, koel wanneer het warm is, warm wanneer het koud is."
+            "text": "Silk regelt zijn eigen temperatuur. Koel wanneer het warm is, warm wanneer het koud is. Nooit meer een kussen omdraaien op zoek naar de koele kant."
           }
         },
         {
           "type": "benefit",
           "settings": {
             "title": "Zacht voor de huid",
-            "text": "Trekt geen vocht weg, maar houdt het vast. Minder druklijnen, meer rust voor je huid."
+            "text": "Trekt geen vocht weg, maar houdt het vast. Je huid wordt niet droog getrokken, hij blijft zoals hij was toen je ging slapen."
           }
         },
         {
           "type": "benefit",
           "settings": {
             "title": "Van nature hypoallergeen",
-            "text": "Stoot mijten en bacteriën van nature af, gemaakt voor gevoelige huid."
+            "text": "Stoot mijten en bacteriën van nature af. Gemaakt voor gevoelige huid, zonder dat je erover na hoeft te denken."
           }
         }
       ]

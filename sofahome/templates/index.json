@@ -202,28 +202,28 @@
           "type": "benefit",
           "settings": {
             "title": "Glijdt, in plaats van trekt",
-            "text": "Geen wrijving betekent geen frizz, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
+            "text": "Geen wrijving betekent geen pluizig haar, geen klitten, geen statische ochtendhaar. Alleen rust voor je haar, nacht na nacht."
           }
         },
         "b-2": {
           "type": "benefit",
           "settings": {
             "title": "Ademend van nature",
-            "text": "Silk regelt zijn eigen temperatuur, koel wanneer het warm is, warm wanneer het koud is."
+            "text": "Silk regelt zijn eigen temperatuur. Koel wanneer het warm is, warm wanneer het koud is. Nooit meer een kussen omdraaien op zoek naar de koele kant."
           }
         },
         "b-3": {
           "type": "benefit",
           "settings": {
             "title": "Zacht voor de huid",
-            "text": "Trekt geen vocht weg, maar houdt het vast. Minder druklijnen, meer rust voor je huid."
+            "text": "Trekt geen vocht weg, maar houdt het vast. Je huid wordt niet droog getrokken, hij blijft zoals hij was toen je ging slapen."
           }
         },
         "b-4": {
           "type": "benefit",
           "settings": {
             "title": "Van nature hypoallergeen",
-            "text": "Stoot mijten en bacteriën van nature af, gemaakt voor gevoelige huid."
+            "text": "Stoot mijten en bacteriën van nature af. Gemaakt voor gevoelige huid, zonder dat je erover na hoeft te denken."
           }
         }
       },
@@ -240,7 +240,8 @@
         "button_label": "Shop kussenslopen",
         "button_link": "/collections/all",
         "label_before": "before",
-        "label_after": "after"
+        "label_after": "after",
+        "note": "Je merkt het verschil niet na één nacht. Je merkt het wanneer je een keer weer op katoen slaapt, en je meteen weet wat je mist."
       }
     }
   },
