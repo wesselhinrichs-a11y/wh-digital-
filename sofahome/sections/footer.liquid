@@ -1,55 +1,70 @@
 <footer class="footer">
   <div class="page-width">
-    <div class="footer__grid">
+    <div class="footer__top">
       {%- for block in section.blocks -%}
-        <div {{ block.shopify_attributes }}>
-          {%- case block.type -%}
-            {%- when 'brand' -%}
-              <div class="header__logo" style="font-size:1.4rem">{{ shop.name }}</div>
-              {%- if block.settings.text != blank -%}
-                <div class="rte" style="margin-top:0.75rem; color:var(--color-muted); font-size:0.95rem">
-                  {{ block.settings.text }}
-                </div>
+        <nav class="footer-col" {{ block.shopify_attributes }} aria-label="{{ block.settings.heading }}">
+          <h2 class="footer-col__title">{{ block.settings.heading }}</h2>
+          <ul class="footer-col__links">
+            {%- for i in (1..6) -%}
+              {%- liquid
+                assign sleutel_tekst = 'link_' | append: i | append: '_label'
+                assign sleutel_url = 'link_' | append: i | append: '_url'
+                assign tekst = block.settings[sleutel_tekst]
+                assign adres = block.settings[sleutel_url]
+              -%}
+              {%- if tekst != blank -%}
+                <li><a href="{{ adres | default: '#' }}">{{ tekst }}</a></li>
               {%- endif -%}
-
-              <div class="footer__social">
-                {%- if settings.social_instagram_link != blank -%}
-                  <a href="{{ settings.social_instagram_link }}" aria-label="Instagram">{% render 'icon', icon: 'instagram' %}</a>
-                {%- endif -%}
-                {%- if settings.social_facebook_link != blank -%}
-                  <a href="{{ settings.social_facebook_link }}" aria-label="Facebook">{% render 'icon', icon: 'facebook' %}</a>
-                {%- endif -%}
-                {%- if settings.social_pinterest_link != blank -%}
-                  <a href="{{ settings.social_pinterest_link }}" aria-label="Pinterest">{% render 'icon', icon: 'pinterest' %}</a>
-                {%- endif -%}
-              </div>
-
-            {%- when 'menu' -%}
-              <div class="footer__heading">{{ block.settings.heading }}</div>
-              <ul class="footer__list">
-                {%- for link in block.settings.menu.links -%}
-                  <li><a href="{{ link.url }}">{{ link.title }}</a></li>
-                {%- endfor -%}
-              </ul>
-
-            {%- when 'text' -%}
-              <div class="footer__heading">{{ block.settings.heading }}</div>
-              <div class="rte" style="color:var(--color-muted); font-size:0.95rem">{{ block.settings.text }}</div>
-          {%- endcase -%}
-        </div>
+            {%- endfor -%}
+          </ul>
+        </nav>
       {%- endfor -%}
+
+      <div class="footer-signup">
+        <h2 class="footer-col__title">{{ section.settings.signup_heading }}</h2>
+
+        {%- if section.settings.signup_text != blank -%}
+          <p class="footer-signup__text">{{ section.settings.signup_text }}</p>
+        {%- endif -%}
+
+        {%- form 'customer', class: 'footer-signup__form' -%}
+          <input type="hidden" name="contact[tags]" value="newsletter">
+          <label class="visually-hidden" for="FooterEmail">{{ 'general.newsletter_form.label' | t }}</label>
+          <input
+            class="footer-signup__field"
+            id="FooterEmail"
+            type="email"
+            name="contact[email]"
+            autocomplete="email"
+            placeholder="{{ 'general.newsletter_form.placeholder' | t }}"
+            required
+          >
+          <button class="footer-signup__submit" type="submit" aria-label="{{ 'general.newsletter_form.submit' | t }}">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true" focusable="false">
+              <path d="M4 12h15M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          {%- if form.posted_successfully? -%}
+            <p class="footer-signup__note">{{ 'general.newsletter_form.confirmation' | t }}</p>
+          {%- endif -%}
+        {%- endform -%}
+
+        {%- if section.settings.signup_disclaimer != blank -%}
+          <p class="footer-signup__disclaimer">
+            {{ section.settings.signup_disclaimer }}
+            {%- if section.settings.privacy_label != blank -%}
+              <a href="{{ section.settings.privacy_url | default: '/policies/privacy-policy' }}">
+                {{- section.settings.privacy_label -}}
+              </a>.
+            {%- endif -%}
+          </p>
+        {%- endif -%}
+      </div>
     </div>
 
     <div class="footer__bottom">
-      <div>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. Alle rechten voorbehouden.</div>
-
-      {%- if section.settings.show_payment_icons -%}
-        <div class="footer__payment">
-          {%- for type in shop.enabled_payment_types -%}
-            {{ type | payment_type_svg_tag: class: 'payment-icon' }}
-          {%- endfor -%}
-        </div>
-      {%- endif -%}
+      <p>&copy; {{ shop.name }} {{ 'now' | date: '%Y' }}</p>
     </div>
   </div>
 </footer>
@@ -57,71 +72,49 @@
 {% schema %}
 {
   "name": "Footer",
+  "max_blocks": 3,
   "settings": [
     {
-      "type": "checkbox",
-      "id": "show_payment_icons",
-      "label": "Betaalmethodes tonen",
-      "default": true
-    }
-  ],
-  "blocks": [
-    {
-      "type": "brand",
-      "name": "Merk",
-      "limit": 1,
-      "settings": [
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Tekst",
-          "default": "<p>Premium silk tegen een eerlijke prijs. Kussenslopen en slaapmaskers, rechtstreeks van de producent.</p>"
-        }
-      ]
-    },
-    {
-      "type": "menu",
-      "name": "Menukolom",
-      "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Kop",
-          "default": "Shop"
-        },
-        {
-          "type": "link_list",
-          "id": "menu",
-          "label": "Menu",
-          "default": "footer"
-        }
-      ]
+      "type": "text",
+      "id": "signup_heading",
+      "label": "Kop aanmeldblok",
+      "default": "Blijf op de hoogte"
     },
     {
       "type": "text",
-      "name": "Tekstkolom",
+      "id": "signup_text",
+      "label": "Subtekst",
+      "default": "Meld je aan voor exclusieve aanbiedingen"
+    },
+    {
+      "type": "textarea",
+      "id": "signup_disclaimer",
+      "label": "Kleine letters",
+      "default": "Door je e-mail in te vullen ga je akkoord met het ontvangen van e-mails. Je kan je op elk moment afmelden. Bekijk ons"
+    },
+    { "type": "text", "id": "privacy_label", "label": "Tekst van de privacylink", "default": "privacybeleid" },
+    { "type": "url", "id": "privacy_url", "label": "Link naar privacybeleid" }
+  ],
+  "blocks": [
+    {
+      "type": "kolom",
+      "name": "Kolom",
       "settings": [
-        {
-          "type": "text",
-          "id": "heading",
-          "label": "Kop",
-          "default": "Contact"
-        },
-        {
-          "type": "richtext",
-          "id": "text",
-          "label": "Tekst",
-          "default": "<p>hallo@sofahome.nl<br>Ma t/m vr, 9.00 – 17.00 uur</p>"
-        }
+        { "type": "text", "id": "heading", "label": "Kop", "default": "Bedrijf" },
+        { "type": "text", "id": "link_1_label", "label": "Link 1" },
+        { "type": "url", "id": "link_1_url", "label": "Link 1 — adres" },
+        { "type": "text", "id": "link_2_label", "label": "Link 2" },
+        { "type": "url", "id": "link_2_url", "label": "Link 2 — adres" },
+        { "type": "text", "id": "link_3_label", "label": "Link 3" },
+        { "type": "url", "id": "link_3_url", "label": "Link 3 — adres" },
+        { "type": "text", "id": "link_4_label", "label": "Link 4" },
+        { "type": "url", "id": "link_4_url", "label": "Link 4 — adres" },
+        { "type": "text", "id": "link_5_label", "label": "Link 5" },
+        { "type": "url", "id": "link_5_url", "label": "Link 5 — adres" },
+        { "type": "text", "id": "link_6_label", "label": "Link 6" },
+        { "type": "url", "id": "link_6_url", "label": "Link 6 — adres" }
       ]
     }
-  ],
-  "default": {
-    "blocks": [
-      { "type": "brand" },
-      { "type": "menu" },
-      { "type": "text" }
-    ]
-  }
+  ]
 }
 {% endschema %}
