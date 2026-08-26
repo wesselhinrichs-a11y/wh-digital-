@@ -1,0 +1,65 @@
+{
+  "sections": {
+    "faq": {
+      "type": "faq",
+      "blocks": {
+        "vraag-1": {
+          "type": "vraag",
+          "settings": {
+            "question": "Is dit echt beter dan een gewone katoenen kussensloop, of is het gewoon marketing?",
+            "answer": "<p>Katoen trekt vocht uit je huid en haar en zorgt voor wrijving tijdens het slapen. Silk glijdt, waardoor je huid vocht vasthoudt en je haar geen weerstand ondervindt. Het verschil zit in het materiaal zelf, niet in een verhaal eromheen.</p>",
+            "open": true
+          }
+        },
+        "vraag-2": {
+          "type": "vraag",
+          "settings": {
+            "question": "Wat als de kwaliteit tegenvalt of het niet is wat ik verwachtte?",
+            "answer": "<p>Je hebt 30 dagen bedenktijd. Past het niet bij je verwachting, dan stuur je het gewoon terug.</p>",
+            "open": false
+          }
+        },
+        "vraag-3": {
+          "type": "vraag",
+          "settings": {
+            "question": "Gaat silk snel kreuken of verkleuren na een paar wasbeurten?",
+            "answer": "<p>Bij correct onderhoud (koud wassen, niet in de droger) behoudt 100% moerbeizijde zijn glans en structuur voor jaren. Het is juist duurzamer dan veel mensen denken.</p>",
+            "open": false
+          }
+        },
+        "vraag-4": {
+          "type": "vraag",
+          "settings": {
+            "question": "Is dit alleen voor mensen met droge huid of specifieke haarproblemen, of werkt het voor iedereen?",
+            "answer": "<p>Silk werkt voor elk huid- en haartype, omdat het mechanisme (minder wrijving, minder vochtverlies) voor iedereen hetzelfde voordeel geeft.</p>",
+            "open": false
+          }
+        },
+        "vraag-5": {
+          "type": "vraag",
+          "settings": {
+            "question": "Waarom kost dit meer dan een gewone kussensloop uit de supermarkt?",
+            "answer": "<p>Je betaalt voor 100% moerbeizijde, niet voor een katoen/polyester-mix met een “silk-look”. De prijs zit in het materiaal, niet in de merknaam.</p>",
+            "open": false
+          }
+        }
+      },
+      "block_order": [
+        "vraag-1",
+        "vraag-2",
+        "vraag-3",
+        "vraag-4",
+        "vraag-5"
+      ],
+      "settings": {
+        "eyebrow": "",
+        "heading": "Veelgestelde vragen",
+        "text": "",
+        "note": ""
+      }
+    }
+  },
+  "order": [
+    "faq"
+  ]
+}

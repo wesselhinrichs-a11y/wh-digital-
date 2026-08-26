@@ -1,0 +1,52 @@
+<div class="section">
+  <div class="page-width page-width--narrow">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+    {%- endif -%}
+
+    {%- if section.settings.heading != blank -%}
+      <h2>{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.text != blank -%}
+      <p class="lede" style="margin-bottom:2rem">{{ section.settings.text }}</p>
+    {%- endif -%}
+
+    <div class="faq">
+      {%- for block in section.blocks -%}
+        <details class="accordion" {% if block.settings.open %}open{% endif %} {{ block.shopify_attributes }}>
+          <summary>{{ block.settings.question }}</summary>
+          <div class="accordion__body rte">{{ block.settings.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+
+    {%- if section.settings.note != blank -%}
+      <p class="faq__note">{{ section.settings.note }}</p>
+    {%- endif -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Veelgestelde vragen",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Label erboven" },
+    { "type": "text", "id": "heading", "label": "Kop", "default": "Veelgestelde vragen" },
+    { "type": "textarea", "id": "text", "label": "Inleiding" },
+    { "type": "textarea", "id": "note", "label": "Slotzin", "info": "Staat onder de vragen." }
+  ],
+  "blocks": [
+    {
+      "type": "vraag",
+      "name": "Vraag",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Vraag" },
+        { "type": "richtext", "id": "answer", "label": "Antwoord" },
+        { "type": "checkbox", "id": "open", "label": "Meteen uitgeklapt", "default": false }
+      ]
+    }
+  ],
+  "presets": [{ "name": "Veelgestelde vragen" }]
+}
+{% endschema %}
