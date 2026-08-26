@@ -161,22 +161,22 @@
         "spec-1": {
           "type": "spec",
           "settings": {
-            "icon": "ruler",
-            "text": "19 en 22 momme"
+            "icon": "wash",
+            "text": "Machinewasbaar"
           }
         },
         "spec-2": {
           "type": "spec",
           "settings": {
             "icon": "swatch",
-            "text": "100% moerbeizijde"
+            "text": "Grade 6A zijde"
           }
         },
         "spec-3": {
           "type": "spec",
           "settings": {
-            "icon": "leaf",
-            "text": "Huidvriendelijk"
+            "icon": "clock",
+            "text": "30 dagen bedenktijd"
           }
         }
       },
