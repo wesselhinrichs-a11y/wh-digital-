@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document uploaden | WH Digital</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --blauw: #2563eb;
+    --blauw-donker: #1d4ed8;
+    --blauw-tint: #eff4ff;
+    --grijs-900: #1e293b;
+    --grijs-600: #475569;
+    --grijs-400: #94a3b8;
+    --grijs-200: #e2e8f0;
+    --grijs-100: #f1f5f9;
+    --wit: #ffffff;
+    --fout: #dc2626;
+    --groen: #16a34a;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--grijs-100);
+    color: var(--grijs-900);
+    line-height: 1.5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 24px;
+  }
+
+  .card {
+    width: 100%;
+    max-width: 460px;
+    background: var(--wit);
+    border: 1px solid var(--grijs-200);
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(30, 41, 59, 0.08);
+    overflow: hidden;
+  }
+
+  .card-header {
+    padding: 28px 32px;
+    border-bottom: 1px solid var(--grijs-200);
+    background: var(--blauw-tint);
+  }
+
+  .logo {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--grijs-900);
+    letter-spacing: -0.01em;
+  }
+
+  .logo span { color: var(--blauw); }
+
+  .card-body { padding: 32px; }
+
+  h1 {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+  }
+
+  .subtitel {
+    color: var(--grijs-600);
+    font-size: 0.95rem;
+    margin-bottom: 28px;
+  }
+
+  .veld { margin-bottom: 20px; }
+
+  label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--grijs-900);
+    margin-bottom: 6px;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    padding: 12px 14px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--grijs-900);
+    background: var(--wit);
+    border: 1px solid var(--grijs-200);
+    border-radius: 10px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  input[type="text"]:focus,
+  input[type="email"]:focus {
+    outline: none;
+    border-color: var(--blauw);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  }
+
+  /* Gestileerde bestand-upload */
+  .upload {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px;
+    border: 1.5px dashed var(--grijs-200);
+    border-radius: 10px;
+    background: var(--grijs-100);
+    cursor: pointer;
+    transition: border-color 0.15s ease, background 0.15s ease;
+  }
+
+  .upload:hover { border-color: var(--blauw); background: var(--blauw-tint); }
+
+  .upload input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .upload-icon {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: var(--blauw-tint);
+    color: var(--blauw);
+  }
+
+  .upload-tekst { font-size: 0.9rem; color: var(--grijs-600); }
+  .upload-tekst strong { color: var(--grijs-900); font-weight: 600; }
+  .upload-bestand { color: var(--blauw); font-weight: 600; word-break: break-all; }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    color: var(--wit);
+    background: var(--blauw);
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.15s ease;
+    margin-top: 4px;
+  }
+
+  button:hover { background: var(--blauw-donker); }
+  button:disabled { opacity: 0.6; cursor: not-allowed; }
+
+  .status {
+    margin-top: 16px;
+    font-size: 0.9rem;
+    min-height: 1.2em;
+    text-align: center;
+  }
+
+  .status.fout { color: var(--fout); }
+
+  /* Bevestiging na versturen */
+  .bevestiging {
+    text-align: center;
+    padding: 8px 0;
+  }
+
+  .bevestiging-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #dcfce7;
+    color: var(--groen);
+  }
+
+  .bevestiging h1 { margin-bottom: 10px; }
+  .bevestiging p { color: var(--grijs-600); }
+
+  .hidden { display: none; }
+
+  .voetnoot {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--grijs-400);
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="card-header">
+      <span class="logo">WH<span>&nbsp;Digital</span></span>
+    </div>
+
+    <div class="card-body">
+
+      <!-- FORMULIER -->
+      <form id="upload-form" novalidate>
+        <h1>Document uploaden</h1>
+        <p class="subtitel">Vul je gegevens in en voeg je opnamedocument (PDF) toe.</p>
+
+        <div class="veld">
+          <label for="naam">Naam</label>
+          <input type="text" id="naam" name="naam" placeholder="Je naam" required>
+        </div>
+
+        <div class="veld">
+          <label for="email">E-mailadres</label>
+          <input type="email" id="email" name="E-mailadres" placeholder="jij@voorbeeld.nl" required>
+        </div>
+
+        <div class="veld">
+          <label for="bestand">Opname document (PDF)</label>
+          <div class="upload">
+            <span class="upload-icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                <path d="M12 16V4M7 9l5-5 5 5"></path>
+                <path d="M5 16v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3"></path>
+              </svg>
+            </span>
+            <span class="upload-tekst" id="upload-tekst">
+              <strong>Kies een bestand</strong> of sleep het hierheen &middot; alleen PDF
+            </span>
+            <input type="file" id="bestand" name="data" accept="application/pdf,.pdf" required>
+          </div>
+        </div>
+
+        <button type="submit" id="verstuur">Verstuur</button>
+        <p class="status" id="status" role="status"></p>
+      </form>
+
+      <!-- BEVESTIGING (verschijnt na versturen) -->
+      <div class="bevestiging hidden" id="bevestiging">
+        <div class="bevestiging-icon" aria-hidden="true">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+            <path d="M20 6L9 17l-5-5"></path>
+          </svg>
+        </div>
+        <h1>Gelukt!</h1>
+        <p>Je document is verstuurd. We gaan er direct mee aan de slag.</p>
+      </div>
+
+    </div>
+  </div>
+
+<script>
+  const form = document.getElementById("upload-form");
+  const bestandInput = document.getElementById("bestand");
+  const uploadTekst = document.getElementById("upload-tekst");
+  const status = document.getElementById("status");
+  const verstuurBtn = document.getElementById("verstuur");
+  const bevestiging = document.getElementById("bevestiging");
+
+  const WEBHOOK = "https://whr28.app.n8n.cloud/webhook/bouwrapport";
+
+  // Toon de gekozen bestandsnaam in het uploadvak
+  bestandInput.addEventListener("change", () => {
+    const file = bestandInput.files[0];
+    if (file) {
+      uploadTekst.innerHTML = '<span class="upload-bestand"></span>';
+      uploadTekst.querySelector(".upload-bestand").textContent = file.name;
+    }
+  });
+
+  function isPdf(file) {
+    return file.type === "application/pdf" || file.name.toLowerCase().endsWith(".pdf");
+  }
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    status.classList.remove("fout");
+
+    const naam = document.getElementById("naam").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const file = bestandInput.files[0];
+
+    if (!naam || !email || !file) {
+      status.textContent = "Vul alle velden in en kies een bestand.";
+      status.classList.add("fout");
+      return;
+    }
+
+    if (!isPdf(file)) {
+      status.textContent = "Alleen PDF-bestanden zijn toegestaan.";
+      status.classList.add("fout");
+      return;
+    }
+
+    // Velden exact zoals de webhook ze verwacht: naam, E-mailadres, data (bestand)
+    const data = new FormData();
+    data.append("naam", naam);
+    data.append("E-mailadres", email);
+    data.append("data", file, file.name);
+
+    verstuurBtn.disabled = true;
+    status.textContent = "Bezig met versturen...";
+
+    try {
+      const response = await fetch(WEBHOOK, { method: "POST", body: data });
+      if (response.ok) {
+        // Formulier vervangen door de bevestiging
+        form.classList.add("hidden");
+        bevestiging.classList.remove("hidden");
+      } else {
+        status.textContent = "Er ging iets mis (code " + response.status + "). Probeer het opnieuw.";
+        status.classList.add("fout");
+        verstuurBtn.disabled = false;
+      }
+    } catch {
+      status.textContent = "Verzenden mislukt. Controleer je internetverbinding en probeer het opnieuw.";
+      status.classList.add("fout");
+      verstuurBtn.disabled = false;
+    }
+  });
+</script>
+
+</body>
+</html>
